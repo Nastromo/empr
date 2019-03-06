@@ -1,13 +1,13 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
 
-export class Pending extends Component {
+export class PrivateRoute extends Component {
 
 
     render() {
         return (
             <div>
-                    Hello I'm Pending page!
+
             </div>
         )
     }
@@ -21,4 +21,4 @@ const mapDispatchToProps = {
 
 }
 
-export default connect(mapStateToProps, mapDispatchToProps)(Pending)
+export default connect(mapStateToProps, mapDispatchToProps)(PrivateRoute)

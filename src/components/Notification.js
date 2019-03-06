@@ -15,7 +15,7 @@ export class Notification extends Component {
     }
 
     handleClick = () => {
-        this.props.showNotification(`Incorrect login or password`, ``);
+        this.props.showNotification(``, ``);
     }
 
     render() {

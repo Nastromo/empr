@@ -29,7 +29,7 @@ export class SubmitButton extends Component {
 }
 
 const mapStateToProps = (state) => ({
-    isLoadding: false
+    isLoadding: state.loginSpinner
 })
 
 const mapDispatchToProps = {

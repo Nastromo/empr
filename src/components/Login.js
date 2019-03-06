@@ -2,16 +2,21 @@ import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import microscope from '../img/microscope.svg';
 import SubmitButton from './SubmitButton';
-import { showNotification } from '../store/actions/Notification';
+import { makeLogin } from '../store/actions/Login';
+
 
 
 
 export class login extends Component {
 
-    handleSubmit = (e) => {
+    handleSubmit = async (e) => {
         e.preventDefault();
-        if (this.login.value === `art` && this.pass.value === `art` ) this.props.history.push(`/pending`);
-        else this.props.showNotification(`Incorrect login or password`, `notification-show`);
+        if (this.login.value && this.pass.value) {
+            this.props.makeLogin(this.props.history, `/v1/login`, {
+                login: this.login.value,
+                pass: this.pass.value
+            });
+        }
     }
 
 
@@ -24,19 +29,19 @@ export class login extends Component {
 
                 <form className="signup-form" onSubmit={this.handleSubmit}>
 
-                    <input 
+                    <input
                         ref={el => this.login = el}
                         className="input-login"
                         type="text"
-                        placeholder="Enter Your Login" 
+                        placeholder="Enter Your Login"
                         required="required"
                         autoComplete="username" />
 
-                    <input 
-                        ref={el => this.pass = el} 
-                        className="input-login" 
-                        type="password" 
-                        placeholder="Enter Your Password" 
+                    <input
+                        ref={el => this.pass = el}
+                        className="input-login"
+                        type="password"
+                        placeholder="Enter Your Password"
                         required="required"
                         autoComplete="current-password" />
 
@@ -55,7 +60,7 @@ const mapStateToProps = (state) => ({
 })
 
 const mapDispatchToProps = (dispatch) => ({
-    showNotification: (text, css) => dispatch(showNotification(text, css)),
+    makeLogin: (history, url, body) => dispatch(makeLogin(history, url, body)),
 })
 
 export default connect(mapStateToProps, mapDispatchToProps)(login)

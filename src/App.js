@@ -2,12 +2,11 @@ import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import Login from './components/Login';
 import { BrowserRouter as Router, Route, Switch, } from 'react-router-dom';
-import Pending from './components/Pending';
+import PrivateRoute from './components/PrivateRoute';
 import Notification from './components/Notification';
 
 
 export class App extends Component {
-
 
     render() {
         return (
@@ -16,7 +15,7 @@ export class App extends Component {
                     <Notification/>
                     <Switch>
                         <Route exact path="/" component={Login} />
-                        <Route exact path="/pending" component={Pending} />
+                        <Route path="/account" component={PrivateRoute} />
                     </Switch>
                 </div>
             </Router>
