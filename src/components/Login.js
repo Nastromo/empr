@@ -2,17 +2,18 @@ import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import microscope from '../img/microscope.svg';
 import SubmitButton from './SubmitButton';
+import { showNotification } from '../store/actions/Notification';
 
 
 
 export class login extends Component {
 
     handleSubmit = (e) => {
-        console.log(this.login);
-        console.log(this.pass);
+        e.preventDefault();
+        if (this.login.value === `art` && this.pass.value === `art` ) this.props.history.push(`/pending`);
+        else this.props.showNotification(`Incorrect login or password`, `notification-show`);
     }
 
-    // Do not fogget to show error!
 
     render() {
         return (
@@ -53,8 +54,8 @@ const mapStateToProps = (state) => ({
 
 })
 
-const mapDispatchToProps = {
-
-}
+const mapDispatchToProps = (dispatch) => ({
+    showNotification: (text, css) => dispatch(showNotification(text, css)),
+})
 
 export default connect(mapStateToProps, mapDispatchToProps)(login)
