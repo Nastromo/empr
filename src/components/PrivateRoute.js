@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
-import { BrowserRouter as Router, Route, Switch, withRouter } from 'react-router-dom';
+import { Route, Switch, withRouter } from 'react-router-dom';
 import LineSpinner from './LineSpinner';
 import { getUser } from '../store/actions/User';
 import Pending from './Pending';
@@ -14,6 +14,7 @@ import StainMaintenance from './StainMaintenance';
 import Instruments from './Instruments';
 import Users from './Users';
 import Comments from './Comments';
+import Navigation from './Navigation';
 
 
 
@@ -26,21 +27,22 @@ export class PrivateRoute extends Component {
         if (this.props.isLoading) return <LineSpinner />
 
         return (
-            <Router>
+            <div>
+                <Navigation />
                 <Switch>
-                    <Route path="/account/pending" component={Pending} />
-                    <Route path="/account/processing" component={Processing} />
-                    <Route path="/account/screening" component={Screening} />
-                    <Route path="/account/qc" component={Qc} />
-                    <Route path="/account/batch-control" component={BatchControl} />
-                    <Route path="/account/stain-qc" component={StainQc} />
-                    <Route path="/account/history" component={History} />
-                    <Route path="/account/stain-maintenance" component={StainMaintenance} />
-                    <Route path="/account/instruments" component={Instruments} />
-                    <Route path="/account/users" component={Users} />
-                    <Route path="/account/comments" component={Comments} />
+                    <Route exact path="/account/pending" component={Pending} />
+                    <Route exact path="/account/processing" component={Processing} />
+                    <Route exact path="/account/screening" component={Screening} />
+                    <Route exact path="/account/qc" component={Qc} />
+                    <Route exact path="/account/batch-control" component={BatchControl} />
+                    <Route exact path="/account/stain-qc" component={StainQc} />
+                    <Route exact path="/account/history" component={History} />
+                    <Route exact path="/account/stain-maintenance" component={StainMaintenance} />
+                    <Route exact path="/account/instruments" component={Instruments} />
+                    <Route exact path="/account/users" component={Users} />
+                    <Route exact path="/account/comments" component={Comments} />
                 </Switch>
-            </Router>
+            </div>
         )
     }
 }
