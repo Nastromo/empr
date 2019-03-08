@@ -1,17 +1,17 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
+import PendingList from './PendingList';
+import SpecimenProcessing from './SpecimenProcessing';
 
 
 
 
 export class Pending extends Component {
-
-
-
     render() {
         return (
-            <div>
-                Привет! Я Пендинг!
+            <div className="pending">
+                <PendingList />
+                <SpecimenProcessing />
             </div>
         )
     }
