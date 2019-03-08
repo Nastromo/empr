@@ -464,7 +464,7 @@ a.logo-text:hover {
     white-space: nowrap;
     box-sizing: border-box;
     border: 1px solid #fff;
-    border-bottom: none;
+    border-bottom: 1px solid #fff;
 }
 
 .active-tab {
@@ -474,4 +474,9 @@ a.logo-text:hover {
     border: 1px solid #e7eaec;
     border-bottom: none;
     color: #15ac8e;
+    z-index: 200;
+}
+
+.content-table {
+    margin: -1px 0 0 0;
 }
