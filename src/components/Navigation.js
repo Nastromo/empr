@@ -1,6 +1,8 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import { Link, withRouter } from 'react-router-dom';
+import { showMenu } from '../store/actions/UserMenu';
+import UserMenu from './UserMenu';
 
 
 
@@ -75,6 +77,23 @@ export class Navigation extends Component {
         }
     }
 
+    componentWillMount() {
+        document.addEventListener('click', this.handleMenu);
+    }
+
+    componentWillUnmount() {
+        document.removeEventListener('click', this.handleMenu);
+    }
+
+    handleMenu = (e) => {
+        if (this.profile.contains(e.target)) {
+            this.props.showMenu(`nav-con-menu-transform`);
+        } else {
+            this.props.showMenu(``);
+        }
+    }
+
+
     render() {
         return (
             <div className="white-back">
@@ -137,7 +156,10 @@ export class Navigation extends Component {
                     <div className="work-info">
                         <p>GYN: <span className="blue-text">{this.props.gyn}</span></p>
                         <p>NGYN: <span className="blue-text">{this.props.ngyn}</span></p>
-                        <div className="profile">{this.props.userChars}</div>
+                        <div ref={el => this.profile = el} className="profile">{this.props.userChars}</div>
+
+                        <UserMenu />
+
                     </div>
                 </div>
             </div>
@@ -151,8 +173,8 @@ const mapStateToProps = (state) => ({
     userChars: `AR`,
 })
 
-const mapDispatchToProps = {
-
-}
+const mapDispatchToProps = (dispatch) => ({
+    showMenu: (css) => dispatch(showMenu(css))
+})
 
 export default connect(mapStateToProps, mapDispatchToProps)(withRouter(Navigation))

@@ -9,7 +9,6 @@ export class Notification extends Component {
         document.addEventListener('click', this.handleClick);
     }
 
-
     componentWillUnmount() {
         document.removeEventListener('click', this.handleClick);
     }
