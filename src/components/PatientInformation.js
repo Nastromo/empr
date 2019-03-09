@@ -25,9 +25,8 @@ export class PatientInformation extends Component {
     }
 
     render() {
-        console.log(this.props.isCollapsed)
         return (
-            <div className={ this.props.isCollapsed ? `patien-information-hide patien-information` : `patien-information`}>
+            <div className={ this.props.isCollapsed ? `sect-hide sect` : `sect`}>
                 <div onClick={this.transform} className="section-title">Patient Information</div>
                 <div className="flex-vertical-start">
                     <div className="section-info">

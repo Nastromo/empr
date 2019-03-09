@@ -3,6 +3,7 @@ import { connect } from 'react-redux';
 import { Link, withRouter } from 'react-router-dom';
 import { showMenu } from '../store/actions/UserMenu';
 import UserMenu from './UserMenu';
+import { showDropDown } from '../store/actions/DropDown';
 
 
 
@@ -90,6 +91,12 @@ export class Navigation extends Component {
             this.props.showMenu(`nav-con-menu-transform`);
         } else {
             this.props.showMenu(``);
+            const arr = document.getElementsByClassName("drop-down-show");
+            if (arr[0]) arr[0].classList.remove("drop-down-show");
+            this.props.showDropDown({ 
+                status: false,
+                id: this.props.id
+            });
         }
     }
 
@@ -171,10 +178,14 @@ const mapStateToProps = (state) => ({
     gyn: 11,
     ngyn: 33,
     userChars: `AR`,
+    clickedID: state.dropDown.id,
+    isOpen: state.dropDown.status,
+    
 })
 
 const mapDispatchToProps = (dispatch) => ({
-    showMenu: (css) => dispatch(showMenu(css))
+    showMenu: (css) => dispatch(showMenu(css)),
+    showDropDown: (obj) => dispatch(showDropDown(obj))
 })
 
 export default connect(mapStateToProps, mapDispatchToProps)(withRouter(Navigation))
