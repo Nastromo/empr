@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
-import { getData } from '../store/actions/Analyzes';
+import { getPendingList } from '../store/actions/Analyzes';
 
 
 
@@ -15,10 +15,14 @@ export class Analyzes extends Component {
         ]
     }
 
+    componentDidMount() {
+        this.props.getPendingList(0, this.analyzes[0].title);
+    }
+
     handleClick = (e) => {
         const title = e.currentTarget.textContent;
         const index = Number(e.currentTarget.id);
-        this.props.getData(index, title)
+        this.props.getPendingList(index, title);
     }
 
     render() {
@@ -47,7 +51,7 @@ const mapStateToProps = (state) => ({
 })
 
 const mapDispatchToProps = dispatch => ({
-    getData: (index, title) => dispatch(getData(index, title))
+    getPendingList: (index, title) => dispatch(getPendingList(index, title))
 })
 
 export default connect(mapStateToProps, mapDispatchToProps)(Analyzes)

@@ -480,3 +480,12 @@ a.logo-text:hover {
 .content-table {
     margin: -1px 0 0 0;
 }
+
+.table-spinner {
+    width: 100%;
+    max-width: 420px;
+    height: 3px;
+    position: absolute;
+    margin: 90px 0 0 0;
+    z-index: 200;
+}

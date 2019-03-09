@@ -41,6 +41,7 @@ export class PrivateRoute extends Component {
                     <Route exact path="/account/instruments" component={Instruments} />
                     <Route exact path="/account/users" component={Users} />
                     <Route exact path="/account/comments" component={Comments} />
+                    <Route path="/account" component={Pending} />
                 </Switch>
             </div>
         )

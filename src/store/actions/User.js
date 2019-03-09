@@ -22,7 +22,6 @@ export const getUser = (history) => {
             dispatch(setUser(res.data));
             dispatch(isLoading(false));
         } catch (err) {
-            dispatch(isLoading(false));
             history.push(`/`);
             if (err.response) {
                 switch (err.response.data) {

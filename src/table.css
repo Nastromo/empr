@@ -273,7 +273,7 @@ div.rt-th.-cursor-pointer:first-child div{
 .rt-tr.-odd .rt-td {
     font-size: 0.75rem;
     font-weight: 600;
-    color: rgb(78, 78, 78);
+    color: #4e4e4e;
 }
 
 .rt-tr.-odd .rt-td:first-child {
@@ -283,7 +283,7 @@ div.rt-th.-cursor-pointer:first-child div{
 .rt-tr.-even .rt-td {
     font-size: 0.75rem;
     font-weight: 600;
-    color: rgb(78, 78, 78);
+    color: #4e4e4e;
 }
 
 .rt-tr.-even .rt-td:first-child {

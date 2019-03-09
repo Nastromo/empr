@@ -3,7 +3,9 @@ import { notificationCss, notificationText } from './Notification';
 import { loginSpinner } from './LoginSpinner';
 import { userLoading, user } from './User';
 import { userMenu } from './UserMenu';
-import { activeAnalysis } from './Analyzes';
+import { activeAnalysis, pendingLoading, pendingErrored, pendingList } from './Analyzes';
+import { specimenSelected } from './Specimen';
+
 
 
 const RootReducer = combineReducers({
@@ -18,6 +20,11 @@ const RootReducer = combineReducers({
     userMenu,
 
     activeAnalysis,
+    pendingLoading,
+    pendingErrored,
+    pendingList,
+
+    specimenSelected,
 });
 
 export default RootReducer;
