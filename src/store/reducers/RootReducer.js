@@ -5,6 +5,7 @@ import { userLoading, user } from './User';
 import { userMenu } from './UserMenu';
 import { activeAnalysis, pendingLoading, pendingErrored, pendingList } from './Analyzes';
 import { specimenSelected } from './Specimen';
+import { patientIsCollapsed } from './Collapse';
 
 
 
@@ -25,6 +26,8 @@ const RootReducer = combineReducers({
     pendingList,
 
     specimenSelected,
+
+    patientIsCollapsed,
 });
 
 export default RootReducer;
