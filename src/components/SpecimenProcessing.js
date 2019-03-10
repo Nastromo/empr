@@ -2,6 +2,7 @@ import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import PatientInformation from './PatientInformation';
 import Grossing from './Grossing';
+import CytologyInformation from './CytologyInformation';
 
 
 
@@ -14,7 +15,7 @@ export class SpecimenProcessing extends Component {
                 <div className="top-section-title">SPECIMEN PROCESSING</div>
                 <PatientInformation />
                 <Grossing />
-                
+                <CytologyInformation />
             </div>
         )
     }

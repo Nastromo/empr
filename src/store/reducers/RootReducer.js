@@ -5,7 +5,7 @@ import { userLoading, user } from './User';
 import { userMenu } from './UserMenu';
 import { activeAnalysis, pendingLoading, pendingErrored, pendingList } from './Analyzes';
 import { specimenSelected } from './Specimen';
-import { patientIsCollapsed } from './Collapse';
+import { patientIsCollapsed, grossingIsCollapsed, infoIsCollapsed } from './Collapse';
 import { dropDown } from './DropDown';
 import { patient } from './Patient';
 
@@ -30,6 +30,8 @@ const RootReducer = combineReducers({
     specimenSelected,
 
     patientIsCollapsed,
+    grossingIsCollapsed,
+    infoIsCollapsed,
 
     dropDown,
 

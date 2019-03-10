@@ -29,7 +29,8 @@ export class PatientHistory extends Component {
                     </div>
 
                 </div>
-                <CheckBox status={this.props.patient.routineScreen} title={`Routine Screen`} id="routineScreen" />
+                {/* this.props.patient.routineScreen */}
+                <CheckBox status={true} title={`Routine Screen`} id="routineScreen" />
             </div>
         )
     }

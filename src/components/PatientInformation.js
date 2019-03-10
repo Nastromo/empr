@@ -105,7 +105,7 @@ const mapStateToProps = (state) => ({
 })
 
 const mapDispatchToProps = (dispatch)=> ({
-    collapsePatient: (css) => dispatch(collapsePatient(css))
+    collapsePatient: (bool) => dispatch(collapsePatient(bool))
 })
 
 export default connect(mapStateToProps, mapDispatchToProps)(PatientInformation)

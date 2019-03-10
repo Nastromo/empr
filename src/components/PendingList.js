@@ -3,6 +3,7 @@ import { connect } from 'react-redux';
 import Analyzes from './Analyzes';
 import PendingTable from './PendingTable';
 import LineSpinner from './LineSpinner';
+import Print from './Print';
 
 
 
@@ -16,6 +17,7 @@ export class PendingList extends Component {
                 <Analyzes />
                 {this.props.isLoading ? <div className="table-spinner"><LineSpinner /></div> : null}
                 <PendingTable />
+                <Print />
             </div>
         )
     }

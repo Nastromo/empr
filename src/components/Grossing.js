@@ -3,14 +3,15 @@ import { connect } from 'react-redux';
 import PatientHistory from './PatientHistory';
 import ClinicalHistory from './ClinicalHistory';
 import PapHistory from './PapHistory';
+import { collapseGrossing } from '../store/actions/Collapse';
 
 
 
 export class Grossing extends Component {
 
     transform = () => {
-        if (this.props.isCollapsed) this.props.collapsePatient(false);
-        else this.props.collapsePatient(true);
+        if (this.props.isCollapsed) this.props.collapseGrossing(false);
+        else this.props.collapseGrossing(true);
     }
 
     render() {
@@ -32,7 +33,7 @@ const mapStateToProps = (state) => ({
 })
 
 const mapDispatchToProps = (dispatch) => ({
-
+    collapseGrossing: (bool) => dispatch(collapseGrossing(bool))
 })
 
 export default connect(mapStateToProps, mapDispatchToProps)(Grossing)

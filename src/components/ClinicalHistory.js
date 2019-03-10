@@ -13,12 +13,14 @@ export class ClinicalHistory extends Component {
                 <div className="flex-horiz">
                     <div>
                         <CheckBox status={this.props.patient.abnormalBleeding} title={`Abnormal Bleeding`} id="abnormalBleeding" />
-                        <CheckBox status={this.props.patient.previousDysplasia} title={`Previous Dysplasia`} id="previousDysplasia" />
+                        {/* this.props.patient.previousDysplasia */}
+                        <CheckBox status={true} title={`Previous Dysplasia`} id="previousDysplasia" />
                         <CheckBox status={this.props.patient.radiationTherapy} title={`Radiation Therapy`} id="radiationTherapy" />
                     </div>
                     <div>
+                    {/* this.props.patient.hysterectomy */}
                         <CheckBox status={this.props.patient.highRisk} title={`High Risk`} id="highRisk" />
-                        <CheckBox status={this.props.patient.hysterectomy} title={`Hysterectomy`} id="hysterectomy" />
+                        <CheckBox status={true} title={`Hysterectomy`} id="hysterectomy" />
                         <CheckBox status={this.props.patient.IUD} title={`IUD in place`} id="IUD" />
                     </div>
                     <div>
