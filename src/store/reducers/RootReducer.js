@@ -7,6 +7,7 @@ import { activeAnalysis, pendingLoading, pendingErrored, pendingList } from './A
 import { specimenSelected } from './Specimen';
 import { patientIsCollapsed } from './Collapse';
 import { dropDown } from './DropDown';
+import { patient } from './Patient';
 
 
 
@@ -31,6 +32,8 @@ const RootReducer = combineReducers({
     patientIsCollapsed,
 
     dropDown,
+
+    patient,
 });
 
 export default RootReducer;
