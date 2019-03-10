@@ -726,3 +726,7 @@ a.logo-text:hover {
     max-width: 250px;
     margin: 0 15px 15px 0;
 }
+
+.max-width250:last-child {
+    margin: 0 0 15px 0;
+}
