@@ -2,7 +2,7 @@ import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import PatientHistory from './PatientHistory';
 import ClinicalHistory from './ClinicalHistory';
-
+import PapHistory from './PapHistory';
 
 
 
@@ -21,6 +21,7 @@ export class Grossing extends Component {
                     <PatientHistory />
                 </div>
                 <ClinicalHistory />
+                <PapHistory />
             </div>
         )
     }

@@ -85,3 +85,7 @@
 .DayPickerNavigation_button__default:active {
     /* background: #f2f2f2; */
 }
+
+.DateInput_input::placeholder {
+    color: #919191;
+}

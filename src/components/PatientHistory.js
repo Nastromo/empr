@@ -16,14 +16,15 @@ export class PatientHistory extends Component {
     render() {
         return (
             <div className="padding15">
-                <p className="field-title">Patient History</p>
                 <div className="flex50">
 
                     <div className="max-width250">
+                        <p className="field-title">Patient History</p>
                         <DropDown menu={this.patientHistory} id="patientHistory" />
                     </div>
 
                     <div className="max-width250">
+                        <p className="field-title">LMP Date</p>
                         <MyDatePicker />
                     </div>
 

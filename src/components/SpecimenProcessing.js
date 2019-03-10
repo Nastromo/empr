@@ -14,6 +14,7 @@ export class SpecimenProcessing extends Component {
                 <div className="top-section-title">SPECIMEN PROCESSING</div>
                 <PatientInformation />
                 <Grossing />
+                
             </div>
         )
     }
