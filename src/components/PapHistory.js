@@ -26,18 +26,30 @@ export class PapHistory extends Component {
 
                     <div className="max-width250">
                         <p className="field-title">Previous Pap Diagnosis</p>
-                        <DropDown menu={this.previousPap} id="previousPap" />
+                        <DropDown
+                            option={this.props.previousPapOption}
+                            status={this.props.previousPap}
+                            menu={this.previousPap}
+                            id="previousPap" />
                     </div>
                 </div>
                 <div className="flex50">
                     <div className="max-width250">
                         <p className="field-title">Specimen Source</p>
-                        <DropDown menu={this.specimenSource} id="specimenSource" />
+                        <DropDown
+                            option={this.props.specimenSourceOption}
+                            status={this.props.specimenSource}
+                            menu={this.specimenSource}
+                            id="specimenSource" />
                     </div>
 
                     <div className="max-width250">
                         <p className="field-title">Specimen Received</p>
-                        <DropDown menu={this.specimenReceived} id="specimenReceived" />
+                        <DropDown
+                            option={this.props.specimenReceivedOption}
+                            status={this.props.specimenReceived}
+                            menu={this.specimenReceived}
+                            id="specimenReceived" />
                     </div>
                 </div>
                 <div>
@@ -53,7 +65,12 @@ export class PapHistory extends Component {
 }
 
 const mapStateToProps = (state) => ({
-
+    previousPap: state.dropDown.previousPap,
+    specimenSource: state.dropDown.specimenSource,
+    specimenReceived: state.dropDown.specimenReceived,
+    previousPapOption: state.patientGYN.previousPap,
+    specimenSourceOption: state.patientGYN.specimenSource,
+    specimenReceivedOption: state.patientGYN.specimenReceived,
 })
 
 const mapDispatchToProps = {

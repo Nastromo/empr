@@ -1,4 +1,4 @@
-export const patient = (state = {}, action) => {
+export const patientGYN = (state = {}, action) => {
     let newState;
     switch (action.type) {
         case `CHECK_BOX`:
@@ -42,6 +42,27 @@ export const patient = (state = {}, action) => {
                 case `HRT`:
                     newState = JSON.parse(JSON.stringify(state));
                     newState.HRT = action.obj.status;
+                    return newState;
+                default: return state;
+            }
+
+        case `SET_DROP_DOWN_OPTION`:
+            switch (action.obj.id) {
+                case `patientHistory`:
+                    newState = JSON.parse(JSON.stringify(state));
+                    newState.patientHistory = action.obj.option;
+                    return newState;
+                case `previousPap`:
+                    newState = JSON.parse(JSON.stringify(state));
+                    newState.previousPap = action.obj.option;
+                    return newState;
+                case `specimenSource`:
+                    newState = JSON.parse(JSON.stringify(state));
+                    newState.specimenSource = action.obj.option;
+                    return newState;
+                case `specimenReceived`:
+                    newState = JSON.parse(JSON.stringify(state));
+                    newState.specimenReceived = action.obj.option;
                     return newState;
                 default: return state;
             }

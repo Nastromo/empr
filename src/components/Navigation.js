@@ -91,12 +91,12 @@ export class Navigation extends Component {
             this.props.showMenu(`nav-con-menu-transform`);
         } else {
             this.props.showMenu(``);
-            const arr = document.getElementsByClassName("drop-down-show");
-            if (arr[0]) arr[0].classList.remove("drop-down-show");
-            this.props.showDropDown({ 
-                status: false,
-                id: this.props.id
-            });
+            // const arr = document.getElementsByClassName("drop-down-show");
+            // if (arr[0]) arr[0].classList.remove("drop-down-show");
+            // this.props.showDropDown({ 
+            //     status: false,
+            //     id: this.props.id
+            // });
         }
     }
 

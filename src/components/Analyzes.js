@@ -8,10 +8,10 @@ export class Analyzes extends Component {
     constructor(props) {
         super(props);
         this.analyzes = [
-            { title: `GYN - 19655` },
-            { title: `NGYN - 4085` },
-            { title: `UVFISH - 3437` },
-            { title: `CLL - 1` },
+            { title: `GYN` },
+            { title: `NGYN` },
+            { title: `UVFISH` },
+            { title: `CLL` },
         ]
     }
 

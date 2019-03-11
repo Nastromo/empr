@@ -1,6 +1,6 @@
 import axios from 'axios';
 
-let url = `http://cyt.empirecitylabs.net/api`;
+let url = `http://empirecity.ga/api`;
 if (window.location.href.includes(`localhost`)) {
     url = `http://localhost:4000`;
 } else if (window.location.href.includes(`192.168`)) {

@@ -20,7 +20,11 @@ export class PatientHistory extends Component {
 
                     <div className="max-width250">
                         <p className="field-title">Patient History</p>
-                        <DropDown menu={this.patientHistory} id="patientHistory" />
+                        <DropDown 
+                            option={this.props.patientHistoryOption}
+                            status={this.props.patientHistory}
+                            menu={this.patientHistory} 
+                            id="patientHistory" />
                     </div>
 
                     <div className="max-width250">
@@ -29,15 +33,16 @@ export class PatientHistory extends Component {
                     </div>
 
                 </div>
-                {/* this.props.patient.routineScreen */}
-                <CheckBox status={true} title={`Routine Screen`} id="routineScreen" />
+                <CheckBox status={this.props.patient.routineScreen} title={`Routine Screen`} id="routineScreen" />
             </div>
         )
     }
 }
 
 const mapStateToProps = (state) => ({
-    patient: state.patient,
+    patient: state.patientGYN,
+    patientHistory: state.dropDown.patientHistory,
+    patientHistoryOption: state.patientGYN.patientHistory,
 })
 
 const mapDispatchToProps = {

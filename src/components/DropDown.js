@@ -1,28 +1,53 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import { showDropDown } from '../store/actions/DropDown';
+import { setOption } from '../store/actions/DropDown';
 
 
 
 export class DropDown extends Component {
+    componentWillMount() {
+        document.addEventListener('click', this.handleMenu);
+    }
 
-    handleClick = () => {
-        this.props.showDropDown({
-            status: true,
-            id: this.props.id
+    componentWillUnmount() {
+        document.removeEventListener('click', this.handleMenu);
+    }
+
+    handleMenu = (e) => {
+        if (this.option.contains(e.target)) {
+            this.props.showDropDown({
+                id: this.props.id,
+                status: true
+            });
+        } else {
+            this.props.showDropDown({
+                id: this.props.id,
+                status: false
+            });
+        }
+    }
+
+    choseOption = (e) => {
+        this.props.setOption({
+            id: this.props.id,
+            option: e.target.id,
         });
     }
 
     render() {
         return (
             <div className="relative">
-                <div onClick={this.handleClick} className="drop-select">Select</div>
+                <div 
+                    ref={el => this.option =el} 
+                    className={this.props.option ? `drop-select drop-select-chosen` : `drop-select`}>
+                    {this.props.option ? this.props.option : `Select`}</div>
 
-                <div className= {this.props.id === this.props.clickedID && this.props.isOpen ? `drop-down drop-down-show` : `drop-down`}>
+                <div className={this.props.status ? `drop-down drop-down-show` : `drop-down`}>
                     {
                         this.props.menu.map((item, i) => {
                             return (
-                                <div className="menu-item" key={i}>
+                                <div onClick={this.choseOption} id={item} className="menu-item" key={i}>
                                     {item}
                                 </div>
                             )
@@ -35,12 +60,12 @@ export class DropDown extends Component {
 }
 
 const mapStateToProps = (state) => ({
-    isOpen: state.dropDown.status,
-    clickedID: state.dropDown.id
+
 })
 
 const mapDispatchToProps = (dispatch) => ({
-    showDropDown: (obj) => dispatch(showDropDown(obj))
+    showDropDown: (obj) => dispatch(showDropDown(obj)),
+    setOption: (obj) => dispatch(setOption(obj)),
 })
 
 export default connect(mapStateToProps, mapDispatchToProps)(DropDown)
