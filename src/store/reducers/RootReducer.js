@@ -9,6 +9,8 @@ import { patientIsCollapsed, grossingIsCollapsed, infoIsCollapsed } from './Coll
 import { dropDown } from './DropDown';
 import { patient } from './Patient';
 import { printStaus, printOption } from './Print';
+import { instrumTypeStaus, instrumTypeOption } from './InstrumDropDown';
+import { instrumStaus, instrumOption } from './Instruments';
 
 
 
@@ -39,7 +41,14 @@ const RootReducer = combineReducers({
     patient,
 
     printStaus,
-    printOption
+    printOption,
+
+    instrumTypeStaus,
+    instrumTypeOption,
+
+    instrumStaus,
+    instrumOption
+
 });
 
 export default RootReducer;
