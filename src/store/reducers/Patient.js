@@ -1,4 +1,4 @@
-export const patientGYN = (state = {}, action) => {
+export const patient = (state = {}, action) => {
     let newState;
     switch (action.type) {
         case `CHECK_BOX`:

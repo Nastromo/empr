@@ -1,17 +1,20 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import print from '../img/print.svg';
+import DropDownPrint from './DropDownPrint';
 
 
 
 export class Print extends Component {
 
-
     render() {
         return (
             <div className="print">
-                <img src={print} alt=""/>
-                <p>Print list</p>
+                <div>
+                    <DropDownPrint />
+                </div>
+
+                <img src={print} alt="" />
             </div>
         )
     }

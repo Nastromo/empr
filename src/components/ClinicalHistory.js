@@ -35,7 +35,7 @@ export class ClinicalHistory extends Component {
 }
 
 const mapStateToProps = (state) => ({
-    patient: state.patientGYN
+    patient: state.patient
 })
 
 const mapDispatchToProps = {

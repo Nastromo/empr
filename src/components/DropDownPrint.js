@@ -1,11 +1,16 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
-import { showDropDown } from '../store/actions/DropDown';
-import { setOption } from '../store/actions/DropDown';
+import { print, setOption } from '../store/actions/Print';
 
 
 
-export class DropDown extends Component {
+
+export class DropDownPrint extends Component {
+    constructor(props) {
+        super(props);
+        this.menu = [`ALL`, `GYN`, `NGYN`, `UVFISH`, `CLL`];
+    }
+
     componentWillMount() {
         document.addEventListener('click', this.handleMenu);
     }
@@ -16,35 +21,27 @@ export class DropDown extends Component {
 
     handleMenu = (e) => {
         if (this.option.contains(e.target)) {
-            this.props.showDropDown({
-                id: this.props.id,
-                status: true
-            });
+            this.props.print(true);
         } else {
-            this.props.showDropDown({
-                id: this.props.id,
-                status: false
-            });
+            this.props.print(false);
         }
     }
 
     choseOption = (e) => {
-        this.props.setOption({
-            id: this.props.id,
-            option: e.target.id,
-        });
+        this.props.setOption(e.target.id);
     }
+
 
     render() {
         return (
             <div className="relative">
-                <div ref={el => this.option =el} 
-                     className={this.props.option ? `drop-select drop-select-chosen` : `drop-select`}>
-                     {this.props.option ? this.props.option : `Select`}</div>
+                <div ref={el => this.option = el}
+                    className={this.props.option !== `Select` ? `drop-select drop-select-chosen` : `drop-select`}>
+                    {this.props.option !== `Select` ? this.props.option : `Select`}</div>
 
                 <div className={this.props.status ? `drop-down drop-down-show` : `drop-down`}>
                     {
-                        this.props.menu.map((item, i) => {
+                        this.menu.map((item, i) => {
                             return (
                                 <div onClick={this.choseOption} id={item} className="menu-item" key={i}>
                                     {item}
@@ -59,12 +56,13 @@ export class DropDown extends Component {
 }
 
 const mapStateToProps = (state) => ({
-
+    status: state.printStaus,
+    option: state.printOption,
 })
 
 const mapDispatchToProps = (dispatch) => ({
-    showDropDown: (obj) => dispatch(showDropDown(obj)),
-    setOption: (obj) => dispatch(setOption(obj)),
+    print: (bool) => dispatch(print(bool)),
+    setOption: (option) => dispatch(setOption(option)),
 })
 
-export default connect(mapStateToProps, mapDispatchToProps)(DropDown)
+export default connect(mapStateToProps, mapDispatchToProps)(DropDownPrint)

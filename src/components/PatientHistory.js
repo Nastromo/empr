@@ -40,9 +40,9 @@ export class PatientHistory extends Component {
 }
 
 const mapStateToProps = (state) => ({
-    patient: state.patientGYN,
+    patient: state.patient,
     patientHistory: state.dropDown.patientHistory,
-    patientHistoryOption: state.patientGYN.patientHistory,
+    patientHistoryOption: state.patient.patientHistory,
 })
 
 const mapDispatchToProps = {
