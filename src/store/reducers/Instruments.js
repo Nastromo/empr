@@ -15,3 +15,12 @@ export const instrumOption = (state = `Select`, action) => {
         default: return state;
     }
 }
+
+export const instruments = (state = [], action) => {
+    switch (action.type) {
+        case `SET_INSTRUMENTS`:
+            return action.instruments;
+
+        default: return state;
+    }
+}

@@ -46,7 +46,7 @@ export class login extends Component {
                         autoComplete="current-password" />
 
                     <div className="main-btn-height">
-                        <SubmitButton />
+                        <SubmitButton status={this.props.status} text="Login"/>
                     </div>
                     <p className="text-center">© 2008-2018 Empire City Laboratories, Inc. All Rights Reserved. ECL and Empire City Laboratories are registered trademarks of Empire City Laboratories®, Inc.</p>
                 </form>
@@ -56,7 +56,7 @@ export class login extends Component {
 }
 
 const mapStateToProps = (state) => ({
-
+    status: state.loginSpinner
 })
 
 const mapDispatchToProps = (dispatch) => ({

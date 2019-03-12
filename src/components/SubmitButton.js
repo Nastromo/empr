@@ -8,7 +8,7 @@ export class SubmitButton extends Component {
 
     showButton = (css) => {
         return (
-            <button className="green-btn" type="submit">
+            <button onClick={this.props.onClick} className="green-btn" type="submit">
                 <div className={css}>
                     <div className="lds-ellipsis">
                         <div></div>
@@ -17,19 +17,19 @@ export class SubmitButton extends Component {
                         <div></div>
                     </div>
                 </div>
-                <p className={`not-loadding` === css ? `show-text` : `hide-text`}>Login</p>
+                <p className={`not-loadding` === css ? `show-text` : `hide-text`}>{this.props.text}</p>
             </button>
         )
     }
 
     render() {
-        if (this.props.isLoadding) return this.showButton(`loadding`);
+        if (this.props.status) return this.showButton(`loadding`);
         else return this.showButton(`not-loadding`);
     }
 }
 
 const mapStateToProps = (state) => ({
-    isLoadding: state.loginSpinner
+    
 })
 
 const mapDispatchToProps = {

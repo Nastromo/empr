@@ -10,7 +10,7 @@ import { setOption as setInstrument } from '../store/actions/Instruments';
 export class InstrumType extends Component {
     constructor(props) {
         super(props);
-        this.menu = [`whater bath`, `centrifuge`, `hybridizer`, `imager`, `coverslipper`, `stainer`, `processor`];
+        this.menu = [`Whater bath`, `Centrifuge`, `Hybridizer`, `Imager`, `Coverslipper`, `Stainer`, `Processor`];
     }
 
     componentWillMount() {
@@ -36,7 +36,7 @@ export class InstrumType extends Component {
 
     render() {
         return (
-            <div className="relative">
+            <div className="relative basis38">
                 <div ref={el => this.option = el}
                     className={this.props.option !== `Select` ? `drop-select drop-select-chosen` : `drop-select`}>
                     {this.props.option !== `Select` ? this.props.option : `Select`}</div>

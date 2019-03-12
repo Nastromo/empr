@@ -12,25 +12,25 @@ export class Instrum extends Component {
 
     setMenu = (type) => {
         switch (type) {
-            case `whater bath`:
+            case `Whater bath`:
                 this.menu = [`Anova Whater Bath`, `Fisher Whater Bath`];
                 break;
-            case `centrifuge`:
+            case `Centrifuge`:
                 this.menu = [`Centrifuge #1`, `Centrifuge #2`];
                 break;
-            case `hybridizer`:
+            case `Hybridizer`:
                 this.menu = [`Abbott Termobrite #1`, `Abbott Termobrite #2`];
                 break;
-            case `imager`:
+            case `Imager`:
                 this.menu = [`Hologic Imager`];
                 break;
-            case `coverslipper`:
+            case `Coverslipper`:
                 this.menu = [`Manual Coverslipper`, `Sacura Coverslipper`];
                 break;
-            case `stainer`:
+            case `Stainer`:
                 this.menu = [`Manual Staining`, `Abbott VP2000`, `Sakura Stainer`];
                 break;
-            case `processor`:
+            case `Processor`:
                 this.menu = [`T2000 #1`, `T2000 #2`];
                 break;
             default: break;
@@ -60,7 +60,7 @@ export class Instrum extends Component {
     render() {
         this.setMenu(this.props.menu);
         return (
-            <div className="relative">
+            <div className="relative basis38">
                 <div ref={el => this.option = el}
                     className={this.props.option !== `Select` ? `drop-select drop-select-chosen` : `drop-select`}>
                     {this.props.option !== `Select` ? this.props.option : `Select`}</div>

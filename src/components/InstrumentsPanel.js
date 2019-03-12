@@ -13,11 +13,13 @@ export class InstrumentsPanel extends Component {
 
     render() {
         return (
-            <div className="flex-three">
+            <div>
                 <ChosenInstrums />
-                <InstrumType />
-                <Instrum />
-                <GetInstrum />
+                <div className="flex-three">
+                    <InstrumType />
+                    <Instrum />
+                    <GetInstrum />
+                </div>
             </div>
         )
     }
