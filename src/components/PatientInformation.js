@@ -10,7 +10,7 @@ export class PatientInformation extends Component {
     handleClick = (e) => {
         switch (e.currentTarget.id) {
             case `pdf`:
-                window.open(this.props.patient.pdf, '_blank');
+                window.open(this.props.patient.requisitionPdf, '_blank');
                 break;
             case `history`:
                 console.log(`Показать попап с историей`);
@@ -25,8 +25,18 @@ export class PatientInformation extends Component {
     }
 
     render() {
+        this.diagnosis = [];
+        if (this.props.patient) {
+            try {
+                this.diagnosis = JSON.parse(this.props.patient.diagnosis);
+                console.log(this.diagnosis);
+            } catch (err) {
+                console.log(err);
+            }
+        }
+
         return (
-            <div className={ this.props.isCollapsed ? `sect-hide sect` : `sect`}>
+            <div className={this.props.isCollapsed ? `sect-hide sect` : `sect`}>
                 <div onClick={this.transform} className="section-title">Patient Information</div>
                 <div className="flex-vertical-start">
                     <div className="section-info">
@@ -37,7 +47,7 @@ export class PatientInformation extends Component {
 
                         <div>
                             <p>Accession:</p>
-                            <p>{this.props.patient.accession}</p>
+                            <p>{this.props.patient.access}</p>
                         </div>
 
                         <div>
@@ -71,14 +81,25 @@ export class PatientInformation extends Component {
                         </div>
                     </div>
                 </div>
+
+                <div id="title">
+                    <div className="title-diag">Code</div>
+                    <div className="title-diag">Diagnosis</div>
+                </div>
+
                 <div className="diagnosis-table">
-                    <div id="title">
-                        <p id="code">Code</p>
-                        <p id="desc">Diagnosis</p>
-                    </div>
                     <div id="text">
-                        <p id="textCode">{this.props.patient.code}</p>
-                        <p id="diagnosis">{this.props.patient.diagnosis}</p>
+                        {
+                            this.diagnosis.map((diag, i) => {
+                                return (
+                                    <div className="marg6">
+                                        <p id="textCode">{diag.code}</p>
+                                        <p id="diagnosis">{diag.text}</p>
+                                    </div>
+                                )
+                            })
+                        }
+
                     </div>
                 </div>
             </div>
@@ -87,25 +108,30 @@ export class PatientInformation extends Component {
 }
 
 const mapStateToProps = (state) => ({
-    // patient: state.patient
+    patient: state.patient,
     isCollapsed: state.patientIsCollapsed,
-    patient: {
-        name: `SVERIPSKA,NATALIA`,
-        accession: `1809042028`,
-        received: `09/04/2018 1:16 PM`,
-        dob: `02/15/1992`,
-        sex: `Female`,
-        client: `22 MOLIVER VLADIMIR`,
-        physician: `Moliver, Vladimir DR`,
-        code: `z.001`,
-        diagnosis: `Encounter for general adult medical examination without abnormal findingsýEncounter for general adult medical examination without abnormal findingsýEncounter for general adult medical examination without abnormal findings`,
-        pdf: `http://www.pdf995.com/samples/pdf.pdf`,
-        history: [`1809042028`, `1809042028`, `1809042028`, `1809042028`]
-    }
 })
 
-const mapDispatchToProps = (dispatch)=> ({
+const mapDispatchToProps = (dispatch) => ({
     collapsePatient: (bool) => dispatch(collapsePatient(bool))
 })
 
 export default connect(mapStateToProps, mapDispatchToProps)(PatientInformation)
+
+
+{/* < div className = "marg6" >
+        <p id="textCode">{`this.code`}</p>
+        <p id="diagnosis">{`this.diagnosis this.diagnosis  this.diagnosis this.diagnosis this.diagnosis this.diagnosis this.diagnosis this.diagnosis this.diagnosis this.diagnosis this.diagnosis this.diagnosis this.diagnosis this.diagnosis this.diagnosis this.diagnosis this.diagnosis this.diagnosis this.diagnosis this.diagnosis this.diagnosis this.diagnosis this.diagnosis this.diagnosis this.diagnosis this.diagnosis this.diagnosis this.diagnosis this.diagnosis this.diagnosis this.diagnosis this.diagnosis this.diagnosis`}</p>
+                        </div >
+    <div className="marg6">
+        <p id="textCode">{`this.code`}</p>
+        <p id="diagnosis">{`this.diagnosis  this.diagnosis this.diagnosis this.diagnosis this.diagnosis this.diagnosis this.diagnosis this.diagnosis this.diagnosis this.diagnosis this.diagnosis this.diagnosis this.diagnosis`}</p>
+    </div>
+    <div className="marg6">
+        <p id="textCode">{`this.code`}</p>
+        <p id="diagnosis">{`this.diagnosis this.diagnosis  this.diagnosis this.diagnosis this.diagnosis this.diagnosis this.diagnosis this.diagnosis this.diagnosis this.diagnosis this.diagnosis this.diagnosis this.diagnosis this.diagnosis this.diagnosis this.diagnosis this.diagnosis this.diagnosis this.diagnosis this.diagnosis this.diagnosis this.diagnosis this.diagnosis this.diagnosis this.diagnosis this.diagnosis this.diagnosis this.diagnosis this.diagnosis this.diagnosis this.diagnosis this.diagnosis this.diagnosis`}</p>
+    </div>
+    <div className="marg6">
+        <p id="textCode">{`this.code`}</p>
+        <p id="diagnosis">{`this.diagnosis  this.diagnosis this.diagnosis this.diagnosis this.diagnosis this.diagnosis this.diagnosis this.diagnosis this.diagnosis this.diagnosis this.diagnosis this.diagnosis this.diagnosis`}</p>
+    </div> */}

@@ -35,7 +35,7 @@ export class PendingTable extends Component {
     handleRowClick = (state, rowInfo, column, instance) => {
         if (rowInfo) {
             return {
-                onClick: (e, handleOriginal) => this.props.showSpecimen(rowInfo.index, rowInfo.row.access),
+                onClick: (e, handleOriginal) => this.props.showSpecimen(rowInfo.index, this.props.list[rowInfo.index]),
                 style: {
                     fontWeight: rowInfo.index === this.props.selected ? '700' : '600',
                     color: rowInfo.index === this.props.selected ? '#1ab394' : '#4e4e4e',

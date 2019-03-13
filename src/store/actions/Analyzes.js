@@ -1,5 +1,5 @@
 import API from '../../utils/Api';
-import { selectRow } from './Specimen';
+import { showSpecimen } from './Specimen';
 
 
 export const setActive = (index) => ({
@@ -26,11 +26,11 @@ export const getPendingList = (index, title) => {
     return async (dispatch, getState) => {
         try {
             dispatch(setActive(index));
-            dispatch(selectRow(0));
             dispatch(pendingListLoading(true));
             const res = await API.post(`/v1/pending`, { title });
             dispatch(pendingListLoading(false));
             dispatch(setList(res.data));
+            dispatch(showSpecimen(0 , res.data[0]));
         } catch (err) {
             console.log(err)
             dispatch(pendingListLoading(false));

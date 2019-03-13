@@ -1,6 +1,12 @@
 export const patient = (state = {}, action) => {
     let newState;
     switch (action.type) {
+        case `SHOW_PATIENT_INFO`:
+            newState = JSON.parse(JSON.stringify(state));
+            newState = action.patient;
+            console.log(newState)
+            return newState;
+
         case `CHECK_BOX`:
             switch (action.obj.id) {
                 case `routineScreen`:
