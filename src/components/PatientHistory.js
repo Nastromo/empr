@@ -18,7 +18,7 @@ export class PatientHistory extends Component {
             <div className="padding15">
                 <div className="flex50">
 
-                    <div className="max-width250">
+                    <div className="max-width300">
                         <p className="field-title">Patient History</p>
                         <DropDown 
                             option={this.props.patientHistoryOption}
@@ -27,7 +27,7 @@ export class PatientHistory extends Component {
                             id="patientHistory" />
                     </div>
 
-                    <div className="max-width250">
+                    <div className="max-width300">
                         <p className="field-title">LMP Date</p>
                         <MyDatePicker />
                     </div>

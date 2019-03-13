@@ -3,6 +3,8 @@ import { connect } from 'react-redux';
 import PatientInformation from './PatientInformation';
 import Grossing from './Grossing';
 import CytologyInformation from './CytologyInformation';
+import SubmitCyt from './SubmitCyt';
+
 
 
 
@@ -16,6 +18,7 @@ export class SpecimenProcessing extends Component {
                 <PatientInformation />
                 <Grossing />
                 <CytologyInformation />
+                <SubmitCyt />
             </div>
         )
     }

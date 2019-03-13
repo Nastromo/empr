@@ -35,8 +35,8 @@ export const addInstrument = (title) => {
 export const deleteInstum = (title) => {
     return async (dispatch, getState) => {
         try {
-            const res = await API.post(`v1/del-instrument`, { title });
-            dispatch(setInstuments(res.data.instuments));
+            // const res = await API.post(`v1/del-instrument`, { title });
+            dispatch(setInstuments([`res.data.instuments`]));
         } catch (err) {
             console.log(err);
             dispatch(showNotification(`Can't delete this instrument`, `notification-show`));

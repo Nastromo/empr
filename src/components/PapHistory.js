@@ -19,12 +19,12 @@ export class PapHistory extends Component {
             <div className="padding15">
                 <p className="field-title">PAP History</p>
                 <div className="flex50">
-                    <div className="max-width250">
+                    <div className="max-width300">
                         <p className="field-title">Previous PAP Date</p>
                         <MyDatePicker />
                     </div>
 
-                    <div className="max-width250">
+                    <div className="max-width300">
                         <p className="field-title">Previous Pap Diagnosis</p>
                         <DropDown
                             option={this.props.previousPapOption}
@@ -34,7 +34,7 @@ export class PapHistory extends Component {
                     </div>
                 </div>
                 <div className="flex50">
-                    <div className="max-width250">
+                    <div className="max-width300">
                         <p className="field-title">Specimen Source</p>
                         <DropDown
                             option={this.props.specimenSourceOption}
@@ -43,7 +43,7 @@ export class PapHistory extends Component {
                             id="specimenSource" />
                     </div>
 
-                    <div className="max-width250">
+                    <div className="max-width300">
                         <p className="field-title">Specimen Received</p>
                         <DropDown
                             option={this.props.specimenReceivedOption}

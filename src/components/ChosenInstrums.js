@@ -1,6 +1,5 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
-import del from '../img/del.svg';
 import { deleteInstum } from "../store/actions/Instruments";
 
 

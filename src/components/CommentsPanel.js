@@ -6,8 +6,11 @@ export class CommentsPanel extends Component {
 
     render() {
         return (
-            <div>
-
+            <div className="cyt-comment">
+                <p className="field-title">Comments:</p>
+                <textarea className="gross-other"
+                    ref={el => this.comment = el}
+                ></textarea>
             </div>
         )
     }

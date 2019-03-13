@@ -16,7 +16,7 @@ export class CyInfo extends Component {
 
                 <div className="flex-side">
                     <p className="field-title">No. of Slides:</p>
-                    <input className="simple-input" type="number" />
+                    <input className="simple-input width100" type="number" />
                 </div>
 
             </div>
