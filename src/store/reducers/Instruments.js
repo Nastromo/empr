@@ -24,3 +24,12 @@ export const instruments = (state = [], action) => {
         default: return state;
     }
 }
+
+export const instrumList = (state = [], action) => {
+    switch (action.type) {
+        case `SET_INSTRUMENT_LIST`:
+            return action.instruments;
+
+        default: return state;
+    }
+}

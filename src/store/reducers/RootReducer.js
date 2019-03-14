@@ -10,7 +10,7 @@ import { dropDown } from './DropDown';
 import { patient } from './Patient';
 import { printStaus, printOption } from './Print';
 import { instrumTypeStaus, instrumTypeOption } from './InstrumDropDown';
-import { instrumStaus, instrumOption, instruments } from './Instruments';
+import { instrumStaus, instrumOption, instruments, instrumList } from './Instruments';
 
 
 
@@ -49,7 +49,8 @@ const RootReducer = combineReducers({
 
     instrumStaus,
     instrumOption,
-    instruments
+    instruments,
+    instrumList
 
 });
 

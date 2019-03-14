@@ -18,6 +18,23 @@ export const setInstuments = (instruments) => ({
     instruments
 });
 
+export const setInstumentList = (instruments) => ({
+    type: 'SET_INSTRUMENT_LIST',
+    instruments
+});
+
+export const getInstrumTypeList = () => {
+    return async (dispatch, getState) => {
+        try {
+            const res = await API.get(`v1/instruments`);
+            dispatch(setInstumentList(res.data));
+        } catch (err) {
+            dispatch(showNotification(`Error`, `notification-show`));
+            console.log(err);
+        }
+    }
+};
+
 export const addInstrument = (title) => {
     return async (dispatch, getState) => {
         try {

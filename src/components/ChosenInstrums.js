@@ -11,25 +11,31 @@ export class ChosenInstrums extends Component {
 
 
     render() {
-        return (
-            <div className="instrumetns">
-                {
-                    this.props.instruments.map((inst, i) => {
-                        return (
-                            <div className="flex-instr" key={i}>
-                                <p>{inst}</p>
-                                <div className="delete" onClick={this.deleteInstrument} id={inst}></div>
-                            </div>
-                        )
-                    })
-                }
-            </div>
-        )
+        if (this.props.instruments) {
+            const obj = JSON.parse(this.props.instruments);
+            const instruments = obj.array;
+            return (
+                <div className="instrumetns">
+                    {
+                        instruments.map((inst, i) => {
+                            return (
+                                <div className="flex-instr" key={i}>
+                                    <p>{inst}</p>
+                                    <div className="delete" onClick={this.deleteInstrument} id={inst}></div>
+                                </div>
+                            )
+                        })
+                    }
+                </div>
+            )
+        } else {
+            return <div></div>
+        }
     }
 }
 
 const mapStateToProps = (state) => ({
-    instruments: state.instruments
+    instruments: state.patient.instruments
 })
 
 const mapDispatchToProps = dispatch => ({
