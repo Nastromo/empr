@@ -2,6 +2,7 @@ import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import DropDown from './DropDown';
 import MyDatePicker from './MyDatePicker';
+import { changeOther } from '../store/actions/Other';
 
 
 
@@ -13,6 +14,9 @@ export class PapHistory extends Component {
         this.specimenReceived = [`None`, `Conventional Smear`, `Thinprep Vial`, `Other`];
     }
 
+    handleChange = (e) => {
+        this.props.changeOther(e.target.value);
+    }
 
     render() {
         return (
@@ -21,7 +25,7 @@ export class PapHistory extends Component {
                 <div className="flex50">
                     <div className="max-width300">
                         <p className="field-title">Previous PAP Date</p>
-                        <MyDatePicker />
+                        <MyDatePicker id="previousPapDate" date={this.props.patient.previousPapDate} />
                     </div>
 
                     <div className="max-width300">
@@ -54,9 +58,12 @@ export class PapHistory extends Component {
                 </div>
                 <div>
                     <p className="field-title">Other</p>
-                    <textarea className="gross-other"
+                    <textarea 
+                        className="gross-other"
                         ref={el => this.otherGross = el}
                         placeholder="Enter other relevant grossing information here"
+                        value={this.props.patient.other}
+                        onChange={this.handleChange}
                     ></textarea>
                 </div>
             </div>
@@ -65,6 +72,7 @@ export class PapHistory extends Component {
 }
 
 const mapStateToProps = (state) => ({
+    patient: state.patient,
     previousPap: state.dropDown.previousPap,
     specimenSource: state.dropDown.specimenSource,
     specimenReceived: state.dropDown.specimenReceived,
@@ -73,8 +81,8 @@ const mapStateToProps = (state) => ({
     specimenReceivedOption: state.patient.specimenReceived,
 })
 
-const mapDispatchToProps = {
-
-}
+const mapDispatchToProps = dispath => ({
+    changeOther: (text) => dispath(changeOther(text))
+})
 
 export default connect(mapStateToProps, mapDispatchToProps)(PapHistory)

@@ -4,6 +4,8 @@ import 'react-dates/initialize';
 import 'react-dates/lib/css/_datepicker.css';
 import { SingleDatePicker } from 'react-dates';
 import '../datepicker.css';
+import moment from 'moment';
+import { changeDate } from '../store/actions/DatePicket';
 
 
 
@@ -11,11 +13,16 @@ export class MyDatePicker extends Component {
     constructor(props) {
         super(props);
         this.state = {
-            date: null,
             focused: null,
         };
     }
 
+    onDateChange = (date) => {
+        this.props.changeDate({
+            id: this.props.id,
+            date: date.valueOf()
+        });
+    }
 
     render() {
         return (
@@ -23,9 +30,9 @@ export class MyDatePicker extends Component {
                 <SingleDatePicker
                     id="date_input"
                     numberOfMonths={1}
-                    date={this.state.date}
+                    date={moment(this.props.date)}
                     focused={this.state.focused}
-                    onDateChange={(date) => { this.setState({ date }); }}
+                    onDateChange={this.onDateChange}
                     onFocusChange={({ focused }) => { this.setState({ focused }); }}
                     isOutsideRange={() => false}
                     hideKeyboardShortcutsPanel={true}
@@ -40,8 +47,8 @@ const mapStateToProps = (state) => ({
 
 })
 
-const mapDispatchToProps = {
-
-}
+const mapDispatchToProps = dispatch => ({
+    changeDate: (obj) => dispatch(changeDate(obj))
+})
 
 export default connect(mapStateToProps, mapDispatchToProps)(MyDatePicker)

@@ -29,7 +29,7 @@ export class PatientHistory extends Component {
 
                     <div className="max-width300">
                         <p className="field-title">LMP Date</p>
-                        <MyDatePicker />
+                        <MyDatePicker id="lmp" date={this.props.patient.lmpDate} />
                     </div>
 
                 </div>

@@ -72,6 +72,27 @@ export const patient = (state = {}, action) => {
                 default: return state;
             }
 
+        case `CHANGE_DATE`:
+            switch (action.obj.id) {
+                case `lmp`:
+                    newState = JSON.parse(JSON.stringify(state));
+                    newState.lmpDate = action.obj.date;
+                    return newState;
+
+                case `previousPapDate`:
+                    newState = JSON.parse(JSON.stringify(state));
+                    newState.previousPapDate = action.obj.date;
+                    return newState;
+
+                default: return state;
+            }
+
+        case `SET_OTHER`:
+            newState = JSON.parse(JSON.stringify(state));
+            newState.other = action.text;
+            return newState;
+
+
         default: return state;
     }
 }
