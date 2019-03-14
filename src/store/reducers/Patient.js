@@ -4,7 +4,6 @@ export const patient = (state = {}, action) => {
         case `SHOW_PATIENT_INFO`:
             newState = JSON.parse(JSON.stringify(state));
             newState = action.patient;
-            console.log(newState)
             return newState;
 
         case `CHECK_BOX`:
