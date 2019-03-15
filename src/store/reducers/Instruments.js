@@ -28,7 +28,7 @@ export const instruments = (state = [], action) => {
 export const instrumList = (state = [], action) => {
     switch (action.type) {
         case `SET_INSTRUMENT_LIST`:
-            return action.instruments;
+            return action.instrumList;
 
         default: return state;
     }

@@ -10,7 +10,6 @@ import ChosenInstrums from './ChosenInstrums';
 
 export class InstrumentsPanel extends Component {
 
-
     render() {
         return (
             <div>

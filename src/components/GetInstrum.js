@@ -1,13 +1,13 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import SubmitButton from './SubmitButton';
-import { addInstrument } from "../store/actions/Instruments";
+import { changeInstrument } from "../store/actions/Instruments";
 
 
 
 export class GetInstrum extends Component {
     click = () => {
-        if (this.props.instrument) this.props.addInstrument(this.props.instrument);
+        if (this.props.instrument) this.props.changeInstrument(this.props.instrument, `add`);
     }
 
     render() {
@@ -25,7 +25,7 @@ const mapStateToProps = (state) => ({
 })
 
 const mapDispatchToProps = dispatch => ({
-    addInstrument: (title) => dispatch(addInstrument(title))
+    changeInstrument: (title, action) => dispatch(changeInstrument(title, action))
 })
 
 export default connect(mapStateToProps, mapDispatchToProps)(GetInstrum)

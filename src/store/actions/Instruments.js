@@ -13,21 +13,28 @@ export const setOption = (option) => ({
     option
 });
 
-export const setInstuments = (instruments) => ({
+export const setInstument = (instruments) => ({
     type: 'SET_INSTRUMENTS',
     instruments
 });
 
-export const setInstumentList = (instruments) => ({
+export const setInstumentList = (instrumList) => ({
     type: 'SET_INSTRUMENT_LIST',
+    instrumList
+});
+
+export const setChosenInstuments = (instruments) => ({
+    type: 'SET_CHOSEN_INSTRUMENTS',
     instruments
 });
+
 
 export const getInstrumTypeList = () => {
     return async (dispatch, getState) => {
         try {
             const res = await API.get(`v1/instruments`);
-            dispatch(setInstumentList(res.data));
+            dispatch(setInstumentList(res.data.types));
+            dispatch(setInstument(res.data.instrums));
         } catch (err) {
             dispatch(showNotification(`Error`, `notification-show`));
             console.log(err);
@@ -35,28 +42,19 @@ export const getInstrumTypeList = () => {
     }
 };
 
-export const addInstrument = (title) => {
+
+export const changeInstrument = (title, action) => {
     return async (dispatch, getState) => {
         try {
             dispatch(showAddInstumSpinner(true));
-            // const res = await API.post(`v1/chose-instrument`, { title });
-            dispatch(setInstuments([`res.data.instuments`, `second one`]));
+            console.log(`Сработал!`)
+            const res = await API.post(`v1/instruments`, { title, action });
+            console.log(res.data)
+            dispatch(setChosenInstuments(res.data));
         } catch (err) {
+            console.log(err.response);
             dispatch(showAddInstumSpinner(false));
-            dispatch(showNotification(`This instrument is already in use`, `notification-show`));
-            console.log(err);
-        }
-    }
-};
-
-export const deleteInstum = (title) => {
-    return async (dispatch, getState) => {
-        try {
-            // const res = await API.post(`v1/del-instrument`, { title });
-            dispatch(setInstuments([`res.data.instuments`]));
-        } catch (err) {
-            console.log(err);
-            dispatch(showNotification(`Can't delete this instrument`, `notification-show`));
+            dispatch(showNotification(err.response.data, `notification-show`));
         }
     }
 };

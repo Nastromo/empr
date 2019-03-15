@@ -8,10 +8,6 @@ import { setOption as setInstrument, getInstrumTypeList } from '../store/actions
 
 
 export class InstrumType extends Component {
-    // constructor(props) {
-    //     super(props);
-    //     this.menu = [`Whater bath`, `Centrifuge`, `Hybridizer`, `Imager`, `Coverslipper`, `Stainer`, `Processor`];
-    // }
 
     componentDidMount() {
         this.props.getInstrumTypeList();
@@ -40,7 +36,6 @@ export class InstrumType extends Component {
 
     render() {
         if (this.props.list) {
-            // передать с сервера объект с полем types: [`type 1`, `type 2`];
             return (
                 <div className="relative basis38">
                     <div ref={el => this.option = el}
@@ -49,7 +44,7 @@ export class InstrumType extends Component {
     
                     <div className={this.props.status ? `drop-down drop-down-show` : `drop-down`}>
                         {
-                            this.props.list.types.map((item, i) => {
+                            this.props.list.map((item, i) => {
                                 return (
                                     <div onClick={this.choseOption} id={item} className="menu-item" key={i}>
                                         {item}

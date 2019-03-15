@@ -5,36 +5,12 @@ import { showList, setOption } from '../store/actions/Instruments';
 
 
 export class Instrum extends Component {
-    constructor(props) {
-        super(props);
-        this.menu = [];
-    }
 
     setMenu = (type) => {
-        switch (type) {
-            case `Whater bath`:
-                this.menu = [`Anova Whater Bath`, `Fisher Whater Bath`];
-                break;
-            case `Centrifuge`:
-                this.menu = [`Centrifuge #1`, `Centrifuge #2`];
-                break;
-            case `Hybridizer`:
-                this.menu = [`Abbott Termobrite #1`, `Abbott Termobrite #2`];
-                break;
-            case `Imager`:
-                this.menu = [`Hologic Imager`];
-                break;
-            case `Coverslipper`:
-                this.menu = [`Manual Coverslipper`, `Sacura Coverslipper`];
-                break;
-            case `Stainer`:
-                this.menu = [`Manual Staining`, `Abbott VP2000`, `Sakura Stainer`];
-                break;
-            case `Processor`:
-                this.menu = [`T2000 #1`, `T2000 #2`];
-                break;
-            default: break;
-        }
+        this.menu = [];
+        this.props.list.forEach((instrum, i) => {
+            if (instrum.type === type) this.menu.push(instrum.title);
+        });
     }
 
     componentWillMount() {
@@ -82,6 +58,7 @@ export class Instrum extends Component {
 }
 
 const mapStateToProps = (state) => ({
+    list: state.instruments,
     menu: state.instrumTypeOption,
     status: state.instrumStaus,
     option: state.instrumOption,

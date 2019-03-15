@@ -1,12 +1,12 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
-import { deleteInstum } from "../store/actions/Instruments";
+import { changeInstrument } from "../store/actions/Instruments";
 
 
 
 export class ChosenInstrums extends Component {
     deleteInstrument = (e) => {
-        this.props.deleteInstum(e.target.id);
+        this.props.changeInstrument(e.target.id, `delete`);
     }
 
 
@@ -39,7 +39,7 @@ const mapStateToProps = (state) => ({
 })
 
 const mapDispatchToProps = dispatch => ({
-    deleteInstum: (title) => dispatch(deleteInstum(title))
+    changeInstrument: (title, action) => dispatch(changeInstrument(title, action))
 })
 
 export default connect(mapStateToProps, mapDispatchToProps)(ChosenInstrums)
