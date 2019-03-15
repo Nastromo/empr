@@ -93,9 +93,14 @@ export const patient = (state = {}, action) => {
             return newState;
 
 
-        case `SET_CHOSEN_INSTRUMENTS`:
+        case `SET_FIRST_INSTRUMENTS`:
             newState = JSON.parse(JSON.stringify(state));
-            newState.instruments = action.instruments;
+            newState.instrumFirst = action.instrument;
+            return newState;
+
+        case `SET_SECOND_INSTRUMENTS`:
+            newState = JSON.parse(JSON.stringify(state));
+            newState.instrumSecond = action.instrument;
             return newState;
 
         default: return state;

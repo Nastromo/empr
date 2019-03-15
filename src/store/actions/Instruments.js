@@ -1,5 +1,4 @@
 import API from '../../utils/Api';
-import { showAddInstumSpinner } from './Spinner';
 import { showNotification } from './Notification';
 
 
@@ -23,9 +22,14 @@ export const setInstumentList = (instrumList) => ({
     instrumList
 });
 
-export const setChosenInstuments = (instruments) => ({
-    type: 'SET_CHOSEN_INSTRUMENTS',
-    instruments
+export const setFirst = (instrument) => ({
+    type: 'SET_FIRST_INSTRUMENTS',
+    instrument
+});
+
+export const setSecond = (instrument) => ({
+    type: 'SET_SECOND_INSTRUMENTS',
+    instrument
 });
 
 
@@ -43,18 +47,20 @@ export const getInstrumTypeList = () => {
 };
 
 
-export const changeInstrument = (title, action) => {
+export const changeInstrument = (access, title, action, i) => {
     return async (dispatch, getState) => {
         try {
-            dispatch(showAddInstumSpinner(true));
-            console.log(`Сработал!`)
-            const res = await API.post(`v1/instruments`, { title, action });
-            console.log(res.data)
-            dispatch(setChosenInstuments(res.data));
+            await API.post(`v1/instruments`, { access, title, action, i });
+            if (action === `add`) {
+                if (i === 1) dispatch(setFirst(title));
+                else dispatch(setSecond(title));
+            } else {
+                if (i === 1) dispatch(setFirst(null));
+                else dispatch(setSecond(null));
+            }
         } catch (err) {
-            console.log(err.response);
-            dispatch(showAddInstumSpinner(false));
-            dispatch(showNotification(err.response.data, `notification-show`));
+            console.log(err);
+            if (err.response) dispatch(showNotification(err.response.data, `notification-show`));
         }
     }
 };

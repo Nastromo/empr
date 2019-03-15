@@ -5,27 +5,52 @@ import { changeInstrument } from "../store/actions/Instruments";
 
 
 export class ChosenInstrums extends Component {
-    deleteInstrument = (e) => {
-        this.props.changeInstrument(e.target.id, `delete`);
+    deleteFirst = (e) => {
+        this.props.changeInstrument(this.props.access, e.target.id, `delete`, 1);
+    }
+
+    deleteSecond = (e) => {
+        this.props.changeInstrument(this.props.access, e.target.id, `delete`, 2);
     }
 
 
     render() {
-        if (this.props.instruments) {
-            const obj = JSON.parse(this.props.instruments);
-            const instruments = obj.array;
+        if (this.props.instrumFirst && this.props.instrumSecond) {
             return (
                 <div className="instrumetns">
-                    {
-                        instruments.map((inst, i) => {
-                            return (
-                                <div className="flex-instr" key={i}>
-                                    <p>{inst}</p>
-                                    <div className="delete" onClick={this.deleteInstrument} id={inst}></div>
-                                </div>
-                            )
-                        })
-                    }
+
+                    <div className="flex-instr">
+                        <p>{this.props.instrumFirst}</p>
+                        <div className="delete" onClick={this.deleteFirst} id={this.props.instrumFirst}></div>
+                    </div>
+
+                    <div className="flex-instr">
+                        <p>{this.props.instrumSecond}</p>
+                        <div className="delete" onClick={this.deleteSecond} id={this.props.instrumSecond}></div>
+                    </div>
+
+                </div>
+            )
+        } else if (this.props.instrumFirst) {
+            return (
+                <div className="instrumetns">
+
+                    <div className="flex-instr">
+                        <p>{this.props.instrumFirst}</p>
+                        <div className="delete" onClick={this.deleteFirst} id={this.props.instrumFirst}></div>
+                    </div>
+
+                </div>
+            )
+        } else if (this.props.instrumSecond) {
+            return (
+                <div className="instrumetns">
+
+                    <div className="flex-instr">
+                        <p>{this.props.instrumSecond}</p>
+                        <div className="delete" onClick={this.deleteSecond} id={this.props.instrumSecond}></div>
+                    </div>
+
                 </div>
             )
         } else {
@@ -35,11 +60,13 @@ export class ChosenInstrums extends Component {
 }
 
 const mapStateToProps = (state) => ({
-    instruments: state.patient.instruments
+    access: state.patient.access,
+    instrumFirst: state.patient.instrumFirst,
+    instrumSecond: state.patient.instrumSecond
 })
 
 const mapDispatchToProps = dispatch => ({
-    changeInstrument: (title, action) => dispatch(changeInstrument(title, action))
+    changeInstrument: (access, title, action, i) => dispatch(changeInstrument(access, title, action, i))
 })
 
 export default connect(mapStateToProps, mapDispatchToProps)(ChosenInstrums)
