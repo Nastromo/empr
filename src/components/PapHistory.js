@@ -76,7 +76,7 @@ const mapStateToProps = (state) => ({
     previousPap: state.dropDown.previousPap,
     specimenSource: state.dropDown.specimenSource,
     specimenReceived: state.dropDown.specimenReceived,
-    previousPapOption: state.patient.previousPap,
+    previousPapOption: state.patient.previousPapDiagnosis,
     specimenSourceOption: state.patient.specimenSource,
     specimenReceivedOption: state.patient.specimenReceived,
 })

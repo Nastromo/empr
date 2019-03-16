@@ -19,7 +19,7 @@ export class PendingTable extends Component {
             },
             {
                 Header: 'Patient',
-                accessor: 'name',
+                accessor: 'fullName',
             },
             {
                 Header: 'Tray',
@@ -48,6 +48,7 @@ export class PendingTable extends Component {
     }
 
     renderList = (list, text) => {
+        list.forEach(row => row.fullName = `${row.name} ${row.lastName}`);
         return (
             <div className="content-table">
                 <ReactTable

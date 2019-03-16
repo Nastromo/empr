@@ -36,7 +36,7 @@ export class PatientInformation extends Component {
                         <div className="section-info">
                             <div>
                                 <p>Patient name:</p>
-                                <p>{this.props.patient.name}</p>
+                                <p>{`${this.props.patient.name} ${this.props.patient.lastName}`}</p>
                             </div>
 
                             <div>

@@ -27,21 +27,39 @@ export class MyDatePicker extends Component {
     }
 
     render() {
-        return (
-            <div className="date-picker">
-                <SingleDatePicker
-                    id="date_input"
-                    numberOfMonths={1}
-                    date={moment(this.props.date)}
-                    focused={this.state.focused}
-                    onDateChange={this.onDateChange}
-                    onFocusChange={({ focused }) => { this.setState({ focused }); }}
-                    isOutsideRange={() => false}
-                    hideKeyboardShortcutsPanel={true}
-                    daySize={32}
-                />
-            </div>
-        )
+        if (this.props.date) {
+            return (
+                <div className="date-picker">
+                    <SingleDatePicker
+                        id="date_input"
+                        numberOfMonths={1}
+                        date={moment(this.props.date)}
+                        focused={this.state.focused}
+                        onDateChange={this.onDateChange}
+                        onFocusChange={({ focused }) => { this.setState({ focused }); }}
+                        isOutsideRange={() => false}
+                        hideKeyboardShortcutsPanel={true}
+                        daySize={32}
+                    />
+                </div>
+            )
+        } else {
+            return (
+                <div className="date-picker">
+                    <SingleDatePicker
+                        id="date_input"
+                        numberOfMonths={1}
+                        focused={this.state.focused}
+                        onDateChange={this.onDateChange}
+                        onFocusChange={({ focused }) => { this.setState({ focused }); }}
+                        isOutsideRange={() => false}
+                        hideKeyboardShortcutsPanel={true}
+                        daySize={32}
+                    />
+                </div>
+            )
+        }
+        
     }
 }
 

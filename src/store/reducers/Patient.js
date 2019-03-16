@@ -32,9 +32,9 @@ export const patient = (state = {}, action) => {
                     newState = JSON.parse(JSON.stringify(state));
                     newState.hysterectomy = action.obj.status;
                     return newState;
-                case `IUD`:
+                case `iudInplace`:
                     newState = JSON.parse(JSON.stringify(state));
-                    newState.IUD = action.obj.status;
+                    newState.iudInplace = action.obj.status;
                     return newState;
                 case `discharge`:
                     newState = JSON.parse(JSON.stringify(state));
@@ -44,9 +44,9 @@ export const patient = (state = {}, action) => {
                     newState = JSON.parse(JSON.stringify(state));
                     newState.vaginitis = action.obj.status;
                     return newState;
-                case `HRT`:
+                case `hrt`:
                     newState = JSON.parse(JSON.stringify(state));
-                    newState.HRT = action.obj.status;
+                    newState.hrt = action.obj.status;
                     return newState;
                 default: return state;
             }
@@ -59,7 +59,7 @@ export const patient = (state = {}, action) => {
                     return newState;
                 case `previousPap`:
                     newState = JSON.parse(JSON.stringify(state));
-                    newState.previousPap = action.obj.option;
+                    newState.previousPapDiagnosis = action.obj.option;
                     return newState;
                 case `specimenSource`:
                     newState = JSON.parse(JSON.stringify(state));
@@ -106,6 +106,11 @@ export const patient = (state = {}, action) => {
         case `CHANGE_INSTRUM_COMMENT`:
             newState = JSON.parse(JSON.stringify(state));
             newState.testComment = action.text;
+            return newState;
+
+        case `SET_MENOPAUSAL`:
+            newState = JSON.parse(JSON.stringify(state));
+            newState.yearsMenopausal = action.years;
             return newState;
 
         default: return state;
