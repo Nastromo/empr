@@ -1,6 +1,5 @@
 import API from '../../utils/Api';
 import { showNotification } from './Notification';
-import { showAddInstumSpinner } from './Spinner';
 
 
 export const showList = (bool) => ({
@@ -48,22 +47,14 @@ export const getInstrumTypeList = () => {
 };
 
 
-export const changeInstrument = (access, title, action, i) => {
+export const changeInstrument = (title, action, i) => {
     return async (dispatch, getState) => {
-        try {
-            dispatch(showAddInstumSpinner(true));
-            await API.post(`v1/instruments`, { access, title, action, i });
-            dispatch(showAddInstumSpinner(false));
-            if (action === `add`) {
-                if (i === 1) dispatch(setFirst(title));
-                else dispatch(setSecond(title));
-            } else {
-                if (i === 1) dispatch(setFirst(null));
-                else dispatch(setSecond(null));
-            }
-        } catch (err) {
-            console.log(err);
-            if (err.response) dispatch(showNotification(err.response.data, `notification-show`));
+        if (action === `add`) {
+            if (i === 1) dispatch(setFirst(title));
+            else dispatch(setSecond(title));
+        } else {
+            if (i === 1) dispatch(setFirst(null));
+            else dispatch(setSecond(null));
         }
     }
 };

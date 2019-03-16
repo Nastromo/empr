@@ -18,10 +18,12 @@ export class MyDatePicker extends Component {
     }
 
     onDateChange = (date) => {
-        this.props.changeDate({
-            id: this.props.id,
-            date: date.valueOf()
-        });
+        if (date) {
+            this.props.changeDate({
+                id: this.props.id,
+                date: date.valueOf()
+            });
+        }
     }
 
     render() {

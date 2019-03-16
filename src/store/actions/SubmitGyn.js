@@ -7,10 +7,13 @@ import { showNotification } from './Notification';
 export const savePatient = (patient) => {
     return async (dispatch, getState) => {
         try {
+            const user = getState().user.login;
             dispatch(showSaveSpinner(true));
-            const res = await API.post(`/save-gyn`, patient);
+            patient.lastUpdate = Date.now();
+            patient.updatedBy = user;
+            await API.post(`/v1/save-gyn`, patient);
             dispatch(showSaveSpinner(false));
-            dispatch(showNotification(`Saved...`, `notification-gree`));
+            dispatch(showNotification(`Saved...`, `notification-green`));
         } catch (err) {
             console.log(err);
             dispatch(showSaveSpinner(false));
@@ -22,10 +25,14 @@ export const savePatient = (patient) => {
 export const submitPatient = (patient) => {
     return async (dispatch, getState) => {
         try {
+            const user = getState().user.login;
             dispatch(showSubmitSpinner(true));
-            const res = await API.post(`/submit-gyn`, patient);
+            patient.stage = `processing`;
+            patient.lastUpdate = Date.now();
+            patient.updatedBy = user;
+            await API.post(`/v1/submit-gyn`, patient);
             dispatch(showSubmitSpinner(false));
-            dispatch(showNotification(`Submitted...`, `notification-gree`));
+            dispatch(showNotification(`Submitted...`, `notification-green`));
         } catch (err) {
             console.log(err);
             dispatch(showSubmitSpinner(false));

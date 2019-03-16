@@ -6,11 +6,11 @@ import { changeInstrument } from "../store/actions/Instruments";
 
 export class ChosenInstrums extends Component {
     deleteFirst = (e) => {
-        this.props.changeInstrument(this.props.access, e.target.id, `delete`, 1);
+        this.props.changeInstrument(e.target.id, `delete`, 1);
     }
 
     deleteSecond = (e) => {
-        this.props.changeInstrument(this.props.access, e.target.id, `delete`, 2);
+        this.props.changeInstrument(e.target.id, `delete`, 2);
     }
 
 
@@ -66,7 +66,7 @@ const mapStateToProps = (state) => ({
 })
 
 const mapDispatchToProps = dispatch => ({
-    changeInstrument: (access, title, action, i) => dispatch(changeInstrument(access, title, action, i))
+    changeInstrument: (title, action, i) => dispatch(changeInstrument(title, action, i))
 })
 
 export default connect(mapStateToProps, mapDispatchToProps)(ChosenInstrums)

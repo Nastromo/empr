@@ -11,9 +11,9 @@ export class GetInstrum extends Component {
         if (this.props.instrumFirst && this.props.instrumSecond) {
             this.props.showNotification(`You can't chose more than 2 instruments`, `notification-show`)
         } else if (this.props.instrumFirst) {
-            if (this.props.instrument) this.props.changeInstrument(this.props.access, this.props.instrument, `add`, 2);
+            if (this.props.instrument) this.props.changeInstrument(this.props.instrument, `add`, 2);
         } else {
-            if (this.props.instrument !== `Select`) this.props.changeInstrument(this.props.access, this.props.instrument, `add`, 1);
+            if (this.props.instrument !== `Select`) this.props.changeInstrument(this.props.instrument, `add`, 1);
         }
     }
 
@@ -35,7 +35,7 @@ const mapStateToProps = (state) => ({
 })
 
 const mapDispatchToProps = dispatch => ({
-    changeInstrument: (access, title, action, i) => dispatch(changeInstrument(access, title, action, i)),
+    changeInstrument: (title, action, i) => dispatch(changeInstrument(title, action, i)),
     showNotification: (text, css) => dispatch(showNotification(text, css))
 })
 
