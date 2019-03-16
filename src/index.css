@@ -281,6 +281,12 @@ button {
     top: 0;
 }
 
+.notification-gree {
+    top: 0;
+    background: #c7ffda;
+    color: #00a034;
+}
+
 .line-spinner {
     position: absolute;
     top: 0;

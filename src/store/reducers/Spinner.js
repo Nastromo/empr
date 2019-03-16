@@ -15,3 +15,21 @@ export const instrumSpinner = (state = false, action) => {
         default: return state;
     }
 }
+
+export const saveSpinner = (state = false, action) => {
+    switch (action.type) {
+        case `SHOW_SAVE_SPINNER`:
+            return action.bool;
+
+        default: return state;
+    }
+}
+
+export const submitSpinner = (state = false, action) => {
+    switch (action.type) {
+        case `SHOW_SUBMIT_SPINNER`:
+            return action.bool;
+
+        default: return state;
+    }
+}

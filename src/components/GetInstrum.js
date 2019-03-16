@@ -13,7 +13,7 @@ export class GetInstrum extends Component {
         } else if (this.props.instrumFirst) {
             if (this.props.instrument) this.props.changeInstrument(this.props.access, this.props.instrument, `add`, 2);
         } else {
-            if (this.props.instrument) this.props.changeInstrument(this.props.access, this.props.instrument, `add`, 1);
+            if (this.props.instrument !== `Select`) this.props.changeInstrument(this.props.access, this.props.instrument, `add`, 1);
         }
     }
 

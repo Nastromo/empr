@@ -103,6 +103,11 @@ export const patient = (state = {}, action) => {
             newState.instrumSecond = action.instrument;
             return newState;
 
+        case `CHANGE_INSTRUM_COMMENT`:
+            newState = JSON.parse(JSON.stringify(state));
+            newState.testComment = action.text;
+            return newState;
+
         default: return state;
     }
 }
