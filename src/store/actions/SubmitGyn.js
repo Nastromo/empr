@@ -36,9 +36,7 @@ export const submitPatient = (patient) => {
             patient.lastUpdate = Date.now();
             patient.updatedBy = user;
             const res = await API.post(`/v1/submit-gyn`, patient);
-            dispatch(setList(res.data));
-            dispatch(showSubmitSpinner(false));
-            dispatch(showNotification(`Submitted...`, `notification-green`));
+            window.location = `/account/pending`;
         } catch (err) {
             console.log(err);
             dispatch(showSubmitSpinner(false));
