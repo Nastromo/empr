@@ -58,3 +58,32 @@ export const changeInstrument = (title, action, i) => {
         }
     }
 };
+
+export const setNewInstumentList = (list) => ({
+    type: 'SET_NEW_INSTRUM_LIST',
+    list
+});
+
+export const getInstrums = () => {
+    return async (dispatch, getState) => {
+        try {
+            const res = await API.get(`v1/instrum-list`);
+            dispatch(setNewInstumentList(res.data));
+        } catch (err) {
+            console.log(err);
+            dispatch(showNotification(`Error`, `notification-show`));
+        }
+    }
+};
+
+export const deleteInstrum = (title) => {
+    return async (dispatch, getState) => {
+        try {
+            await API.post(`v1/instrum-list`, {title});
+            window.location = `/account/instruments`;
+        } catch (err) {
+            console.log(err);
+            dispatch(showNotification(`Error`, `notification-show`));
+        }
+    }
+};

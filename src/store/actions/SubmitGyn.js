@@ -35,7 +35,7 @@ export const submitPatient = (patient) => {
             patient.stage = `processing`;
             patient.lastUpdate = Date.now();
             patient.updatedBy = user;
-            const res = await API.post(`/v1/submit-gyn`, patient);
+            await API.post(`/v1/submit-gyn`, patient);
             window.location = `/account/pending`;
         } catch (err) {
             console.log(err);

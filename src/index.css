@@ -946,3 +946,51 @@ a.logo-text:hover {
 .width100 {
     width: 100%;
 }
+
+.center-content {
+    display: flex;
+    justify-content: center;
+}
+
+.add-instrument {
+    padding: 15px;
+    width: 100%;
+    max-width: 900px;
+    min-width: 650px;
+    background: #fff;
+    box-shadow: 0 2px 11px 0 #00000008;
+    border-radius: 4px;
+    margin: 15px;
+}
+
+.add-instrum-panel {
+    display: flex;
+    max-width: 620px;
+    justify-content: space-between;
+    margin: 20px 0 20px 0;
+}
+
+.add-instrum-btn {
+    width: 200px;
+}
+
+.instrum-item {
+    display: flex;
+    width: 100%;
+    align-items: center;
+    box-sizing: border-box;
+    background: beige;
+    padding: 10px 15px;
+    margin: 3px 6px 3px 0;
+    border-radius: 4px;
+}
+
+.del-instr {
+    margin: 3px 0;
+}
+
+.instrum-list {
+    display: flex;
+    flex-direction: column;
+    max-width: 620px;
+}

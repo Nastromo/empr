@@ -33,3 +33,30 @@ export const instrumList = (state = [], action) => {
         default: return state;
     }
 }
+
+export const newInstrumTitle = (state = ``, action) => {
+    switch (action.type) {
+        case `SET_INSTRUM_TITLE`:
+            return action.text;
+
+        default: return state;
+    }
+}
+
+export const newInstrumType = (state = ``, action) => {
+    switch (action.type) {
+        case `SET_INSTRUM_TYPE`:
+            return action.text;
+
+        default: return state;
+    }
+}
+
+export const newInstrumList = (state = [], action) => {
+    switch (action.type) {
+        case `SET_NEW_INSTRUM_LIST`:
+            return action.list;
+
+        default: return state;
+    }
+}
