@@ -1,33 +1,33 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
-import { getInstrums, deleteInstrum } from '../store/actions/Instruments';
+import { getUsers, deleteUser } from '../store/actions/User';
 
 
 
-export class InstrumentsList extends Component {
+
+export class UsersList extends Component {
     componentDidMount = () => {
-        this.props.getInstrums();
+        this.props.getUsers();
     }
 
     delete = (e) => {
-        this.props.deleteInstrum(e.target.id);
+        this.props.deleteUser(e.target.id);
     }
 
     render() {
         return (
-            <div className="instrum-list">
+            <div className="user-list">
                 {
-                    this.props.list.map((instrum, i) => {
+                    this.props.list.map((user, i) => {
                         return (
                             <div key={i} className="flex-instr">
                                 <div className="instrum-item">
-                                    <div>{`${instrum.type}  –  ${instrum.title}`}</div>
+                                    <div>{`${user.userRole}  –  ${user.login}`}</div>
                                 </div>
                                 <div className="del-instr">
-                                    <div className="delete" onClick={this.delete} id={instrum.title}></div>
+                                    <div className="delete" onClick={this.delete} id={user.login}></div>
                                 </div>
                             </div>
-
                         )
                     })
                 }
@@ -37,12 +37,12 @@ export class InstrumentsList extends Component {
 }
 
 const mapStateToProps = (state) => ({
-    list: state.newInstrumList,
+    list: state.userList,
 })
 
 const mapDispatchToProps = dispatch => ({
-    getInstrums: () => dispatch(getInstrums()),
-    deleteInstrum: (title) => dispatch(deleteInstrum(title))
+    getUsers: () => dispatch(getUsers()),
+    deleteUser: (login) => dispatch(deleteUser(login))
 })
 
-export default connect(mapStateToProps, mapDispatchToProps)(InstrumentsList)
+export default connect(mapStateToProps, mapDispatchToProps)(UsersList)

@@ -15,7 +15,6 @@ export class Instruments extends Component {
                     <AddInstrumPanel />
                     <InstrumentsList />
                 </div>
-
             </div>
         )
     }

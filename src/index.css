@@ -994,3 +994,18 @@ a.logo-text:hover {
     flex-direction: column;
     max-width: 620px;
 }
+
+.user-list {
+    display: flex;
+    flex-direction: column;
+    max-width: 817px;
+}
+
+.user-add {
+    margin: 15px 0;
+    display: flex;
+}
+
+.user-add > div{
+    margin: 0 6px 0 0;
+}
