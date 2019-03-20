@@ -11,7 +11,7 @@ import { patient } from './Patient';
 import { printStaus, printOption } from './Print';
 import { instrumTypeStaus, instrumTypeOption } from './InstrumDropDown';
 import { instrumStaus, instrumOption, instruments, instrumList, newInstrumTitle, newInstrumType, newInstrumList } from './Instruments';
-
+import { activeGrossTab } from './GrossTabs';
 
 
 
@@ -60,7 +60,9 @@ const RootReducer = combineReducers({
     instrumList,
     newInstrumTitle,
     newInstrumType,
-    newInstrumList
+    newInstrumList,
+
+    activeGrossTab
 
 });
 

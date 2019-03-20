@@ -38,9 +38,9 @@ export class DropDown extends Component {
     render() {
         return (
             <div className="relative">
-                <div ref={el => this.option =el} 
-                     className={this.props.option ? `drop-select drop-select-chosen` : `drop-select`}>
-                     {this.props.option ? this.props.option : `Select`}</div>
+                <div ref={el => this.option = el}
+                    className={this.props.option ? `drop-select drop-select-chosen` : `drop-select`}>
+                    {this.props.option ? this.props.option : `Select`}</div>
 
                 <div className={this.props.status ? `drop-down drop-down-show` : `drop-down`}>
                     {

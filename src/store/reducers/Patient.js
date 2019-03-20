@@ -1,3 +1,8 @@
+const changeDesc = (receivedSource, ml, turbidity, color, specType, fixative, slideType) => {
+    return `Received in a ${receivedSource} are ${ml}mL of ${turbidity} ${color} ${specType} in ${fixative}. [1] ${slideType} slide was prepared and submitted for evaluation.
+    `
+}
+
 export const patient = (state = {}, action) => {
     let newState;
     switch (action.type) {
@@ -69,6 +74,91 @@ export const patient = (state = {}, action) => {
                     newState = JSON.parse(JSON.stringify(state));
                     newState.specimenReceived = action.obj.option;
                     return newState;
+
+
+
+                case `source`:
+                    newState = JSON.parse(JSON.stringify(state));
+                    newState.source = action.obj.option;
+                    return newState;
+                case `receivedSource`:
+                    newState = JSON.parse(JSON.stringify(state));
+                    newState.receivedSource = action.obj.option;
+                    newState.description = changeDesc(
+                        newState.receivedSource,
+                        newState.ml,
+                        newState.turbidity,
+                        newState.color,
+                        newState.specType,
+                        newState.fixative,
+                        newState.slideType,
+                    )
+                    return newState;
+                case `turbidity`:
+                    newState = JSON.parse(JSON.stringify(state));
+                    newState.turbidity = action.obj.option;
+                    newState.description = changeDesc(
+                        newState.receivedSource,
+                        newState.ml,
+                        newState.turbidity,
+                        newState.color,
+                        newState.specType,
+                        newState.fixative,
+                        newState.slideType,
+                    )
+                    return newState;
+                case `color`:
+                    newState = JSON.parse(JSON.stringify(state));
+                    newState.color = action.obj.option;
+                    newState.description = changeDesc(
+                        newState.receivedSource,
+                        newState.ml,
+                        newState.turbidity,
+                        newState.color,
+                        newState.specType,
+                        newState.fixative,
+                        newState.slideType,
+                    )
+                    return newState;
+                case `specType`:
+                    newState = JSON.parse(JSON.stringify(state));
+                    newState.specType = action.obj.option;
+                    newState.description = changeDesc(
+                        newState.receivedSource,
+                        newState.ml,
+                        newState.turbidity,
+                        newState.color,
+                        newState.specType,
+                        newState.fixative,
+                        newState.slideType,
+                    )
+                    return newState;
+                case `fixative`:
+                    newState = JSON.parse(JSON.stringify(state));
+                    newState.fixative = action.obj.option;
+                    newState.description = changeDesc(
+                        newState.receivedSource,
+                        newState.ml,
+                        newState.turbidity,
+                        newState.color,
+                        newState.specType,
+                        newState.fixative,
+                        newState.slideType,
+                    )
+                    return newState;
+                case `slideType`:
+                    newState = JSON.parse(JSON.stringify(state));
+                    newState.slideType = action.obj.option;
+                    newState.description = changeDesc(
+                        newState.receivedSource,
+                        newState.ml,
+                        newState.turbidity,
+                        newState.color,
+                        newState.specType,
+                        newState.fixative,
+                        newState.slideType,
+                    )
+                    return newState;
                 default: return state;
             }
 
@@ -111,6 +201,11 @@ export const patient = (state = {}, action) => {
         case `SET_MENOPAUSAL`:
             newState = JSON.parse(JSON.stringify(state));
             newState.yearsMenopausal = action.years;
+            return newState;
+
+        case `CHANGE_GROSS_COMMENT`:
+            newState = JSON.parse(JSON.stringify(state));
+            newState.grossOther = action.text;
             return newState;
 
         default: return state;

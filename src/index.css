@@ -520,7 +520,7 @@ a.logo-text:hover {
     white-space: nowrap;
     box-sizing: border-box;
     border: 1px solid #fff;
-    border-bottom: 1px solid #fff;
+    border-bottom: 1px solid #e7eaec;
 }
 
 .active-tab {
@@ -1008,4 +1008,38 @@ a.logo-text:hover {
 
 .user-add > div{
     margin: 0 6px 0 0;
+}
+
+.gross-tabs {
+    padding: 15px 15px 0;
+    display: flex;
+}
+
+.spec-drops {
+    display: flex;
+    padding: 15px;
+    justify-content: space-between;
+}
+
+.spec-drops > div {
+    flex-basis: 24%;
+}
+
+.pad-15 {
+    padding: 0 15px 15px;
+}
+
+.border-grey {
+    border: 1px solid #e7eaec;
+    margin: -1px 0 0 0;
+}
+
+.description {
+    padding: 15px;
+    box-sizing: border-box;
+}
+
+.yell {
+    background: #feffe7;
+    height: 100px;
 }
