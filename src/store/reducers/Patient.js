@@ -8,7 +8,8 @@ export const patient = (state = {}, action) => {
     switch (action.type) {
         case `SHOW_PATIENT_INFO`:
             newState = JSON.parse(JSON.stringify(state));
-            newState = action.patient;
+            if (action.patient) newState = action.patient;
+            else newState = {};
             return newState;
 
         case `CHECK_BOX`:
@@ -201,6 +202,20 @@ export const patient = (state = {}, action) => {
         case `SET_MENOPAUSAL`:
             newState = JSON.parse(JSON.stringify(state));
             newState.yearsMenopausal = action.years;
+            return newState;
+
+        case `SET_ML`:
+            newState = JSON.parse(JSON.stringify(state));
+            newState.ml = action.ml;
+            newState.description = changeDesc(
+                newState.receivedSource,
+                newState.ml,
+                newState.turbidity,
+                newState.color,
+                newState.specType,
+                newState.fixative,
+                newState.slideType,
+            );
             return newState;
 
         case `CHANGE_GROSS_COMMENT`:

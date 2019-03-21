@@ -32,7 +32,7 @@ export class ClinicalHistory extends Component {
                     </div>
                 </div>
                 <p className="field-title">Years Menopausal</p>
-                <input className="simple-input" ref={el => this.pausa = el} value={this.props.patient.yearsMenopausal || ``} onChange={this.handleChange} type="number"/>
+                <input className="simple-input" value={this.props.patient.yearsMenopausal || ``} onChange={this.handleChange} type="number"/>
             </div>
         )
     }

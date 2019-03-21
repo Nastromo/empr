@@ -2,6 +2,7 @@ import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import DropDown from './DropDown';
 import { changeOther } from '../store/actions/GrossComment';
+import { changeMl } from '../store/actions/SpecMl';
 import Description from './Description';
 
 
@@ -20,6 +21,10 @@ export class Fluid extends Component {
 
     handleChange = (e) => {
         this.props.changeOther(e.target.value);
+    }
+
+    handleMl = (e) => {
+        this.props.changeMl(e.target.value);
     }
 
     render() {
@@ -44,7 +49,7 @@ export class Fluid extends Component {
                     </div>
                     <div>
                         <p className="field-title">Quantity(mL)</p>
-                        <input className="simple-input width100" type="number" />
+                        <input className="simple-input width100" value={this.props.ml || ``} onChange={this.handleMl} type="number"/>
                     </div>
                     <div>
                         <p className="field-title">Turbidity</p>
@@ -105,6 +110,7 @@ export class Fluid extends Component {
 }
 
 const mapStateToProps = (state) => ({
+    ml: state.patient.ml,
     grossOther: state.patient.grossOther,
     sourceOption: state.patient.source,
     sourceStatus: state.dropDown.source,
@@ -123,7 +129,8 @@ const mapStateToProps = (state) => ({
 })
 
 const mapDispatchToProps = dispatch => ({
-    changeOther: (text) => dispatch(changeOther(text))
+    changeOther: (text) => dispatch(changeOther(text)),
+    changeMl: (ml) => dispatch(changeMl(ml)),
 })
 
 export default connect(mapStateToProps, mapDispatchToProps)(Fluid)
