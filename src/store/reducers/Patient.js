@@ -3,6 +3,8 @@ const changeDesc = (receivedSource, ml, turbidity, color, specType, fixative, sl
     `
 }
 
+
+
 export const patient = (state = {}, action) => {
     let newState;
     switch (action.type) {
@@ -10,6 +12,15 @@ export const patient = (state = {}, action) => {
             newState = JSON.parse(JSON.stringify(state));
             if (action.patient) newState = action.patient;
             else newState = {};
+            newState.description = changeDesc(
+                newState.receivedSource,
+                newState.ml,
+                newState.turbidity,
+                newState.color,
+                newState.specType,
+                newState.fixative,
+                newState.slideType,
+            )
             return newState;
 
         case `CHECK_BOX`:
@@ -75,9 +86,18 @@ export const patient = (state = {}, action) => {
                     newState = JSON.parse(JSON.stringify(state));
                     newState.specimenReceived = action.obj.option;
                     return newState;
-
-
-
+                case `slideSource`:
+                    newState = JSON.parse(JSON.stringify(state));
+                    newState.slideSource = action.obj.option;
+                    return newState;
+                case `slideStain`:
+                    newState = JSON.parse(JSON.stringify(state));
+                    newState.slideStain = action.obj.option;
+                    return newState;
+                case `slideProcessed`:
+                    newState = JSON.parse(JSON.stringify(state));
+                    newState.slideProcessed = action.obj.option;
+                    return newState;
                 case `source`:
                     newState = JSON.parse(JSON.stringify(state));
                     newState.source = action.obj.option;
@@ -221,6 +241,11 @@ export const patient = (state = {}, action) => {
         case `CHANGE_GROSS_COMMENT`:
             newState = JSON.parse(JSON.stringify(state));
             newState.grossOther = action.text;
+            return newState;
+
+        case `CHANGE_SLIDE_LIST`:
+            newState = JSON.parse(JSON.stringify(state));
+            newState.slides = action.str;
             return newState;
 
         default: return state;

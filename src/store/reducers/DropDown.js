@@ -47,6 +47,18 @@ export const dropDown = (state = {}, action) => {
                     newState = JSON.parse(JSON.stringify(state));
                     newState.slideType = action.obj.status;
                     return newState;
+                case `slideSource`:
+                    newState = JSON.parse(JSON.stringify(state));
+                    newState.slideSource = action.obj.status;
+                    return newState;
+                case `slideStain`:
+                    newState = JSON.parse(JSON.stringify(state));
+                    newState.slideStain = action.obj.status;
+                    return newState;
+                case `slideProcessed`:
+                    newState = JSON.parse(JSON.stringify(state));
+                    newState.slideProcessed = action.obj.status;
+                    return newState;
                 default: return state;
             }
 

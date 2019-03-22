@@ -6,15 +6,25 @@ import { setList } from './Analyzes';
 
 
 export const savePatient = (patient) => {
-    
+
     return async (dispatch, getState) => {
+        const analysis = getState().activeAnalysis;
         try {
             const user = getState().user.login;
             dispatch(showSaveSpinner(true));
             delete patient.id;
             patient.lastUpdate = Date.now();
             patient.updatedBy = user;
-            const res = await API.post(`/v1/save-gyn`, patient);
+            let res;
+            switch (analysis) {
+                case 0:
+                    res = await API.post(`/v1/save-gyn`, patient);
+                    break;
+                case 1:
+                    res = await API.post(`/v1/save-ngyn`, patient);
+                    break;
+                default: break;
+            }
             dispatch(setList(res.data));
             dispatch(showSaveSpinner(false));
             dispatch(showNotification(`Saved...`, `notification-green`));
@@ -28,6 +38,7 @@ export const savePatient = (patient) => {
 
 export const submitPatient = (patient) => {
     return async (dispatch, getState) => {
+        const analysis = getState().activeAnalysis;
         try {
             const user = getState().user.login;
             dispatch(showSubmitSpinner(true));
@@ -35,7 +46,15 @@ export const submitPatient = (patient) => {
             patient.stage = `processing`;
             patient.lastUpdate = Date.now();
             patient.updatedBy = user;
-            await API.post(`/v1/submit-gyn`, patient);
+            switch (analysis) {
+                case 0:
+                    await API.post(`/v1/submit-gyn`, patient);
+                    break;
+                case 1:
+                    await API.post(`/v1/submit-ngyn`, patient);
+                    break;
+                default: break;
+            }
             window.location = `/account/pending`;
         } catch (err) {
             console.log(err);

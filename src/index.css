@@ -1043,3 +1043,35 @@ a.logo-text:hover {
     background: #feffe7;
     height: 100px;
 }
+
+.column-title {
+    display: flex;
+    justify-content: space-between;
+    width: 100%;
+}
+
+.columns-source {
+    display: flex;
+    padding: 15px;
+    flex-direction: column;
+}
+
+.drop-line {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin: 2px 0;
+}
+
+.add-stain {
+    height: 35px;
+    width: 100%;
+}
+
+.drop-slide {
+    flex-basis: 24%;
+}
+
+.drop-tit {
+    flex-basis: 30%;
+}
