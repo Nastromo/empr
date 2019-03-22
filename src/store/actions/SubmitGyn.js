@@ -23,6 +23,9 @@ export const savePatient = (patient) => {
                 case 1:
                     res = await API.post(`/v1/save-ngyn`, patient);
                     break;
+                case 2:
+                    res = await API.post(`/v1/save-uvfish`, patient);
+                    break;
                 default: break;
             }
             dispatch(setList(res.data));
@@ -52,6 +55,9 @@ export const submitPatient = (patient) => {
                     break;
                 case 1:
                     await API.post(`/v1/submit-ngyn`, patient);
+                    break;
+                case 2:
+                    await API.post(`/v1/submit-uvfish`, patient);
                     break;
                 default: break;
             }

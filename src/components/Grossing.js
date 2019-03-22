@@ -36,6 +36,14 @@ export class Grossing extends Component {
                     <SpecimenSource />
                 </div>
             )
+        } else if (this.props.index === 2) {
+            return (
+                <div className={this.props.isCollapsed ? `sect-hide sect` : `sect`}>
+                    <div onClick={this.transform} className="section-title">Grossing</div>
+                    <GrossTabs />
+                    <SpecimenSource />
+                </div>
+            )
         } else {
             return <div></div>
         }
