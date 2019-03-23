@@ -45,7 +45,12 @@ export class Grossing extends Component {
                 </div>
             )
         } else {
-            return <div></div>
+            return (
+                <div className={this.props.isCollapsed ? `sect-hide sect` : `sect`}>
+                    <div onClick={this.transform} className="section-title">Grossing</div>
+                    Это пустой гроссинг!
+                </div>
+            )
         }
     }
 }
