@@ -22,6 +22,11 @@ export const setList = (list) => ({
     list
 });
 
+export const setProcessingList = (list) => ({
+    type: 'SET_PROCESSING_LIST',
+    list
+});
+
 export const getPendingList = (index, title) => {
     return async (dispatch, getState) => {
         try {
@@ -32,10 +37,27 @@ export const getPendingList = (index, title) => {
             dispatch(setList(res.data));
             dispatch(showSpecimen(0 , res.data[0]));
         } catch (err) {
-            console.log(err)
             dispatch(pendingListLoading(false));
             dispatch(pendingListErrored(true));
             console.log(err);
         }
     }
 }
+
+
+export const getProcessingList = (index, title) => {
+    return async (dispatch, getState) => {
+        try {
+            dispatch(setActive(index));
+            dispatch(pendingListLoading(true));
+            const res = await API.post(`/v1/processing`, { title });
+            dispatch(pendingListLoading(false));
+            dispatch(setProcessingList(res.data));
+        } catch (err) {
+            dispatch(pendingListLoading(false));
+            dispatch(pendingListErrored(true));
+            console.log(err);
+        }
+    }
+}
+

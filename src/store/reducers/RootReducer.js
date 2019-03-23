@@ -3,7 +3,7 @@ import { notificationCss, notificationText } from './Notification';
 import { loginSpinner, instrumSpinner, saveSpinner, submitSpinner } from './Spinner';
 import { userLoading, user, userRole, userLogin, userPass, userList } from './User';
 import { userMenu } from './UserMenu';
-import { activeAnalysis, pendingLoading, pendingErrored, pendingList } from './Analyzes';
+import { activeAnalysis, pendingLoading, pendingErrored, pendingList, processingList } from './Analyzes';
 import { specimenSelected } from './Specimen';
 import { patientIsCollapsed, grossingIsCollapsed, infoIsCollapsed } from './Collapse';
 import { dropDown } from './DropDown';
@@ -37,6 +37,7 @@ const RootReducer = combineReducers({
     pendingLoading,
     pendingErrored,
     pendingList,
+    processingList,
 
     specimenSelected,
 

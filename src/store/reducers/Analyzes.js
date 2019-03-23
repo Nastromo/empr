@@ -33,3 +33,12 @@ export const pendingList = (state = [], action) => {
         default: return state;
     }
 }
+
+export const processingList = (state = [], action) => {
+    switch (action.type) {
+        case `SET_PROCESSING_LIST`:
+            return action.list
+
+        default: return state;
+    }
+}
