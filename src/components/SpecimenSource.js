@@ -26,7 +26,6 @@ export class SpecimenSource extends Component {
                 </div>
             )
         }
-
     }
 }
 

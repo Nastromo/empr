@@ -1,12 +1,18 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
+import ScreeningList from './ScreeningList';
+import ScreeningEntry from './ScreeningEntry';
+
+
+
 
 export class Screening extends Component {
 
     render() {
         return (
-            <div>
-                Привет! Я Скрининг!
+            <div className="pending">
+                <ScreeningList />
+                <ScreeningEntry />
             </div>
         )
     }

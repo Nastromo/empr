@@ -1,6 +1,6 @@
 #!/bin/bash
 
-npm run build
+sudo npm run build
 tar czf app.tar.gz build/ package.json
 
 scp app.tar.gz nastromo@46.101.192.113:~
