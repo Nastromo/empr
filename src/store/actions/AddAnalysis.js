@@ -1,4 +1,4 @@
-export const addAnalisis = (title) => ({
+export const addAnalysis = (list) => ({
     type: 'ADD_ANALYSIS',
-    title
+    list
 });

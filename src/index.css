@@ -1153,5 +1153,54 @@ a.logo-text:hover {
 }
 
 .flex-analis-title div:first-child {
-    flex-basis: 20%;
+    flex-basis: 15%;
+}
+
+.flex-row-diag {
+    display: flex;
+    align-items: center;
+    margin: 4px 15px;
+}
+
+.flex-row-diag .yell-row {
+    flex-basis: 100%;
+}
+
+.yell-row {
+    background: beige;
+    display: flex;
+    align-items: center;
+    margin: 0 8px 0 0;
+    height: 40px;
+    padding: 0 11px;
+}
+
+.id-row {
+    background: #23c6c8;
+    border-radius: 4px;
+    color: #fff;
+    font-size: 0.75rem;
+    font-weight: 700;
+    padding: 1px 6px;
+    margin: 0 25px 0 0;
+}
+
+.id-raw {
+    background: #ad47d8;
+    border-radius: 4px;
+    color: #fff;
+    font-size: 0.75rem;
+    font-weight: 700;
+    padding: 1px 6px;
+    margin: 0 25px 0 0;
+}
+
+.code-row {
+    font-size: 0.8rem;
+    font-weight: 700;
+    margin: 0 25px 0 0;
+}
+
+.action-row {
+    font-size: 0.8rem;
 }

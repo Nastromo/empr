@@ -248,6 +248,16 @@ export const patient = (state = {}, action) => {
             newState.slides = action.str;
             return newState;
 
+        case `ADD_ANALYSIS`:
+            newState = JSON.parse(JSON.stringify(state));
+            newState.preAnalysis = action.list;
+            return newState;
+
+        case `REPORT_COMMENT`:
+            newState = JSON.parse(JSON.stringify(state));
+            newState.reportComments = action.text;
+            return newState;
+
         default: return state;
     }
 }

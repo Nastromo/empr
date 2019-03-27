@@ -13,6 +13,7 @@ import { instrumTypeStaus, instrumTypeOption } from './InstrumDropDown';
 import { instrumStaus, instrumOption, instruments, instrumList, newInstrumTitle, newInstrumType, newInstrumList } from './Instruments';
 import { activeGrossTab } from './GrossTabs';
 import { activePreTab } from './PreTabs';
+// import { addAnalysis } from './AddAnalysis';
 
 
 
@@ -66,7 +67,7 @@ const RootReducer = combineReducers({
 
     activeGrossTab,
     activePreTab,
-
+    // addAnalysis
 });
 
 export default RootReducer;

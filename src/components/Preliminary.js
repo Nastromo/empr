@@ -3,7 +3,7 @@ import { connect } from 'react-redux';
 import PreliminaryTabs from './PreliminaryTabs';
 import PreTabsContent from './PreTabsContent';
 import PreAnalysis from './PreAnalysis';
-
+import PreCommentsArea from './PreCommentsArea';
 
 
 
@@ -16,6 +16,7 @@ export class Preliminary extends Component {
                 <PreliminaryTabs />
                 <PreTabsContent />
                 <PreAnalysis />
+                <PreCommentsArea />
             </div>
         )
     }

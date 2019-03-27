@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
-import { addAnalisis } from '../store/actions/AddAnalysis';
+import { addAnalysis } from '../store/actions/AddAnalysis';
 
 
 export class SpecimenAdequacy extends Component {
@@ -30,7 +30,15 @@ export class SpecimenAdequacy extends Component {
     }
 
     handleClick = (e) => {
-        this.props.addAnalisis(e.currentTarget.id);
+        let list = JSON.parse(this.props.list);
+        const i = Number(e.currentTarget.id);
+        const specimenAdequacy = {
+            id: `Sa`,
+            code: this.let[i],
+            action: this.actions[i],
+        }
+        list.push(specimenAdequacy)
+        this.props.addAnalysis(JSON.stringify(list));
     }
 
     render() {
@@ -43,7 +51,7 @@ export class SpecimenAdequacy extends Component {
                 {
                     this.actions.map((act, i) => {
                         return (
-                            <div key={i} className="pre-acts" id={this.let[i]} onClick={this.handleClick}>
+                            <div key={i} className="pre-acts" id={i} onClick={this.handleClick}>
                                 <div className="first-a">{this.let[i]}</div>
                                 <div className="second-a">{act}</div>
                             </div>
@@ -55,12 +63,14 @@ export class SpecimenAdequacy extends Component {
     }
 }
 
-const mapStateToProps = (state) => ({
-
-})
+const mapStateToProps = (state) => {
+    if (!state.patient.preAnalysis) return {list: `[]`}
+    else return {list: state.patient.preAnalysis}
+    // list: state.patient.preAnalysis
+}
 
 const mapDispatchToProps = dispatch => ({
-    addAnalisis: (title) => dispatch(addAnalisis(title))
+    addAnalysis: (list) => dispatch(addAnalysis(list))
 })
 
 export default connect(mapStateToProps, mapDispatchToProps)(SpecimenAdequacy)
