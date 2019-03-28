@@ -46,17 +46,19 @@ export const submitPatient = (patient) => {
             const user = getState().user.login;
             dispatch(showSubmitSpinner(true));
             delete patient.id;
-            patient.stage = `processing`;
             patient.lastUpdate = Date.now();
             patient.updatedBy = user;
             switch (analysis) {
                 case 0:
+                    patient.stage = `screening`;
                     await API.post(`/v1/submit-gyn`, patient);
                     break;
                 case 1:
+                    patient.stage = `screening`;
                     await API.post(`/v1/submit-ngyn`, patient);
                     break;
                 case 2:
+                    patient.stage = `processing`;
                     await API.post(`/v1/submit-uvfish`, patient);
                     break;
                 default: break;

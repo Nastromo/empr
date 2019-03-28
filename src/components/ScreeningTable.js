@@ -75,7 +75,7 @@ const mapStateToProps = (state) => ({
     selected: state.specimenSelected,
     isLoading: state.pendingLoading,
     isErrored: state.pendingErrored,
-    list: state.pendingList,
+    list: state.screeningList,
 })
 
 const mapDispatchToProps = dispatch => ({

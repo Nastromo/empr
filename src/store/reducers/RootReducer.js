@@ -3,7 +3,7 @@ import { notificationCss, notificationText } from './Notification';
 import { loginSpinner, instrumSpinner, saveSpinner, submitSpinner } from './Spinner';
 import { userLoading, user, userRole, userLogin, userPass, userList } from './User';
 import { userMenu } from './UserMenu';
-import { activeAnalysis, pendingLoading, pendingErrored, pendingList, processingList } from './Analyzes';
+import { activeAnalysis, pendingLoading, pendingErrored, pendingList, processingList, screeningList } from './Analyzes';
 import { specimenSelected } from './Specimen';
 import { patientIsCollapsed, grossingIsCollapsed, infoIsCollapsed } from './Collapse';
 import { dropDown } from './DropDown';
@@ -13,7 +13,6 @@ import { instrumTypeStaus, instrumTypeOption } from './InstrumDropDown';
 import { instrumStaus, instrumOption, instruments, instrumList, newInstrumTitle, newInstrumType, newInstrumList } from './Instruments';
 import { activeGrossTab } from './GrossTabs';
 import { activePreTab } from './PreTabs';
-// import { addAnalysis } from './AddAnalysis';
 
 
 
@@ -67,7 +66,7 @@ const RootReducer = combineReducers({
 
     activeGrossTab,
     activePreTab,
-    // addAnalysis
+    screeningList,
 });
 
 export default RootReducer;

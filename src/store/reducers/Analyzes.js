@@ -42,3 +42,12 @@ export const processingList = (state = [], action) => {
         default: return state;
     }
 }
+
+export const screeningList = (state = [], action) => {
+    switch (action.type) {
+        case `SET_SCREENING_LIST`:
+            return action.list
+
+        default: return state;
+    }
+}

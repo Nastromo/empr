@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
-import Analyzes from './Analyzes';
+import ScreeningAnalyzes from './ScreeningAnalyzes';
 import ScriningTable from './ScreeningTable';
 import LineSpinner from './LineSpinner';
 
@@ -12,7 +12,7 @@ export class ScreeningList extends Component {
         return (
             <div className="pending-lists">
                 <div className="top-section-title">SCREENING LIST</div>
-                <Analyzes />
+                <ScreeningAnalyzes />
                 {this.props.isLoading ? <div className="table-spinner"><LineSpinner /></div> : null}
                 <ScriningTable />
             </div>

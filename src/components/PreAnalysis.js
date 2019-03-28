@@ -14,6 +14,7 @@ export class PreAnalysis extends Component {
     }
 
     render() {
+        if (!this.props.list) return <div></div>;
         const list = JSON.parse(this.props.list);
         return (
             <div>
@@ -41,11 +42,9 @@ export class PreAnalysis extends Component {
     }
 }
 
-const mapStateToProps = (state) => {
-    if (!state.patient.preAnalysis) return { list: `[]` }
-    else return { list: state.patient.preAnalysis }
-    // list: state.patient.preAnalysis
-}
+const mapStateToProps = (state) => ({
+    list: state.patient.preAnalysis
+})
 
 const mapDispatchToProps = dispatch => ({
     addAnalysis: (list) => dispatch(addAnalysis(list))
