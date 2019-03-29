@@ -75,7 +75,6 @@ export const getScreeningList = (index, title) => {
             dispatch(pendingListLoading(true));
             const res = await API.post(`/v1/screening`, { title });
             dispatch(pendingListLoading(false));
-            console.log(res.data)
             dispatch(setScreeningList(res.data));
             dispatch(showSpecimen(0 , res.data[0]));
         } catch (err) {

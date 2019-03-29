@@ -5,6 +5,7 @@ import Grossing from './Grossing';
 import CytologyInformation from './CytologyInformation';
 import SubmitCyt from './SubmitCyt';
 import Preliminary from './Preliminary';
+import Photos from './Photos';
 
 
 
@@ -19,6 +20,7 @@ export class ScreeningEntry extends Component {
                 <Grossing />
                 <CytologyInformation />
                 <Preliminary />
+                <Photos />
                 <SubmitCyt />
             </div>
         )

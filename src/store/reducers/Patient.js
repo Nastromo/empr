@@ -258,6 +258,11 @@ export const patient = (state = {}, action) => {
             newState.reportComments = action.text;
             return newState;
 
+        case `SET_PHOTOS`:
+            newState = JSON.parse(JSON.stringify(state));
+            newState.photos = action.photos;
+            return newState;
+
         default: return state;
     }
 }
