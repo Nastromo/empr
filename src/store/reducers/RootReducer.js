@@ -13,10 +13,14 @@ import { instrumTypeStaus, instrumTypeOption } from './InstrumDropDown';
 import { instrumStaus, instrumOption, instruments, instrumList, newInstrumTitle, newInstrumType, newInstrumList } from './Instruments';
 import { activeGrossTab } from './GrossTabs';
 import { activePreTab } from './PreTabs';
+import { gynCounter, popupStatus } from './SetGyn';
 
 
 
 const RootReducer = combineReducers({
+    gynCounter,
+    popupStatus,
+
     notificationCss,
     notificationText,
 

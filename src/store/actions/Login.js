@@ -1,7 +1,7 @@
 import API from '../../utils/Api';
 import { showLoginSpinner } from './Spinner';
 import { showNotification } from './Notification';
-
+import { setPopupVisibility } from './SetGyn';
 
 
 export const makeLogin = (history, url, body) => {
@@ -12,6 +12,7 @@ export const makeLogin = (history, url, body) => {
             localStorage.setItem(`emprToken`, res.data.token);
             API.defaults.headers['x-auth'] = `Bearer ${localStorage.getItem(`emprToken`)}`;
             history.push(`/account/pending`);
+            dispatch(setPopupVisibility(true));
             dispatch(showLoginSpinner(false));
         } catch (err) {
             dispatch(showLoginSpinner(false));

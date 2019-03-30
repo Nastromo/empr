@@ -4,15 +4,18 @@ import Login from './components/Login';
 import { BrowserRouter as Router, Route, Switch, } from 'react-router-dom';
 import PrivateRoute from './components/PrivateRoute';
 import Notification from './components/Notification';
+import PopUpLimit from './components/PopUpLimit';
+
 
 
 export class App extends Component {
 
-    render() {
+    render() { 
         return (
             <Router>
                 <div className="App">
-                    <Notification/>
+                    <PopUpLimit isShown={this.props.popupStatus} />
+                    <Notification />
                     <Switch>
                         <Route exact path="/" component={Login} />
                         <Route path="/account" component={PrivateRoute} />
@@ -24,7 +27,7 @@ export class App extends Component {
 }
 
 const mapStateToProps = (state) => ({
-
+    popupStatus: state.popupStatus
 })
 
 const mapDispatchToProps = {

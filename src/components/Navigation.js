@@ -102,6 +102,7 @@ export class Navigation extends Component {
 
 
     render() {
+        const userChars = this.props.userChars.substring(0, 2).toUpperCase();
         return (
             <div className="white-back">
                 <div className="main-nav">
@@ -163,7 +164,7 @@ export class Navigation extends Component {
                     <div className="work-info">
                         <p>GYN: <span className="blue-text">{this.props.gyn}</span></p>
                         <p>NGYN: <span className="blue-text">{this.props.ngyn}</span></p>
-                        <div ref={el => this.profile = el} className="profile">{this.props.userChars}</div>
+                        <div ref={el => this.profile = el} className="profile">{userChars}</div>
 
                         <UserMenu />
 
@@ -175,9 +176,9 @@ export class Navigation extends Component {
 }
 
 const mapStateToProps = (state) => ({
-    gyn: 11,
-    ngyn: 33,
-    userChars: `AR`,
+    gyn: state.gynCounter.gyn,
+    ngyn: state.gynCounter.ngyn,
+    userChars: state.user.login,
     clickedID: state.dropDown.id,
     isOpen: state.dropDown.status,
     
