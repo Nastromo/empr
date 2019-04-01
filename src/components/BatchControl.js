@@ -1,13 +1,18 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
+import BatchList from './BatchList';
+import ControlEntry from './ControlEntry';
+
+
+
 
 export class BatchControl extends Component {
 
-
     render() {
         return (
-            <div>
-                Привет! Я БэтчКонтрол!
+            <div className="pending">
+                <BatchList />
+                <ControlEntry />
             </div>
         )
     }
