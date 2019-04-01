@@ -2,6 +2,7 @@ import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import BatchEntry from './BatchEntry';
 import BatchSlides from './BatchSlides';
+import BatchSave from './BatchSave';
 
 
 
@@ -15,6 +16,7 @@ export class ControlEntry extends Component {
                 <div className="top-section-title">CONTROL ENTRY</div>
                 <BatchEntry />
                 <BatchSlides />
+                <BatchSave />
             </div>
         )
     }

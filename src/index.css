@@ -1329,6 +1329,21 @@ a.logo-text:hover {
     cursor: pointer;
 }
 
+.btn-entry-slide {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 120px;
+    height: 37px;
+    background: #12a588;
+    color: #fff;
+    outline: none;
+    border-radius: 4px;
+    border: none;
+    margin: 15px 0 0 15px;
+    cursor: pointer;
+}
+
 .first-line {
     display: flex;
     justify-content: space-between;
@@ -1342,4 +1357,22 @@ a.logo-text:hover {
 .first-line > div > p{
     font-size: 0.8rem;
     font-weight: 700;
+}
+
+.flex-tit-batch {
+    display: flex;
+    justify-content: space-between;
+    margin: 15px 15px 0;
+    padding: 5px 15px;
+    background: #f3f3f4;
+    border-radius: 4px;
+}
+
+.flex-tit-batch p {
+    font-size: 0.8rem;
+    font-weight: 700;
+}
+
+.sldes-list {
+    margin: 0 15px 15px;
 }
