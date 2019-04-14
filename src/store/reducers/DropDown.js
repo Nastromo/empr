@@ -59,6 +59,62 @@ export const dropDown = (state = {}, action) => {
                     newState = JSON.parse(JSON.stringify(state));
                     newState.slideProcessed = action.obj.status;
                     return newState;
+                case `processor`:
+                    newState = JSON.parse(JSON.stringify(state));
+                    newState.processorStatus = action.obj.status;
+                    return newState;
+                case `sliper`:
+                    newState = JSON.parse(JSON.stringify(state));
+                    newState.sliperStatus = action.obj.status;
+                    return newState;
+                case `nuclear`:
+                    newState = JSON.parse(JSON.stringify(state));
+                    newState.nuclearStatus = action.obj.status;
+                    return newState;
+                case `cytop`:
+                    newState = JSON.parse(JSON.stringify(state));
+                    newState.cytopStatus = action.obj.status;
+                    return newState;
+                case `prepQuality`:
+                    newState = JSON.parse(JSON.stringify(state));
+                    newState.prepQualityStatus = action.obj.status;
+                    return newState;
+                case `contamination`:
+                    newState = JSON.parse(JSON.stringify(state));
+                    newState.contaminationStatus = action.obj.status;
+                    return newState;
+                case `qcResults`:
+                    newState = JSON.parse(JSON.stringify(state));
+                    newState.qcResultsStatus = action.obj.status;
+                    return newState;
+                case `processor2`:
+                    newState = JSON.parse(JSON.stringify(state));
+                    newState.processorStatus2 = action.obj.status;
+                    return newState;
+                case `sliper2`:
+                    newState = JSON.parse(JSON.stringify(state));
+                    newState.sliperStatus2 = action.obj.status;
+                    return newState;
+                case `nuclear2`:
+                    newState = JSON.parse(JSON.stringify(state));
+                    newState.nuclearStatus2 = action.obj.status;
+                    return newState;
+                case `cytop2`:
+                    newState = JSON.parse(JSON.stringify(state));
+                    newState.cytopStatus2 = action.obj.status;
+                    return newState;
+                case `prepQuality2`:
+                    newState = JSON.parse(JSON.stringify(state));
+                    newState.prepQualityStatus2 = action.obj.status;
+                    return newState;
+                case `contamination2`:
+                    newState = JSON.parse(JSON.stringify(state));
+                    newState.contaminationStatus2 = action.obj.status;
+                    return newState;
+                case `qcResults2`:
+                    newState = JSON.parse(JSON.stringify(state));
+                    newState.qcResultsStatus2 = action.obj.status;
+                    return newState;
                 default: return state;
             }
 

@@ -1,13 +1,18 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
+import StainQcList from './StainQcList';
+import StainQcEntry from './StainQcEntry';
+
+
 
 export class StainQc extends Component {
 
 
     render() {
         return (
-            <div>
-                Привет! Я Стэйн КуСи!
+            <div className="pending">
+                <StainQcList />
+                <StainQcEntry />
             </div>
         )
     }

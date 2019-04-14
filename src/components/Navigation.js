@@ -118,7 +118,7 @@ export class Navigation extends Component {
                             id="processing"
                             onClick={this.handleClick}
                             innerRef={el => this.processing = el}
-                            to="/account/processing">Processing</Link>
+                            to="/account/processing">Batch processing</Link>
                         <Link
                             id="screening"
                             onClick={this.handleClick}
@@ -130,7 +130,13 @@ export class Navigation extends Component {
                             innerRef={el => this.qc = el}
                             to="/account/qc">QC</Link>
 
-                        <div className="relative">
+                        <Link
+                            id="stain"
+                            onClick={this.handleClick}
+                            innerRef={el => this.stain = el}
+                            to="/account/stain-qc">Stain Qc</Link>
+
+                        {/* <div className="relative">
                             <Link
                                 id="control"
                                 onClick={this.handleClick}
@@ -148,7 +154,7 @@ export class Navigation extends Component {
                                     innerRef={el => this.stain = el}
                                     to="/account/stain-qc">Stain Qc</Link>
                             </div>
-                        </div>
+                        </div> */}
 
                         <Link
                             id="history"
@@ -181,7 +187,7 @@ const mapStateToProps = (state) => ({
     userChars: state.user.login,
     clickedID: state.dropDown.id,
     isOpen: state.dropDown.status,
-    
+
 })
 
 const mapDispatchToProps = (dispatch) => ({

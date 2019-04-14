@@ -28,7 +28,6 @@ export class Photos extends Component {
 
     render() {
         const photos = this.props.photos || [];
-        console.log(photos)
         return (
             <div className={this.props.isCollapsed ? `sect-hide sect` : `sect`}>
                 <div onClick={this.transform} className="section-title">Report Images</div>

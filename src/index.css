@@ -948,12 +948,21 @@ a.logo-text:hover {
     margin: 0 10px 0 0;
 }
 
+.fail {
+    max-width: 150px;
+    margin: 0 10px 0 0;
+}
+
 .submit {
     max-width: 150px;
 }
 
 .save .green-btn {
     background: #23c6c8;
+}
+
+.fail .green-btn{
+    background: #cccccc;
 }
 
 .width100 {
@@ -1376,3 +1385,29 @@ a.logo-text:hover {
 .sldes-list {
     margin: 0 15px 15px;
 }
+
+.lex-drop {
+    display: flex;
+    justify-content: space-between;
+    margin: 35px 0 0 0;
+}
+
+.lex-drop > div {
+    flex-basis: 14%;
+}
+
+.lex-drop > div > p {
+    font-size: 0.8rem;
+    font-weight: 700;
+    margin: 0 0 4px 0;
+}
+
+.sim-input {
+    height: 37px;
+    width: 100%;
+    border-radius: 4px;
+    border: 1px solid #e2e2e2;
+    padding: 0 15px 0;
+    margin: 5px 0 0 0;
+}
+
