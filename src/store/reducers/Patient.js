@@ -78,63 +78,32 @@ export const patient = (state = {}, action) => {
 
                 case `processor`:
                     newState = JSON.parse(JSON.stringify(state));
-                    newState.processorOption = action.obj.option;
+                    newState.processor = action.obj.option;
                     return newState;
                 case `sliper`:
                     newState = JSON.parse(JSON.stringify(state));
-                    newState.sliperOption = action.obj.option;
+                    newState.stainMethod = action.obj.option;
                     return newState;
                 case `nuclear`:
                     newState = JSON.parse(JSON.stringify(state));
-                    newState.nuclearOption = action.obj.option;
+                    newState.nuclear = action.obj.option;
                     return newState;
                 case `cytop`:
                     newState = JSON.parse(JSON.stringify(state));
-                    newState.cytopOption = action.obj.option;
+                    newState.cytoplasmic = action.obj.option;
                     return newState;
                 case `prepQuality`:
                     newState = JSON.parse(JSON.stringify(state));
-                    newState.prepQualityOption = action.obj.option;
+                    newState.prepQuality = action.obj.option;
                     return newState;
                 case `contamination`:
                     newState = JSON.parse(JSON.stringify(state));
-                    newState.contaminationOption = action.obj.option;
+                    newState.contamination = action.obj.option;
                     return newState;
                 case `qcResults`:
                     newState = JSON.parse(JSON.stringify(state));
-                    newState.qcResultsOption = action.obj.option;
+                    newState.qcResults = action.obj.option;
                     return newState;
-
-
-                    case `processor2`:
-                    newState = JSON.parse(JSON.stringify(state));
-                    newState.processorOption2 = action.obj.option;
-                    return newState;
-                case `sliper2`:
-                    newState = JSON.parse(JSON.stringify(state));
-                    newState.sliperOption2 = action.obj.option;
-                    return newState;
-                case `nuclear2`:
-                    newState = JSON.parse(JSON.stringify(state));
-                    newState.nuclearOption2 = action.obj.option;
-                    return newState;
-                case `cytop2`:
-                    newState = JSON.parse(JSON.stringify(state));
-                    newState.cytopOption2 = action.obj.option;
-                    return newState;
-                case `prepQuality2`:
-                    newState = JSON.parse(JSON.stringify(state));
-                    newState.prepQualityOption2 = action.obj.option;
-                    return newState;
-                case `contamination2`:
-                    newState = JSON.parse(JSON.stringify(state));
-                    newState.contaminationOption2 = action.obj.option;
-                    return newState;
-                case `qcResults2`:
-                    newState = JSON.parse(JSON.stringify(state));
-                    newState.qcResultsOption2 = action.obj.option;
-                    return newState;
-
 
 
                 case `previousPap`:
@@ -290,6 +259,11 @@ export const patient = (state = {}, action) => {
         case `CHANGE_SLIDE_COMMENT2`:
             newState = JSON.parse(JSON.stringify(state));
             newState.slide2Comment = action.text;
+            return newState;
+
+            case `CHANGE_STAIN_QC_COMMENT`:
+            newState = JSON.parse(JSON.stringify(state));
+            newState.qcComment = action.text;
             return newState;
 
         case `SET_MENOPAUSAL`:
