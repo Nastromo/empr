@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
-import { getPendingList } from '../store/actions/Analyzes';
+import { getStainQcList } from '../store/actions/Analyzes';
 
 
 
@@ -14,13 +14,13 @@ export class AnalyzesStainQc extends Component {
     }
 
     componentDidMount() {
-        this.props.getPendingList(0, this.analyzes[0].title);
+        this.props.getStainQcList(0, this.analyzes[0].title);
     }
 
     handleClick = (e) => {
         const title = e.currentTarget.textContent;
         const index = Number(e.currentTarget.id);
-        this.props.getPendingList(index, title);
+        this.props.getStainQcList(index, title);
     }
 
     render() {
@@ -49,7 +49,7 @@ const mapStateToProps = (state) => ({
 })
 
 const mapDispatchToProps = dispatch => ({
-    getPendingList: (index, title) => dispatch(getPendingList(index, title))
+    getStainQcList: (index, title) => dispatch(getStainQcList(index, title))
 })
 
 export default connect(mapStateToProps, mapDispatchToProps)(AnalyzesStainQc)

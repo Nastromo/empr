@@ -85,3 +85,21 @@ export const getScreeningList = (index, title) => {
     }
 }
 
+
+export const getStainQcList = (index, title) => {
+    return async (dispatch, getState) => {
+        try {
+            dispatch(setActive(index));
+            dispatch(pendingListLoading(true));
+            const res = await API.post(`/v1/stain-qc`, { title });
+            dispatch(pendingListLoading(false));
+            dispatch(setList(res.data));
+            dispatch(showSpecimen(0 , res.data[0]));
+        } catch (err) {
+            dispatch(pendingListLoading(false));
+            dispatch(pendingListErrored(true));
+            console.log(err);
+        }
+    }
+}
+

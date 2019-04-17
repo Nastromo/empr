@@ -120,6 +120,11 @@ export class Navigation extends Component {
                             innerRef={el => this.processing = el}
                             to="/account/processing">Batch processing</Link>
                         <Link
+                            id="stain"
+                            onClick={this.handleClick}
+                            innerRef={el => this.stain = el}
+                            to="/account/stain-qc">Stain Qc</Link>
+                        <Link
                             id="screening"
                             onClick={this.handleClick}
                             innerRef={el => this.screening = el}
@@ -129,12 +134,6 @@ export class Navigation extends Component {
                             onClick={this.handleClick}
                             innerRef={el => this.qc = el}
                             to="/account/qc">QC</Link>
-
-                        <Link
-                            id="stain"
-                            onClick={this.handleClick}
-                            innerRef={el => this.stain = el}
-                            to="/account/stain-qc">Stain Qc</Link>
 
                         {/* <div className="relative">
                             <Link

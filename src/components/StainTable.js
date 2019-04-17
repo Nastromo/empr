@@ -3,6 +3,7 @@ import { connect } from 'react-redux';
 import ReactTable from "react-table";
 import '../table.css';
 import { showSpecimen } from '../store/actions/Specimen';
+import moment from 'moment';
 
 
 
@@ -18,17 +19,21 @@ export class StainTable extends Component {
                 }
             },
             {
-                Header: 'Patient',
-                accessor: 'fullName',
+                Header: 'Date',
+                accessor: 'lastUpdate',
             },
-            {
-                Header: 'Tray',
-                accessor: 'tray',
-            },
-            {
-                Header: 'Speci',
-                accessor: 'speci',
-            },
+            // {
+            //     Header: 'Patient',
+            //     accessor: 'fullName',
+            // },
+            // {
+            //     Header: 'Tray',
+            //     accessor: 'tray',
+            // },
+            // {
+            //     Header: 'Speci',
+            //     accessor: 'speci',
+            // },
             {
                 Header: 'Status',
                 accessor: 'stage',
@@ -52,13 +57,22 @@ export class StainTable extends Component {
     }
 
     renderList = (list, text) => {
-        list.forEach(row => row.fullName = `${row.name} ${row.lastName}`);
+        list.forEach(row => {
+            row.fullName = `${row.name} ${row.lastName}`;
+            row.lastUpdate = moment(row.lastUpdate).format('MM/DD/YYYY');
+        });
         return (
             <div className="content-table">
                 <ReactTable
                     data={list}
                     getTdProps={this.handleRowClick}
                     columns={this.initColumns()}
+                    defaultSorted={[
+                        {
+                          id: "lastUpdate",
+                          desc: false
+                        }
+                      ]}
                     resizable={false}
                     filterable={true}
                     defaultPageSize={15}

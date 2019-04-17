@@ -50,11 +50,11 @@ export const submitPatient = (patient) => {
             patient.updatedBy = user;
             switch (analysis) {
                 case 0:
-                    patient.stage = `screening`;
+                    patient.stage = `pending screening`;
                     await API.post(`/v1/submit-gyn`, patient);
                     break;
                 case 1:
-                    patient.stage = `screening`;
+                    patient.stage = `pending screening`;
                     await API.post(`/v1/submit-ngyn`, patient);
                     break;
                 case 2:
