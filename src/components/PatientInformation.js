@@ -3,18 +3,19 @@ import { connect } from 'react-redux';
 import pdf from '../img/pdf.svg';
 import book from '../img/book.svg';
 import { collapsePatient } from '../store/actions/Collapse';
+import { showHistoryPopup } from '../store/actions/HistoryPopup';
 
 
 
 export class PatientInformation extends Component {
-    
+
     handleClick = (e) => {
         switch (e.currentTarget.id) {
             case `pdf`:
                 window.open(this.props.patient.requisitionPdf, '_blank');
                 break;
             case `history`:
-                console.log(`Показать попап с историей`);
+                this.props.showHistoryPopup(true);
                 break;
             default: break;
         }
@@ -73,6 +74,7 @@ export class PatientInformation extends Component {
                                 <div onClick={this.handleClick} id="pdf"><img src={pdf} alt="" />Requisition PDF</div>
                                 <div onClick={this.handleClick} id="history"><img src={book} alt="" />Patient History</div>
                             </div>
+
                         </div>
                     </div>
 
@@ -106,11 +108,12 @@ export class PatientInformation extends Component {
 
 const mapStateToProps = (state) => ({
     patient: state.patient,
-    isCollapsed: state.patientIsCollapsed,
+    isCollapsed: state.patientIsCollapsed
 })
 
 const mapDispatchToProps = (dispatch) => ({
-    collapsePatient: (bool) => dispatch(collapsePatient(bool))
+    collapsePatient: (bool) => dispatch(collapsePatient(bool)),
+    showHistoryPopup: (bool) => dispatch(showHistoryPopup(bool))
 })
 
 export default connect(mapStateToProps, mapDispatchToProps)(PatientInformation)

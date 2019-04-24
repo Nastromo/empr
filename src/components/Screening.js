@@ -6,11 +6,12 @@ import ScreeningEntry from './ScreeningEntry';
 
 
 
+
 export class Screening extends Component {
 
     render() {
         return (
-            <div className="pending">
+            <div className="pending-wide">
                 <ScreeningList />
                 <ScreeningEntry />
             </div>

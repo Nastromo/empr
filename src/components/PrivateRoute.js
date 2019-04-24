@@ -15,6 +15,8 @@ import Instruments from './Instruments';
 import Users from './Users';
 import Comments from './Comments';
 import Navigation from './Navigation';
+import PopupHistory from './PopupHistory';
+
 
 
 
@@ -29,6 +31,7 @@ export class PrivateRoute extends Component {
         return (
             <div>
                 <Navigation />
+                <PopupHistory />
                 <Switch>
                     <Route exact path="/account/pending" component={Pending} />
                     <Route exact path="/account/processing" component={Processing} />

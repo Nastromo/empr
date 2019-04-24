@@ -14,6 +14,7 @@ import { instrumStaus, instrumOption, instruments, instrumList, newInstrumTitle,
 import { activeGrossTab } from './GrossTabs';
 import { activePreTab } from './PreTabs';
 import { gynCounter, popupStatus } from './SetGyn';
+import { historyPopup } from './HistoryPopup';
 
 
 
@@ -71,6 +72,8 @@ const RootReducer = combineReducers({
     activeGrossTab,
     activePreTab,
     screeningList,
+
+    historyPopup,
 });
 
 export default RootReducer;

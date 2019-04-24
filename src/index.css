@@ -468,6 +468,15 @@ a.logo-text:hover {
     justify-content: space-between;
 }
 
+.pending-wide {
+    width: 100%;
+    padding: 0 15px 0 0;
+    margin: 20px auto;
+    display: flex;
+    align-items: flex-start;
+    justify-content: space-between;
+}
+
 .pending-lists {
     position: relative;
     padding: 15px;
@@ -477,7 +486,7 @@ a.logo-text:hover {
     background: #fff;
     box-shadow: 0 2px 11px 0 #00000008;
     border-radius: 4px;
-    margin: 0 15px 0 0; 
+    margin: 0 15px 0 0;
 }
 
 .specimen-processing {
@@ -535,10 +544,15 @@ a.logo-text:hover {
 
 .content-table {
     margin: -1px 0 0 0;
+    overflow: auto;
 }
 
 .content-table-batch {
     margin: 15px 0 0 0;
+}
+
+.wide-table {
+    width: 900px;
 }
 
 .table-spinner {
@@ -1417,3 +1431,68 @@ a.logo-text:hover {
     margin: 5px 0 0 0;
 }
 
+.fixed-hist-shadow {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: #2929298f;
+    z-index: 999;
+}
+
+.fixed-hist-shadow-hidden {
+    display: none;
+}
+
+.popup-history {
+    padding: 25px;
+    width: 500px;
+    background: #fff;
+    border-radius: 5px;
+    box-shadow: 0 2px 8px 0 #00000012;
+}
+
+.popup-history h2 {
+    text-align: center;
+}
+
+.flex-title-pop {
+    display: flex;
+}
+
+.flex-title-pop div:first-child{
+    width: 150px;
+}
+
+.for-history > .flex-title-pop {
+    background: #e6e6e6;
+    margin: 15px 0 10px 0;
+    padding: 4px 15px;
+}
+
+.for-history > .flex-title-pop div p {
+    font-weight: 700;
+}
+
+.pop-height-overflow {
+    height: 450px;
+    overflow: auto;
+}
+
+.pop-height-overflow > .flex-title-pop {
+    margin: 5px 0 5px 0;
+    padding: 4px 15px;
+    cursor: pointer;
+}
+
+.pop-height-overflow > .flex-title-pop div p {
+    font-weight: 600;
+}
+
+.pop-height-overflow > .flex-title-pop:hover {
+    background: #f1fffc
+}

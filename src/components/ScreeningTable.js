@@ -11,8 +11,8 @@ export class ScreeningTable extends Component {
     initColumns = () => {
         return [
             {
-                Header: 'Access',
-                accessor: 'access',
+                Header: 'Case #',
+                accessor: 'case',
                 style: {
                     textAlign: 'left',
                 }
@@ -22,12 +22,24 @@ export class ScreeningTable extends Component {
                 accessor: 'fullName',
             },
             {
-                Header: 'Tray',
-                accessor: 'tray',
-            },
-            {
                 Header: 'Speci',
                 accessor: 'speci',
+            },
+            {
+                Header: 'Days old',
+                accessor: 'daysOld',
+            },
+            {
+                Header: 'Submission time',
+                accessor: 'submissionTime',
+            },
+            {
+                Header: 'Molecular',
+                accessor: 'molecular',
+            },
+            {
+                Header: 'Screened by',
+                accessor: 'screenedBy',
             }
         ];
     }
@@ -51,15 +63,17 @@ export class ScreeningTable extends Component {
         list.forEach(row => row.fullName = `${row.name} ${row.lastName}`);
         return (
             <div className="content-table">
-                <ReactTable
-                    data={list}
-                    getTdProps={this.handleRowClick}
-                    columns={this.initColumns()}
-                    resizable={false}
-                    filterable={true}
-                    defaultPageSize={15}
-                    noDataText={text}
-                />
+                <div className="wide-table">
+                    <ReactTable
+                        data={list}
+                        getTdProps={this.handleRowClick}
+                        columns={this.initColumns()}
+                        resizable={false}
+                        filterable={true}
+                        defaultPageSize={15}
+                        noDataText={text}
+                    />
+                </div>
             </div>
         )
     }
