@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import SubmitButton from './SubmitButton';
-import { savePatient, submitPatient, cancelPatient, deletePatient } from '../store/actions/SubmitGyn';
+import { savePatient, submitPatient, cancelPatient, deletePatient, submitScreening } from '../store/actions/SubmitGyn';
 
 
 
@@ -11,7 +11,11 @@ export class SubmitCyt extends Component {
     }
 
     submit = (e) => {
-        this.props.submitPatient(this.props.patient);
+        if (window.location.href.includes(`screening`)) {
+            this.props.submitScreening(this.props.patient);
+        } else {
+            this.props.submitPatient(this.props.patient);
+        }
     }
 
     cancel = (e) => {
@@ -54,7 +58,8 @@ const mapDispatchToProps = dispatch => ({
     savePatient: (patient) => dispatch(savePatient(patient)),
     submitPatient: (patient) => dispatch(submitPatient(patient)),
     cancelPatient: (patient) => dispatch(cancelPatient(patient)),
-    deletePatient: (patient) => dispatch(deletePatient(patient))
+    deletePatient: (patient) => dispatch(deletePatient(patient)),
+    submitScreening: (patient) => dispatch(submitScreening(patient)),
 })
 
 export default connect(mapStateToProps, mapDispatchToProps)(SubmitCyt)

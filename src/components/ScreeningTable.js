@@ -3,6 +3,7 @@ import { connect } from 'react-redux';
 import ReactTable from "react-table";
 import '../table.css';
 import { showSpecimen } from '../store/actions/Specimen';
+import moment from 'moment';
 
 
 
@@ -16,6 +17,10 @@ export class ScreeningTable extends Component {
                 style: {
                     textAlign: 'left',
                 }
+            },
+            {
+                Header: 'Status',
+                accessor: 'status',
             },
             {
                 Header: 'Patient',
@@ -39,7 +44,7 @@ export class ScreeningTable extends Component {
             },
             {
                 Header: 'Screened by',
-                accessor: 'screenedBy',
+                accessor: 'updatedBy',
             }
         ];
     }
@@ -60,7 +65,13 @@ export class ScreeningTable extends Component {
     }
 
     renderList = (list, text) => {
-        list.forEach(row => row.fullName = `${row.name} ${row.lastName}`);
+        const currDate = moment();
+        
+        list.forEach(row => {
+            row.fullName = `${row.name} ${row.lastName}`;
+            row.daysOld = currDate.diff(moment(row.received), 'days');
+            row.submissionTime = row.lastUpdate ? moment(row.lastUpdate).format('MM/DD/YYYY h:mm a') : null;
+        });
         return (
             <div className="content-table">
                 <div className="wide-table">

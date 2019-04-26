@@ -6,7 +6,6 @@ import { setList } from './Analyzes';
 
 
 export const savePatient = (patient) => {
-
     return async (dispatch, getState) => {
         const analysis = getState().activeAnalysis;
         try {
@@ -38,6 +37,7 @@ export const savePatient = (patient) => {
         }
     }
 };
+
 
 export const submitPatient = (patient) => {
     return async (dispatch, getState) => {
@@ -106,6 +106,7 @@ export const cancelPatient = (patient) => {
     }
 };
 
+
 export const deletePatient = (patient) => {
     return async (dispatch, getState) => {
         const analysis = getState().activeAnalysis;
@@ -135,6 +136,41 @@ export const deletePatient = (patient) => {
             console.log(err);
             dispatch(showDeleteSpinner(false));
             dispatch(showNotification(`Error!`, `notification-show`));
+        }
+    }
+};
+
+
+export const submitScreening = (patient) => {
+    return async (dispatch, getState) => {
+        const analysis = getState().activeAnalysis;
+        try {
+            const user = getState().user.login;
+            dispatch(showSubmitSpinner(true));
+            delete patient.id;
+            patient.lastUpdate = Date.now();
+            patient.updatedBy = user;
+            switch (analysis) {
+                case 0:
+                    patient.stage = `pathologist`;
+                    patient.status = `pathologist`;
+                    await API.post(`/v1/submit-screening-gyn`, patient);
+                    break;
+                case 1:
+                    patient.stage = `pathologist`;
+                    await API.post(`/v1/submit-screening-ngyn`, patient);
+                    break;
+                case 2:
+                    patient.stage = `pathologist`;
+                    await API.post(`/v1/submit-screening-uvfish`, patient);
+                    break;
+                default: break;
+            }
+            window.location = `/account/screening`;
+        } catch (err) {
+            console.log(err);
+            dispatch(showSubmitSpinner(false));
+            dispatch(showNotification(err.response ? err.response.data : `Error!`, `notification-show`));
         }
     }
 };
