@@ -160,11 +160,11 @@ export class Navigation extends Component {
                             onClick={this.handleClick}
                             innerRef={el => this.history = el}
                             to="/account/history">History</Link>
-                        <Link
+                        {/* <Link
                             id="maintenance"
                             onClick={this.handleClick}
                             innerRef={el => this.maintenance = el}
-                            to="/account/stain-maintenance">Stain Maintenance</Link>
+                            to="/account/stain-maintenance">Stain Maintenance</Link> */}
                     </div>
                     <div className="work-info">
                         <p>GYN: <span className="blue-text">{this.props.gyn}</span></p>

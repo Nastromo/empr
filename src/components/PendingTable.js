@@ -47,6 +47,22 @@ export class PendingTable extends Component {
         }
     }
 
+    rowStyle = (state, rowInfo, column) => {
+        if (rowInfo) {
+            console.log(rowInfo.original.stage)
+            // console.log(rowInfo)
+            const s = {
+                style: {
+                    background: rowInfo.original.stage === `case canceled` || rowInfo.original.stage === `case deleted` ? '#fffae1' : '#fff'
+                }
+            }
+            console.log(s)
+            return s;
+        } else {
+            return {};
+        }
+    }
+
     renderList = (list, text) => {
         list.forEach(row => row.fullName = `${row.name} ${row.lastName}`);
         return (
@@ -54,6 +70,7 @@ export class PendingTable extends Component {
                 <ReactTable
                     data={list}
                     getTdProps={this.handleRowClick}
+                    getTrProps={this.rowStyle}
                     columns={this.initColumns()}
                     resizable={false}
                     filterable={true}

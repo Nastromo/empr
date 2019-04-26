@@ -33,6 +33,10 @@ export class PatientInformation extends Component {
             return (
                 <div className={this.props.isCollapsed ? `sect-hide sect` : `sect`}>
                     <div onClick={this.transform} className="section-title">Patient Information</div>
+                    <p className="marg-orange">
+                        {this.props.stage === `case canceled` ||
+                        this.props.stage === `case deleted` ? this.props.stage : ``}
+                    </p>
                     <div className="flex-vertical-start">
                         <div className="section-info">
                             <div>
@@ -107,6 +111,7 @@ export class PatientInformation extends Component {
 }
 
 const mapStateToProps = (state) => ({
+    stage: state.patient.stage,
     patient: state.patient,
     isCollapsed: state.patientIsCollapsed
 })

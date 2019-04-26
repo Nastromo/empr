@@ -975,6 +975,17 @@ a.logo-text:hover {
     background: #23c6c8;
 }
 
+.cancel {
+    max-width: 150px;
+    margin: 0 10px 0 0;
+}
+
+
+
+.cancel .green-btn {
+    background: #cccccc;
+}
+
 .fail .green-btn{
     background: #cccccc;
 }
@@ -1495,4 +1506,11 @@ a.logo-text:hover {
 
 .pop-height-overflow > .flex-title-pop:hover {
     background: #f1fffc
+}
+
+.marg-orange {
+    padding: 7px 15px 0;
+    font-size: 1.2rem;
+    font-weight: 700;
+    color: #ebb522;
 }

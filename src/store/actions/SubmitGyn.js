@@ -1,5 +1,5 @@
 import API from '../../utils/Api';
-import { showSaveSpinner, showSubmitSpinner } from './Spinner';
+import { showSaveSpinner, showSubmitSpinner, showCancelSpinner, showDeleteSpinner } from './Spinner';
 import { showNotification } from './Notification';
 import { setList } from './Analyzes';
 
@@ -67,6 +67,73 @@ export const submitPatient = (patient) => {
         } catch (err) {
             console.log(err);
             dispatch(showSubmitSpinner(false));
+            dispatch(showNotification(`Error!`, `notification-show`));
+        }
+    }
+};
+
+
+export const cancelPatient = (patient) => {
+    return async (dispatch, getState) => {
+        const analysis = getState().activeAnalysis;
+        try {
+            const user = getState().user.login;
+            dispatch(showCancelSpinner(true));
+            delete patient.id;
+            patient.lastUpdate = Date.now();
+            patient.updatedBy = user;
+            switch (analysis) {
+                case 0:
+                    patient.stage = `case canceled`;
+                    await API.post(`/v1/cancel-gyn`, patient);
+                    break;
+                case 1:
+                    patient.stage = `case canceled`;
+                    await API.post(`/v1/cancel-ngyn`, patient);
+                    break;
+                case 2:
+                    patient.stage = `case canceled`;
+                    await API.post(`/v1/cancel-uvfish`, patient);
+                    break;
+                default: break;
+            }
+            window.location = `/account/pending`;
+        } catch (err) {
+            console.log(err);
+            dispatch(showCancelSpinner(false));
+            dispatch(showNotification(`Error!`, `notification-show`));
+        }
+    }
+};
+
+export const deletePatient = (patient) => {
+    return async (dispatch, getState) => {
+        const analysis = getState().activeAnalysis;
+        try {
+            const user = getState().user.login;
+            dispatch(showDeleteSpinner(true));
+            delete patient.id;
+            patient.lastUpdate = Date.now();
+            patient.updatedBy = user;
+            switch (analysis) {
+                case 0:
+                    patient.stage = `case deleted`;
+                    await API.post(`/v1/delete-gyn`, patient);
+                    break;
+                case 1:
+                    patient.stage = `case deleted`;
+                    await API.post(`/v1/delete-ngyn`, patient);
+                    break;
+                case 2:
+                    patient.stage = `case deleted`;
+                    await API.post(`/v1/delete-uvfish`, patient);
+                    break;
+                default: break;
+            }
+            window.location = `/account/pending`;
+        } catch (err) {
+            console.log(err);
+            dispatch(showDeleteSpinner(false));
             dispatch(showNotification(`Error!`, `notification-show`));
         }
     }
