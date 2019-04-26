@@ -15,6 +15,7 @@ import { activeGrossTab } from './GrossTabs';
 import { activePreTab } from './PreTabs';
 import { gynCounter, popupStatus } from './SetGyn';
 import { historyPopup } from './HistoryPopup';
+import { histPopup } from './HistPopup';
 
 
 
@@ -76,6 +77,7 @@ const RootReducer = combineReducers({
     screeningList,
 
     historyPopup,
+    histPopup,
 });
 
 export default RootReducer;

@@ -629,6 +629,11 @@ a.logo-text:hover {
     display: flex;
 }
 
+.padd {
+    margin: 12px 0 0 12px;
+    display: flex;
+}
+
 .history img {
     margin: 0 4px 0 0;
 }

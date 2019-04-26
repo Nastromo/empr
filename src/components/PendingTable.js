@@ -49,14 +49,11 @@ export class PendingTable extends Component {
 
     rowStyle = (state, rowInfo, column) => {
         if (rowInfo) {
-            console.log(rowInfo.original.stage)
-            // console.log(rowInfo)
             const s = {
                 style: {
                     background: rowInfo.original.stage === `case canceled` || rowInfo.original.stage === `case deleted` ? '#fffae1' : '#fff'
                 }
             }
-            console.log(s)
             return s;
         } else {
             return {};
