@@ -162,8 +162,19 @@ export const submitScreening = (patient) => {
                             break;
                         }
                     }
-                    console.log(patient.status)
                     await API.post(`/v1/submit-screening-gyn`, patient);
+
+                    const fd = new FormData();
+                    const photos = getState().photos;
+                    
+                    for (let j = 0; j < photos.length; j++) {
+                        fd.append(`image`, photos[j]);    
+                    }
+                    
+                    await API.post(`/v1/add-photos`, fd, {
+                        'Content-Type': `multipart/form-data`
+                    });
+
                     break;
                 case 1:
                     await API.post(`/v1/submit-screening-ngyn`, patient);

@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
-import { showPhotoPreview } from '../store/actions/Photos';
+import { showPhotoPreview, bindImages } from '../store/actions/Photos';
 
 
 
@@ -8,16 +8,15 @@ import { showPhotoPreview } from '../store/actions/Photos';
 export class Photos extends Component {
     handleChange = e => {
         const files = e.target.files;
-        const fd = new FormData();
         let photos = [];
         for (let i = 0; i < files.length; i++) {
-            fd.append(`image`, files[i]);
             photos.push({
                 url: URL.createObjectURL(files[i]),
                 title: files[i].name
             });
         }
         this.props.showPhotoPreview(photos);
+        this.props.bindImages(files);
     }
 
     delete = e => {
@@ -60,7 +59,8 @@ const mapStateToProps = (state) => ({
 })
 
 const mapDispatchToProps = dispatch => ({
-    showPhotoPreview: (photos) => dispatch(showPhotoPreview(photos))
+    showPhotoPreview: (photos) => dispatch(showPhotoPreview(photos)),
+    bindImages: (photos) => dispatch(bindImages(photos)),
 })
 
 export default connect(mapStateToProps, mapDispatchToProps)(Photos)

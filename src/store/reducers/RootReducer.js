@@ -17,6 +17,7 @@ import { gynCounter, popupStatus } from './SetGyn';
 import { historyPopup } from './HistoryPopup';
 import { histPopup } from './HistPopup';
 import { slidePopup } from './SlidePopup';
+import { photos } from './Photos';
 
 
 
@@ -79,7 +80,9 @@ const RootReducer = combineReducers({
 
     historyPopup,
     histPopup,
-    slidePopup
+    slidePopup,
+
+    photos
 });
 
 export default RootReducer;
