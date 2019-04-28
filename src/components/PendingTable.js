@@ -51,7 +51,7 @@ export class PendingTable extends Component {
         if (rowInfo) {
             const s = {
                 style: {
-                    background: rowInfo.original.stage === `case canceled` || rowInfo.original.stage === `case deleted` ? '#fffae1' : '#fff'
+                    background: rowInfo.original.stage === `case canceled` || rowInfo.original.stage === `case deleted` || rowInfo.original.stage === `Pop Slide` || rowInfo.original.stage === `Cell Block` ? '#fffae1' : '#fff'
                 }
             }
             return s;

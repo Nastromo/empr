@@ -35,7 +35,9 @@ export class PatientInformation extends Component {
                     <div onClick={this.transform} className="section-title">Patient Information</div>
                     <p className="marg-orange">
                         {this.props.stage === `case canceled` ||
-                        this.props.stage === `case deleted` ? this.props.stage : ``}
+                        this.props.stage === `case deleted` || 
+                        this.props.stage === `Pop Slide` || 
+                        this.props.stage === `Cell Block` ? this.props.stage : ``}
                     </p>
                     <div className="flex-vertical-start">
                         <div className="section-info">

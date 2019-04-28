@@ -960,6 +960,7 @@ a.logo-text:hover {
     display: flex;
     padding: 15px 0 15px 15px;
     justify-content: flex-end;
+    width: 100%;
 }
 
 .save {
@@ -1470,6 +1471,7 @@ a.logo-text:hover {
     background: #fff;
     border-radius: 5px;
     box-shadow: 0 2px 8px 0 #00000012;
+    z-index: 999;
 }
 
 .popup-history h2 {
@@ -1518,4 +1520,24 @@ a.logo-text:hover {
     font-size: 1.2rem;
     font-weight: 700;
     color: #ebb522;
+}
+
+.flex-bl-btns {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.blue-add.submit .green-btn {
+    background: #3569da;
+    height: 45px;
+    width: 150px;
+}
+
+.padd-up {
+    width: 100% !important;
+    display: flex;
+    height: 45px;
+    margin: 10px 0 0 0;
+    justify-content: flex-end;
 }

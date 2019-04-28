@@ -115,6 +115,10 @@ export const dropDown = (state = {}, action) => {
                     newState = JSON.parse(JSON.stringify(state));
                     newState.qcResultsStatus2 = action.obj.status;
                     return newState;
+                case `addSlide`:
+                    newState = JSON.parse(JSON.stringify(state));
+                    newState.addSlide = action.obj.status;
+                    return newState;
                 default: return state;
             }
 

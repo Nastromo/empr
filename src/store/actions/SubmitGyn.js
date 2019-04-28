@@ -140,6 +140,7 @@ export const deletePatient = (patient) => {
     }
 };
 
+const toPathologist = [`ADENO`, `AGEC`, `AGEC N`, `AGEM`, `AGUS`, `AGUS H`, `AGUS N`, `AIS`, `ASCUS`, `ASCUS H`, `CIS`, `H VaIN`, `HSIL`, `HSIL S`, `L VaIN`, `LSIL`, `LSIL H`, `MNEO`, `SCC`, `SMC`];
 
 export const submitScreening = (patient) => {
     return async (dispatch, getState) => {
@@ -150,18 +151,24 @@ export const submitScreening = (patient) => {
             delete patient.id;
             patient.lastUpdate = Date.now();
             patient.updatedBy = user;
+            patient.stage = `final`;
+            patient.status = `final`;
             switch (analysis) {
                 case 0:
-                    patient.stage = `pathologist`;
-                    patient.status = `pathologist`;
+                    for (let i = 0; i < toPathologist.length; i++) {
+                        if (patient.preAnalysis.includes(toPathologist[i])) {
+                            patient.stage = `pathologist`;
+                            patient.status = `pathologist`;
+                            break;
+                        }
+                    }
+                    console.log(patient.status)
                     await API.post(`/v1/submit-screening-gyn`, patient);
                     break;
                 case 1:
-                    patient.stage = `pathologist`;
                     await API.post(`/v1/submit-screening-ngyn`, patient);
                     break;
                 case 2:
-                    patient.stage = `pathologist`;
                     await API.post(`/v1/submit-screening-uvfish`, patient);
                     break;
                 default: break;

@@ -6,6 +6,7 @@ import CytologyInformation from './CytologyInformation';
 import SubmitCyt from './SubmitCyt';
 import Preliminary from './Preliminary';
 import Photos from './Photos';
+import AdditionalSlide from './AdditionalSlide';
 
 
 
@@ -21,7 +22,10 @@ export class ScreeningEntry extends Component {
                 <CytologyInformation />
                 <Preliminary />
                 <Photos />
-                <SubmitCyt />
+                <div className="flex-bl-btns">
+                    <AdditionalSlide />
+                    <SubmitCyt />
+                </div>
             </div>
         )
     }

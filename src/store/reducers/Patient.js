@@ -134,6 +134,10 @@ export const patient = (state = {}, action) => {
                     newState = JSON.parse(JSON.stringify(state));
                     newState.source = action.obj.option;
                     return newState;
+                case `addSlide`:
+                    newState = JSON.parse(JSON.stringify(state));
+                    newState.addSlide = action.obj.option;
+                    return newState;
                 case `receivedSource`:
                     newState = JSON.parse(JSON.stringify(state));
                     newState.receivedSource = action.obj.option;
@@ -261,7 +265,7 @@ export const patient = (state = {}, action) => {
             newState.slide2Comment = action.text;
             return newState;
 
-            case `CHANGE_STAIN_QC_COMMENT`:
+        case `CHANGE_STAIN_QC_COMMENT`:
             newState = JSON.parse(JSON.stringify(state));
             newState.qcComment = action.text;
             return newState;
