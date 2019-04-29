@@ -162,9 +162,14 @@ export const submitScreening = (patient) => {
                             break;
                         }
                     }
+
                     await API.post(`/v1/submit-screening-gyn`, patient);
 
                     const fd = new FormData();
+                    fd.set(`title`, getState().activeAnalysis);
+                    for ( var key in getState().patient ) {
+                        fd.set(key, getState().patient[key]);
+                    }
                     const photos = getState().photos;
                     
                     for (let j = 0; j < photos.length; j++) {
