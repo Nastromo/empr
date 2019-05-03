@@ -28,8 +28,7 @@ export class PatientInformation extends Component {
 
     render() {
         if (this.props.patient.diagnosis) {
-            this.obj = JSON.parse(this.props.patient.diagnosis);
-            const diagnosis = this.obj.d;
+            const diagnosis = JSON.parse(this.props.patient.diagnosis);
             return (
                 <div className={this.props.isCollapsed ? `sect-hide sect` : `sect`}>
                     <div onClick={this.transform} className="section-title">Patient Information</div>
@@ -96,7 +95,7 @@ export class PatientInformation extends Component {
                                     return (
                                         <div key={i} className="marg6">
                                             <p id="textCode">{diag.code}</p>
-                                            <p id="diagnosis">{diag.text}</p>
+                                            <p id="diagnosis">{diag.description}</p>
                                         </div>
                                     )
                                 })
