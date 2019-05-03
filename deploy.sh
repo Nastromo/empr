@@ -14,5 +14,3 @@ cd empr
 npm install
 chcon -Rt httpd_sys_content_t ./build
 ENDSSH
-
-"build": "GENERATE_SOURCEMAP=false react-scripts build",
