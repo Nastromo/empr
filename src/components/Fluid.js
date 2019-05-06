@@ -15,7 +15,7 @@ export class Fluid extends Component {
         this.turbidity = [`Select`, `Clear`, `Cloudy`, `Dark`, `Hazy`, `Turbid`, `Other`];
         this.color = [`Select`, `Yellow`, `Light Yellow`, `Colorless`, `Amber`, `Straw`, `White`, `Red`, `Brown`, `Green`, `Other`];
         this.specType = [`Select`, `Fine Needle Aspirate`, `Fluid Aspirate`, `Fluid`, `Fluid with Brush tip`, `Brushing`, `Other`];
-        this.fixative = [`Select`, `Alcohol`, `Spray Fixative`, `TP PreservCyt`, `TP CytoLyt`, `Unspecified`, `None`, `Other`];
+        this.fixative = [`Select`, `Alcohol`, `Spray Fixative`, `TP PreservCyt`, `TP CytoLyt`, `Unspecified`, `None`, `Other`, `Unfixed`];
         this.slideType = [`Select`, `ThinPrep`, `Conventional Smear`, `Other`];
     }
 

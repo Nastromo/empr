@@ -8,31 +8,52 @@ import Preliminary from './Preliminary';
 import Photos from './Photos';
 import AdditionalSlide from './AdditionalSlide';
 
+import ClinicalInformation from './ClinicalInformation';
+import Interpretation from './Interpretation';
+import FishComments from './FishComments';
+
 
 
 
 export class ScreeningEntry extends Component {
 
     render() {
-        return (
-            <div className="specimen-processing">
-                <div className="top-section-title">SCREENING ENTRY</div>
-                <PatientInformation />
-                <Grossing />
-                <CytologyInformation />
-                <Preliminary />
-                <Photos />
-                <div className="flex-bl-btns">
-                    <AdditionalSlide />
-                    <SubmitCyt />
+        if (this.props.index === 0 || this.props.index === 1) {
+            return (
+                <div className="specimen-processing">
+                    <div className="top-section-title">SCREENING ENTRY</div>
+                    <PatientInformation />
+                    <Grossing />
+                    <CytologyInformation />
+                    <Preliminary />
+                    <Photos />
+                    <div className="flex-bl-btns">
+                        <AdditionalSlide />
+                        <SubmitCyt />
+                    </div>
                 </div>
-            </div>
-        )
+            )
+        } else {
+            return (
+                <div className="specimen-processing">
+                    <div className="top-section-title">SCREENING ENTRY</div>
+                    <PatientInformation />
+                    <ClinicalInformation />
+                    <Interpretation />
+                    <FishComments />
+
+                    <div className="flex-bl-btns">
+                        <AdditionalSlide />
+                        <SubmitCyt />
+                    </div>
+                </div>
+            )
+        }
     }
 }
 
 const mapStateToProps = (state) => ({
-
+    index: state.activeAnalysis,
 })
 
 const mapDispatchToProps = {

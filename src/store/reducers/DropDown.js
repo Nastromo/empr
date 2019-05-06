@@ -119,6 +119,14 @@ export const dropDown = (state = {}, action) => {
                     newState = JSON.parse(JSON.stringify(state));
                     newState.addSlide = action.obj.status;
                     return newState;
+                case `preparationMethod`:
+                    newState = JSON.parse(JSON.stringify(state));
+                    newState.preparationMethod = action.obj.status;
+                    return newState;
+                case `interpretation`:
+                    newState = JSON.parse(JSON.stringify(state));
+                    newState.interpretation = action.obj.status;
+                    return newState;
                 default: return state;
             }
 

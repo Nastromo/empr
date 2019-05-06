@@ -138,6 +138,15 @@ export const patient = (state = {}, action) => {
                     newState = JSON.parse(JSON.stringify(state));
                     newState.addSlide = action.obj.option;
                     return newState;
+                case `preparationMethod`:
+                    newState = JSON.parse(JSON.stringify(state));
+                    newState.preparationMethod = action.obj.option;
+                    return newState;
+                case `interpretation`:
+                    newState = JSON.parse(JSON.stringify(state));
+                    newState.interpretation = action.obj.option;
+                    return newState;
+
                 case `receivedSource`:
                     newState = JSON.parse(JSON.stringify(state));
                     newState.receivedSource = action.obj.option;
@@ -312,6 +321,26 @@ export const patient = (state = {}, action) => {
         case `SET_PHOTOS`:
             newState = JSON.parse(JSON.stringify(state));
             newState.photos = action.photos;
+            return newState;
+
+        case `SET_CELLS`:
+            newState = JSON.parse(JSON.stringify(state));
+            newState.numberCells = action.text;
+            return newState;
+
+        case `SET_CHROME`:
+            newState = JSON.parse(JSON.stringify(state));
+            newState.numberChroms = action.text;
+            return newState;
+
+        case `SET_ZERO`:
+            newState = JSON.parse(JSON.stringify(state));
+            newState.numberZero = action.text;
+            return newState;
+
+        case `SET_INTER_COMMENT`:
+            newState = JSON.parse(JSON.stringify(state));
+            newState.interpretationComment = action.text;
             return newState;
 
         default: return state;
