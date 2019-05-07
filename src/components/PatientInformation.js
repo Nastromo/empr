@@ -4,6 +4,7 @@ import pdf from '../img/pdf.svg';
 import book from '../img/book.svg';
 import { collapsePatient } from '../store/actions/Collapse';
 import { showHistoryPopup } from '../store/actions/HistoryPopup';
+import moment from 'moment';
 
 
 
@@ -57,7 +58,7 @@ export class PatientInformation extends Component {
 
                             <div>
                                 <p>Dob:</p>
-                                <p>{this.props.patient.dob}</p>
+                                <p>{moment(this.props.patient.dob).format("MM DD YYYY")}</p>
                             </div>
 
                             <div>
