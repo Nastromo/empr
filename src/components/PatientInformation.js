@@ -53,12 +53,12 @@ export class PatientInformation extends Component {
 
                             <div>
                                 <p>Received:</p>
-                                <p>{this.props.patient.received}</p>
+                                <p>{moment(this.props.patient.received).format("MM/DD/YYYY h:mm a")}</p>
                             </div>
 
                             <div>
                                 <p>Dob:</p>
-                                <p>{moment(this.props.patient.dob).format("MM DD YYYY")}</p>
+                                <p>{moment(this.props.patient.dob).format("MM/DD/YYYY")}</p>
                             </div>
 
                             <div>
