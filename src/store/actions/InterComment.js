@@ -3,12 +3,12 @@ export const changeComment = (text) => ({
     text
 });
 
-export const externalComment = (text) => ({
+export const externComment = (text) => ({
     type: 'SET_EXTERNAL_COMMENT',
     text
 });
 
-export const internalComment = (text) => ({
+export const internComment = (text) => ({
     type: 'SET_INTERNAL_COMMENT',
     text
 });

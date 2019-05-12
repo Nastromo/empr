@@ -73,6 +73,16 @@ export class PatientInformation extends Component {
                                 <p>Test Description:</p>
                                 <p>{this.props.testDescription}</p>
                             </div>
+
+                            <div>
+                                <p>Screened by:</p>
+                                <p>{this.props.patient.updatedBy}</p>
+                            </div>
+                            <div>
+                                <p>Date:</p>
+                                <p>{moment(this.props.patient.lastUpdate).format("MM/DD/YYYY h:mm a")}</p>
+                            </div>
+
                         </div>
                         <div className="section-info">
                             <div>

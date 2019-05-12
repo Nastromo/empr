@@ -19,10 +19,6 @@ export class ScreeningTable extends Component {
                 }
             },
             {
-                Header: 'Status',
-                accessor: 'status',
-            },
-            {
                 Header: 'Patient',
                 accessor: 'fullName',
             },
@@ -35,7 +31,7 @@ export class ScreeningTable extends Component {
                 accessor: 'daysOld',
             },
             {
-                Header: 'Submission time',
+                Header: 'Processing Time',
                 accessor: 'submissionTime',
             },
             {

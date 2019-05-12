@@ -343,6 +343,16 @@ export const patient = (state = {}, action) => {
             newState.interpretationComment = action.text;
             return newState;
 
+        case `SET_EXTERNAL_COMMENT`:
+            newState = JSON.parse(JSON.stringify(state));
+            newState.externalComment = action.text;
+            return newState;
+
+        case `SET_INTERNAL_COMMENT`:
+            newState = JSON.parse(JSON.stringify(state));
+            newState.internalComment = action.text;
+            return newState;
+
         default: return state;
     }
 }

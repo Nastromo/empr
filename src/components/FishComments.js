@@ -1,9 +1,16 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
-import { externalComment, internalComment } from '../store/actions/InterComment';
+import { externComment, internComment } from '../store/actions/InterComment';
 
 
 export class FishComments extends Component {
+    changeExternal = (e) => {
+        this.props.setExternalComment(e.target.value);
+    }
+
+    changeInternal = (e) => {
+        this.props.setInternalComment(e.target.value);
+    }
 
     render() {
         return (
@@ -12,7 +19,7 @@ export class FishComments extends Component {
                     <p className="left-text-ng">External comments</p>
                     <textarea
                         className="gross-other"
-                        value={this.props.comment}
+                        value={this.props.exterComment}
                         onChange={this.changeExternal}
                     ></textarea>
                 </div>
@@ -20,7 +27,7 @@ export class FishComments extends Component {
                     <p className="left-text-ng">Internal comments</p>
                     <textarea
                         className="gross-other"
-                        value={this.props.comment}
+                        value={this.props.interComment}
                         onChange={this.changeInternal}
                     ></textarea>
                 </div>
@@ -30,11 +37,13 @@ export class FishComments extends Component {
 }
 
 const mapStateToProps = (state) => ({
-
+    exterComment: state.patient.externalComment,
+    interComment: state.patient.internalComment,
 })
 
-const mapDispatchToProps = {
-
-}
+const mapDispatchToProps = dispatch => ({
+    setInternalComment: (text) => dispatch(internComment(text)),
+    setExternalComment: (text) => dispatch(externComment(text))
+})
 
 export default connect(mapStateToProps, mapDispatchToProps)(FishComments)
