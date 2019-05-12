@@ -56,15 +56,27 @@ export class PapHistory extends Component {
                             id="specimenReceived" />
                     </div>
                 </div>
-                <div>
-                    <p className="field-title">Other</p>
-                    <textarea 
-                        className="gross-other"
-                        ref={el => this.otherGross = el}
-                        placeholder="Enter other relevant grossing information here"
-                        value={this.props.patient.other}
-                        onChange={this.handleChange}
-                    ></textarea>
+                <div className="fle-com">
+                    <div id="marg-rig" className="basis-gg">
+                        <p className="field-title">Source Other</p>
+                        <textarea
+                            className="gross-other"
+                            ref={el => this.otherGross = el}
+                            placeholder="Enter other relevant grossing information here"
+                            value={this.props.patient.other}
+                            onChange={this.handleChange}
+                        ></textarea>
+                    </div>
+                    <div className="basis-gg">
+                        <p className="field-title">Received Other</p>
+                        <textarea
+                            className="gross-other"
+                            ref={el => this.otherGross = el}
+                            placeholder="Enter other relevant grossing information here"
+                            value={this.props.patient.receivedOther}
+                            onChange={this.handleChange}
+                        ></textarea>
+                    </div>
                 </div>
             </div>
         )

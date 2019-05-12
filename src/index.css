@@ -296,10 +296,35 @@ button {
     z-index: 190;
 }
 
+.fake-picker {
+    width: 100%;
+    height: 37px;
+    border: 1px solid #dadada;
+    border-radius: 4px;
+}
+
 .white-back {
     background: #fff;
     width: 100%;
     box-shadow: 0 2px 11px 0 #00000008;
+}
+
+.fle-com {
+    display: flex;
+}
+
+.basis-gg {
+    flex-basis: 50%;
+}
+
+#marg-rig {
+    margin: 0 15px 0 0;
+}
+
+.inst-p {
+    font-size: 0.8rem;
+    font-weight: 700;
+    margin: 5px 0;
 }
 
 .main-nav {
@@ -567,7 +592,7 @@ a.logo-text:hover {
 .sect {
     margin: 35px 0 0 0;
     width: 100%;
-    border: 1px solid #f5f5f5;
+    border: 1px solid #dadada;
     border-radius: 4px;
     max-height: 900px;
 }
@@ -668,7 +693,7 @@ a.logo-text:hover {
     display: flex;
     flex-direction: column;
     border-radius: 4px;
-    border: 1px solid #f5f5f5;
+    border: 1px solid #dadada;
     margin: 0 15px 15px;;
     height: 150px;
     overflow: auto;
@@ -731,7 +756,7 @@ a.logo-text:hover {
     width: 100%;
     height: 37px;
     border-radius: 4px;
-    border: 1px solid #ececec;
+    border: 1px solid #dadada;
     color: #333;
     font-size: 0.84rem;
     font-weight: 600;
@@ -755,7 +780,7 @@ a.logo-text:hover {
     width: 100%;
     height: 250px;
     border-radius: 4px;
-    border: 1px solid #ececec;
+    border: 1px solid #dadada;
     box-shadow: 0 2px 8px 0 #00000012;
     color: #333;
     font-size: 0.84rem;
@@ -785,7 +810,7 @@ a.logo-text:hover {
     display: flex;
     align-items: center;
     padding: 0 15px;
-    border-bottom: 1px solid #ececec;
+    border-bottom: 1px solid #dadada;
 }
 
 .menu-item:hover {
@@ -827,7 +852,7 @@ a.logo-text:hover {
     height: 23px;
     width: 23px;
     border-radius: 4px;
-    border: 1px solid #ececec;
+    border: 1px solid #dadada;
     cursor: pointer;
     margin: 3px 11px 3px 0;
 }
@@ -872,7 +897,7 @@ a.logo-text:hover {
     padding: 9px 8px;
     margin: 0 0 0 8px;
     border-radius: 4px;
-    border: 1px solid #ececec;
+    border: 1px solid #dadada;
     cursor: pointer;
 }
 
@@ -912,6 +937,7 @@ a.logo-text:hover {
 .instr-btn {
     height: 37px;
     flex-basis: 20%;
+    margin: 28px 0 0 0;
 }
 
 .flex-instr {

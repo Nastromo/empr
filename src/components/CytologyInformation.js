@@ -21,23 +21,36 @@ export class CytologyInformation extends Component {
     }
 
     render() {
-        return (
-            <div className={this.props.isCollapsed ? `sect-hide sect` : `sect`}>
-                <div onClick={this.transform} className="section-title">Cytology Information</div>
-                <div className="history padd">
-                    <div onClick={this.showHist}>Histology cases</div>
+        if (window.location.href.includes(`/account/pending`)) {
+            return (
+                <div className={this.props.isCollapsed ? `sect-hide sect` : `sect`}>
+                    <div onClick={this.transform} className="section-title">Slide Preparation</div>
+    
+                    <CyInfo />
+                    <InstrumentsPanel />
+                    <CommentsPanel />
                 </div>
-
-                <CyInfo />
-                <InstrumentsPanel />
-                <CommentsPanel />
-            </div>
-        )
+            )
+        } else {
+            return (
+                <div className={this.props.isCollapsed ? `sect-hide sect` : `sect`}>
+                    <div onClick={this.transform} className="section-title">Slide Preparation</div>
+                    <div className="history padd">
+                        <div onClick={this.showHist}>Histology cases</div>
+                    </div>
+    
+                    <CyInfo />
+                    <InstrumentsPanel />
+                    <CommentsPanel />
+                </div>
+            )
+        }
     }
 }
 
 const mapStateToProps = (state) => ({
     isCollapsed: state.infoIsCollapsed,
+    index: state.activeAnalysis,
 })
 
 const mapDispatchToProps = (dispatch) => ({

@@ -1,7 +1,6 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import DropDown from './DropDown';
-import CheckBox from './CheckBox';
 import MyDatePicker from './MyDatePicker';
 
 
@@ -14,28 +13,54 @@ export class PatientHistory extends Component {
 
 
     render() {
-        return (
-            <div className="padding15">
-                <div className="flex50">
-
-                    <div className="max-width300">
-                        <p className="field-title">Patient History</p>
-                        <DropDown 
-                            option={this.props.patientHistoryOption}
-                            status={this.props.patientHistory}
-                            menu={this.patientHistory} 
-                            id="patientHistory" />
+        if (this.props.patientHistoryOption === `LMP`) {
+            return (
+                <div className="padding15">
+                    <div className="flex50">
+    
+                        <div className="max-width300">
+                            <p className="field-title">Patient History</p>
+                            <DropDown 
+                                option={this.props.patientHistoryOption}
+                                status={this.props.patientHistory}
+                                menu={this.patientHistory} 
+                                id="patientHistory" />
+                        </div>
+    
+                        <div className="max-width300">
+                            <p className="field-title">LMP Date</p>
+                            <MyDatePicker id="lmp" date={this.props.patient.lmpDate} />
+                        </div>
+    
                     </div>
-
-                    <div className="max-width300">
-                        <p className="field-title">LMP Date</p>
-                        <MyDatePicker id="lmp" date={this.props.patient.lmpDate} />
-                    </div>
-
+                    
                 </div>
-                <CheckBox status={this.props.patient.routineScreen} title={`Routine Screen`} id="routineScreen" />
-            </div>
-        )
+            )
+        } else {
+            return (
+                <div className="padding15">
+                    <div className="flex50">
+    
+                        <div className="max-width300">
+                            <p className="field-title">Patient History</p>
+                            <DropDown 
+                                option={this.props.patientHistoryOption}
+                                status={this.props.patientHistory}
+                                menu={this.patientHistory} 
+                                id="patientHistory" />
+                        </div>
+    
+                        <div className="max-width300">
+                            <p className="field-title">LMP Date</p>
+                            <div className="fake-picker"></div>
+                        </div>
+    
+                    </div>
+                    
+                </div>
+            )
+        }
+        
     }
 }
 

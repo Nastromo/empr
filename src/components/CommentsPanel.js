@@ -12,7 +12,7 @@ export class CommentsPanel extends Component {
     render() {
         return (
             <div className="cyt-comment">
-                <p className="field-title">Comments:</p>
+                <p className="field-title">Specimen Processing Comments:</p>
                 <textarea
                     className="gross-other"
                     ref={el => this.comment = el}

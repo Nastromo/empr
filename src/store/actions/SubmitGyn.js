@@ -63,7 +63,9 @@ export const submitPatient = (patient) => {
                     break;
                 default: break;
             }
-            window.location = `/account/pending`;
+            dispatch(showNotification(`Case was created`, `notification-green`));
+            dispatch(showSubmitSpinner(false));
+            // window.location = `/account/pending`;
         } catch (err) {
             console.log(err);
             dispatch(showSubmitSpinner(false));

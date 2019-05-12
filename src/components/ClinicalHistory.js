@@ -30,6 +30,7 @@ export class ClinicalHistory extends Component {
                         <CheckBox status={this.props.patient.vaginitis} title={`Vaginitis`} id="vaginitis" />
                         <CheckBox status={this.props.patient.hrt} title={`HRT`} id="hrt" />
                     </div>
+                    <CheckBox status={this.props.patient.routineScreen} title={`Routine Screen`} id="routineScreen" />
                 </div>
                 <p className="field-title">Years Menopausal</p>
                 <input className="simple-input" value={this.props.patient.yearsMenopausal || ``} onChange={this.handleChange} type="number"/>

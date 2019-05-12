@@ -37,6 +37,7 @@ export class Instrum extends Component {
         this.setMenu(this.props.menu);
         return (
             <div className="relative basis38">
+                <p className="inst-p">Instrument</p>
                 <div ref={el => this.option = el}
                     className={this.props.option !== `Select` ? `drop-select drop-select-chosen` : `drop-select`}>
                     {this.props.option !== `Select` ? this.props.option : `Select`}</div>

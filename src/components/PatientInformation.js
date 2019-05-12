@@ -35,9 +35,9 @@ export class PatientInformation extends Component {
                     <div onClick={this.transform} className="section-title">Patient Information</div>
                     <p className="marg-orange">
                         {this.props.stage === `case canceled` ||
-                        this.props.stage === `case deleted` || 
-                        this.props.stage === `Pop Slide` || 
-                        this.props.stage === `Cell Block` ? this.props.stage : ``}
+                            this.props.stage === `case deleted` ||
+                            this.props.stage === `Pop Slide` ||
+                            this.props.stage === `Cell Block` ? this.props.stage : ``}
                     </p>
                     <div className="flex-vertical-start">
                         <div className="section-info">
@@ -64,6 +64,14 @@ export class PatientInformation extends Component {
                             <div>
                                 <p>Sex:</p>
                                 <p>{this.props.patient.sex}</p>
+                            </div>
+                            <div>
+                                <p>Test Code:</p>
+                                <p>{this.props.testCode}</p>
+                            </div>
+                            <div>
+                                <p>Test Description:</p>
+                                <p>{this.props.testDescription}</p>
                             </div>
                         </div>
                         <div className="section-info">
@@ -115,7 +123,9 @@ export class PatientInformation extends Component {
 const mapStateToProps = (state) => ({
     stage: state.patient.stage,
     patient: state.patient,
-    isCollapsed: state.patientIsCollapsed
+    isCollapsed: state.patientIsCollapsed,
+    testCode: "GYN",
+    testDescription: "GYN CYTOLOGY",
 })
 
 const mapDispatchToProps = (dispatch) => ({

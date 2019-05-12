@@ -38,10 +38,11 @@ export class InstrumType extends Component {
         if (this.props.list) {
             return (
                 <div className="relative basis38">
+                    <p className="inst-p">Instrument Type</p>
                     <div ref={el => this.option = el}
                         className={this.props.option !== `Select` ? `drop-select drop-select-chosen` : `drop-select`}>
                         {this.props.option !== `Select` ? this.props.option : `Select`}</div>
-    
+
                     <div className={this.props.status ? `drop-down drop-down-show` : `drop-down`}>
                         {
                             this.props.list.map((item, i) => {
