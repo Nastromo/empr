@@ -169,15 +169,15 @@ export const submitScreening = (patient) => {
 
                     const fd = new FormData();
                     fd.set(`title`, getState().activeAnalysis);
-                    for ( var key in getState().patient ) {
+                    for (var key in getState().patient) {
                         fd.set(key, getState().patient[key]);
                     }
                     const photos = getState().photos;
-                    
+
                     for (let j = 0; j < photos.length; j++) {
-                        fd.append(`image`, photos[j]);    
+                        fd.append(`image`, photos[j]);
                     }
-                    
+
                     await API.post(`/v1/add-photos`, fd, {
                         'Content-Type': `multipart/form-data`
                     });
@@ -188,6 +188,8 @@ export const submitScreening = (patient) => {
                     break;
                 case 2:
                     await API.post(`/v1/submit-screening-uvfish`, patient);
+                    dispatch(showSubmitSpinner(false));
+                    dispatch(showNotification(`Submited`, `notification-green`));
                     break;
                 default: break;
             }

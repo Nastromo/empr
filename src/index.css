@@ -940,6 +940,10 @@ a.logo-text:hover {
     margin: 28px 0 0 0;
 }
 
+#fir-ng-t {
+    width: 150px;
+}
+
 .flex-instr {
     display: flex;
 }
@@ -1591,12 +1595,17 @@ a.logo-text:hover {
 }
 
 #lastTextNg {
-    max-width: 500px;
+    width: 350px;
+}
+
+#sec-ng-t {
+    width: 210px;
 }
 
 .flex-inter {
     display: flex;
     justify-content: space-between;
+    align-items: center;
     margin: 20px 0 0 0;
 }
 

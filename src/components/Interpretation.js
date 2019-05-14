@@ -7,14 +7,14 @@ import { changeComment } from '../store/actions/InterComment';
 export class Interpretation extends Component {
     constructor(props) {
         super(props);
-        this.inter = [`Option 1`, `Option 2`, `Option 3`];
+        this.inter = [`Negative`, `Positive 1`, `Positive 1&2`, `Positive 1&3`, `Positive 2`, `Positive 2&3`, `Positive 3`, `Unsatisfactory`, `ABNORMAL, UNSPECIFIED (SEE COMMENT)`];
     }
 
     handleChange = () => {
         this.props.changeComment();
     }
 
-    render() {
+    render() {        
         return (
             <div>
                 <div className="flex-inter">

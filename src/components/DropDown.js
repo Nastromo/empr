@@ -2,6 +2,7 @@ import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import { showDropDown } from '../store/actions/DropDown';
 import { setOption } from '../store/actions/DropDown';
+import { showNotification } from '../store/actions/Notification';
 
 
 
@@ -29,10 +30,20 @@ export class DropDown extends Component {
     }
 
     choseOption = (e) => {
-        this.props.setOption({
-            id: this.props.id,
-            option: e.target.id,
-        });
+        if (Number(this.props.numberChroms) < 4 && e.target.id === `Negative`) {
+            this.props.showNotification(`This case can't be negative`, `notification-show`);
+        } else if (Number(this.props.numberZero) >= 12 && e.target.id === `Negative`) {
+            this.props.showNotification(`This case can't be negative`, `notification-show`);
+        } else if (Number(this.props.numberChroms) < 4 && e.target.id === `Unsatisfactory`) {
+            this.props.showNotification(`This case can't be Unsatisfactory`, `notification-show`);
+        } else if (Number(this.props.numberZero) >= 12 && e.target.id === `Unsatisfactory`) {
+            this.props.showNotification(`This case can't be Unsatisfactory`, `notification-show`);
+        } else {
+            this.props.setOption({
+                id: this.props.id,
+                option: e.target.id,
+            });
+        }
     }
 
     render() {
@@ -59,12 +70,14 @@ export class DropDown extends Component {
 }
 
 const mapStateToProps = (state) => ({
-
+    numberChroms: state.patient.numberChroms,
+    numberZero: state.patient.numberZero
 })
 
 const mapDispatchToProps = (dispatch) => ({
     showDropDown: (obj) => dispatch(showDropDown(obj)),
     setOption: (obj) => dispatch(setOption(obj)),
+    showNotification: (text, cla) => dispatch(showNotification(text, cla))
 })
 
 export default connect(mapStateToProps, mapDispatchToProps)(DropDown)

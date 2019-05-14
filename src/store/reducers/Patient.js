@@ -3,7 +3,42 @@ const changeDesc = (receivedSource, ml, turbidity, color, specType, fixative, sl
     `
 }
 
-
+const setInterpretationComment = (option) => {
+    let comment = ``;
+    switch (option) {
+        case ``:
+            comment = '';
+            return comment;
+        case `Negative`:
+            comment = 'Negative results indicate a lack of evidence for the presence of numeric chromosomal abnormalities commonly associated with urothelial carcinoma, within the cells collected in this specimen. Negative results in the presence of other symptoms/signs of urothelial carcinoma may suggest the possibility of a false-negative test. In this circumstance, additional clinical studies to exclude urothelial carcinoma should be pursued, as clinically indicated. Although the Vysis UroVysion Kit was designed to detect genetic abnormality associated with most urothelial cancers, there will be some urothelial cancers for which genetic changes cannot be detected by the UroVysion Test. The Vysis UroVysion Bladder Cancer Kit (UroVysion Kit) is approved for use by the U.S. Food and Drug Administration.';
+            return comment;
+        case `Positive 1`:
+            comment = 'Positive results indicate the presence of one or more numeric chromosomal abnormalities commonly associated with urothelial carcinoma, within the cells collected in this specimen. Positive results in the absence of clinical documentation of urothelial carcinoma within the bladder suggest the possibility of urothelial carcinoma or other urologic malignancy from another site (including ureter, kidney, urethra, and prostate). In this circumstance, further clinical evaluation to exclude these as a source of the abnormal cells is justified. The assay is intended for detecting tumor and does not provide information on tumor stage. Biopsy may help clarify the diagnosis and tumor stage. The Vysis UroVysion Bladder Cancer Kit (UroVysion Kit) is approved for use by the U.S. Food and Drug Administration.';
+            return comment;
+        case `Positive 1&2`:
+            comment = 'Positive results indicate the presence of one or more numeric chromosomal abnormalities commonly associated with urothelial carcinoma, within the cells collected in this specimen. Positive results in the absence of clinical documentation of urothelial carcinoma within the bladder suggest the possibility of urothelial carcinoma or other urologic malignancy from another site (including ureter, kidney, urethra, and prostate). In this circumstance, further clinical evaluation to exclude these as a source of the abnormal cells is justified. The assay is intended for detecting tumor and does not provide information on tumor stage. Biopsy may help clarify the diagnosis and tumor stage. Positive results indicate the presence of ten or more cells with a gain of a single chromosome or 10 or more cells with tetrasomic signal patterns (ie, 4 copies for each of the 4 probes) within the cells collected in this specimen. Positive results in the absence of clinical documentation of urothelial carcinoma within the bladder suggest the possibility of urothelial carcinoma or other urologic malignancy from another site (including ureter, kidney, urethra, and prostate). In this circumstance, further clinical evaluation to exclude these as a source of the abnormal cells is justified. The assay is intended for detecting tumor and does not provide information on tumor stage. Biopsy may help clarify the diagnosis and tumor stage. The Vysis UroVysion Bladder Cancer Kit (UroVysion Kit) is approved for use by the U.S. Food and Drug Administration.';
+            return comment;
+        case `Positive 1&3`:
+            comment = 'Positive results indicate the presence of one or more numeric chromosomal abnormalities commonly associated with urothelial carcinoma, within the cells collected in this specimen. Positive results in the absence of clinical documentation of urothelial carcinoma within the bladder suggest the possibility of urothelial carcinoma or other urologic malignancy from another site (including ureter, kidney, urethra, and prostate). In this circumstance, further clinical evaluation to exclude these as a source of the abnormal cells is justified. The assay is intended for detecting tumor and does not provide information on tumor stage. Biopsy may help clarify the diagnosis and tumor stage. Positive results indicate the presence of homozygous deletion of the 9p21 locus in > 12% of the cells analyzed within the cells collected in this specimen. Homozygous deletion of the P16 gene at 9p21 is one of the most common alterations in UC/TCC that occurs early in the development of both papillary and in situ carcinoma. Positive results in the absence of clinical documentation of urothelial carcinoma within the bladder suggest the possibility of urothelial carcinoma or other urologic malignancy from another site (including ureter, kidney, urethra, and prostate). In this circumstance, further clinical evaluation to exclude these as a source of the abnormal cells is justified. The assay is intended for detecting tumor and does not provide information on tumor stage. Biopsy may help clarify the diagnosis and tumor stage. The Vysis UroVysion Bladder Cancer Kit (UroVysion Kit) is approved for use by the U.S. Food and Drug Administration.';
+            return comment;
+        case `Positive 2`:
+            comment = 'Positive results indicate the presence of ten or more cells with a gain of a single chromosome or 10 or more cells with tetrasomic signal patterns (ie, 4 copies for each of the 4 probes) within the cells collected in this specimen. Positive results in the absence of clinical documentation of urothelial carcinoma within the bladder suggest the possibility of urothelial carcinoma or other urologic malignancy from another site (including ureter, kidney, urethra, and prostate). In this circumstance, further clinical evaluation to exclude these as a source of the abnormal cells is justified. The assay is intended for detecting tumor and does not provide information on tumor stage. Biopsy may help clarify the diagnosis and tumor stage. The Vysis UroVysion Bladder Cancer Kit (UroVysion Kit) is approved for use by the U.S. Food and Drug Administration.';
+            return comment;
+        case `Positive 2&3`:
+            comment = 'Positive results indicate the presence of ten or more cells with a gain of a single chromosome or 10 or more cells with tetrasomic signal patterns (ie, 4 copies for each of the 4 probes) within the cells collected in this specimen. Positive results in the absence of clinical documentation of urothelial carcinoma within the bladder suggest the possibility of urothelial carcinoma or other urologic malignancy from another site (including ureter, kidney, urethra, and prostate). In this circumstance, further clinical evaluation to exclude these as a source of the abnormal cells is justified. The assay is intended for detecting tumor and does not provide information on tumor stage. Biopsy may help clarify the diagnosis and tumor stage. Positive results indicate the presence of homozygous deletion of the 9p21 locus in > 12% of the cells analyzed within the cells collected in this specimen. Homozygous deletion of the P16 gene at 9p21 is one of the most common alterations in UC/TCC that occurs early in the development of both papillary and in situ carcinoma. Positive results in the absence of clinical documentation of urothelial carcinoma within the bladder suggest the possibility of urothelial carcinoma or other urologic malignancy from another site (including ureter, kidney, urethra, and prostate). In this circumstance, further clinical evaluation to exclude these as a source of the abnormal cells is justified. The assay is intended for detecting tumor and does not provide information on tumor stage. Biopsy may help clarify the diagnosis and tumor stage. The Vysis UroVysion Bladder Cancer Kit (UroVysion Kit) is approved for use by the U.S. Food and Drug Administration.';
+            return comment;
+        case `Positive 3`:
+            comment = 'Positive results indicate the presence of homozygous deletion of the 9p21 locus in > 12% of the cells analyzed within the cells collected in this specimen. Homozygous deletion of the P16 gene at 9p21 is one of the most common alterations in UC/TCC that occurs early in the development of both papillary and in situ carcinoma. Positive results in the absence of clinical documentation of urothelial carcinoma within the bladder suggest the possibility of urothelial carcinoma or other urologic malignancy from another site (including ureter, kidney, urethra, and prostate). In this circumstance, further clinical evaluation to exclude these as a source of the abnormal cells is justified. The assay is intended for detecting tumor and does not provide information on tumor stage. Biopsy may help clarify the diagnosis and tumor stage. The Vysis UroVysion Bladder Cancer Kit (UroVysion Kit) is approved for use by the U.S. Food and Drug Administration.';
+            return comment;
+        case `Unsatisfactory`:
+            comment = 'An insufficient number of cells (<25) where available to perform the Vysis UroVysion FISH assay.';
+            return comment;
+        case `ABNORMAL, UNSPECIFIED (SEE COMMENT)`:
+            comment = '';
+            return comment;
+        default: break;
+    }
+}
 
 export const patient = (state = {}, action) => {
     let newState;
@@ -145,6 +180,7 @@ export const patient = (state = {}, action) => {
                 case `interpretation`:
                     newState = JSON.parse(JSON.stringify(state));
                     newState.interpretation = action.obj.option;
+                    newState.interpretationComment = setInterpretationComment(action.obj.option);
                     return newState;
 
                 case `receivedSource`:
@@ -330,17 +366,17 @@ export const patient = (state = {}, action) => {
 
         case `SET_CHROME`:
             newState = JSON.parse(JSON.stringify(state));
-            newState.numberChroms = action.text;
+            newState.numberChroms = Number(action.text);
             return newState;
 
         case `SET_ZERO`:
             newState = JSON.parse(JSON.stringify(state));
-            newState.numberZero = action.text;
+            newState.numberZero = Number(action.text);
             return newState;
 
         case `SET_INTER_COMMENT`:
             newState = JSON.parse(JSON.stringify(state));
-            newState.interpretationComment = action.text;
+            newState.interpretationComment = Number(action.text);
             return newState;
 
         case `SET_EXTERNAL_COMMENT`:
