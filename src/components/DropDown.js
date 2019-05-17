@@ -30,7 +30,7 @@ export class DropDown extends Component {
     }
 
     choseOption = (e) => {
-        if (Number(this.props.numberChroms) < 4 && e.target.id === `Negative`) {
+        if (Number(this.props.numberChroms) >= 4 && e.target.id === `Negative`) {
             this.props.showNotification(`This case can't be negative`, `notification-show`);
         } else if (Number(this.props.numberZero) >= 12 && e.target.id === `Negative`) {
             this.props.showNotification(`This case can't be negative`, `notification-show`);
