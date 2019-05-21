@@ -359,6 +359,11 @@ export const patient = (state = {}, action) => {
             newState.photos = action.photos;
             return newState;
 
+        case `SET_EDITED_PHOTOS`:
+            newState = JSON.parse(JSON.stringify(state));
+            newState.images = action.photos;
+            return newState;
+
         case `SET_CELLS`:
             newState = JSON.parse(JSON.stringify(state));
             newState.numberCells = action.text;

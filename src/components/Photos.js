@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
-import { showPhotoPreview, bindImages } from '../store/actions/Photos';
+import { showPhotoPreview, bindImages, setImages } from '../store/actions/Photos';
 
 
 
@@ -16,13 +16,28 @@ export class Photos extends Component {
             });
         }
         this.props.showPhotoPreview(photos);
-        this.props.bindImages(files);
+        this.props.bindImages(files);    
     }
 
     delete = e => {
-        let photos = JSON.parse(JSON.stringify(this.props.photos));
-        photos.splice(Number(e.target.id), 1);
-        this.props.showPhotoPreview(photos);
+        if (this.props.photos) {
+            let photos = JSON.parse(JSON.stringify(this.props.photos));
+            photos.splice(Number(e.target.id), 1);
+            this.props.showPhotoPreview(photos);
+        } else {
+            const photos = this.props.images.split(',');
+            photos.splice(Number(e.target.id), 1);
+            let str = ``;
+            for (let i = 0; i < photos.length; i++) {
+                if (i === photos.length - 1) {
+                    str = str + photos[i];
+                } else {
+                    str = str + photos[i] + `,`;
+                }
+            }
+            this.props.setImages(str);
+
+        }
     }
 
     render() {
@@ -67,9 +82,9 @@ export class Photos extends Component {
                                             <div className="delete-sml" id={i} onClick={this.delete}></div>
                                         </div>
                                         <img className="photo-img" src={
-                                            window.location.href.includes(`localhost`) 
-                                            ? `http://localhost:4000/${photo}`
-                                            : `http://192.168.20.211:9000/${photo}` } alt="" />
+                                            window.location.href.includes(`localhost`)
+                                                ? `http://localhost:4000/${photo}`
+                                                : `http://192.168.20.211:9000/${photo}`} alt="" />
                                     </div>
                                 )
                             })
@@ -120,6 +135,7 @@ const mapStateToProps = (state) => ({
 const mapDispatchToProps = dispatch => ({
     showPhotoPreview: (photos) => dispatch(showPhotoPreview(photos)),
     bindImages: (photos) => dispatch(bindImages(photos)),
+    setImages: (photos) => dispatch(setImages(photos)),
 })
 
 export default connect(mapStateToProps, mapDispatchToProps)(Photos)

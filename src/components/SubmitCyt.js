@@ -19,7 +19,11 @@ export class SubmitCyt extends Component {
                     this.props.submitScreening(this.props.patient);
                 }
             } else {
-                this.props.showNotification(`Total number of cells can't be empty`, `notification-show`);
+                if (this.props.index === 0 || this.props.index === 1) {
+                    this.props.submitScreening(this.props.patient);
+                } else {
+                    this.props.showNotification(`Total number of cells can't be empty`, `notification-show`);
+                }
             }
 
         } else {
@@ -64,6 +68,7 @@ export class SubmitCyt extends Component {
 }
 
 const mapStateToProps = (state) => ({
+    index: state.activeAnalysis,
     numberCells: state.patient.numberCells,
     numberChroms: state.patient.numberChroms,
     numberZero: state.patient.numberZero,

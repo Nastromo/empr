@@ -41,6 +41,7 @@ export class ScreeningEntry extends Component {
                     <ClinicalInformation />
                     <Interpretation />
                     <FishComments />
+                    <Photos />
 
                     <div className="flex-bl-btns">
                         <AdditionalSlide />

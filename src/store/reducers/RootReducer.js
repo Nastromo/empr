@@ -81,7 +81,7 @@ const RootReducer = combineReducers({
     historyPopup,
     histPopup,
     slidePopup,
-
+    
     photos
 });
 
