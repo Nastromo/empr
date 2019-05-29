@@ -18,6 +18,7 @@ import Navigation from './Navigation';
 import PopupHistory from './PopupHistory';
 import HistPopup from './HistPopup';
 import SlidePopup from './SlidePopup';
+import PdfUvfish from './PdfUvfish';
 
 
 
@@ -37,6 +38,7 @@ export class PrivateRoute extends Component {
                 <HistPopup />
                 <SlidePopup />
                 <Switch>
+                    <Route exact path="/account/pdf-uvfish" component={PdfUvfish} />
                     <Route exact path="/account/pending" component={Pending} />
                     <Route exact path="/account/processing" component={Processing} />
                     <Route exact path="/account/screening" component={Screening} />
