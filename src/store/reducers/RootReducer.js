@@ -18,6 +18,7 @@ import { historyPopup } from './HistoryPopup';
 import { histPopup } from './HistPopup';
 import { slidePopup } from './SlidePopup';
 import { photos } from './Photos';
+import { pdfData } from './PdfData';
 
 
 
@@ -81,6 +82,8 @@ const RootReducer = combineReducers({
     historyPopup,
     histPopup,
     slidePopup,
+
+    pdfData,
     
     photos
 });

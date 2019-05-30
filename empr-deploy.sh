@@ -1,6 +1,6 @@
 #!/bin/bash
 
-sudo npm run build
+npm run build
 cp devempr.pem build
 cd build
 mkdir prod
@@ -10,10 +10,9 @@ cp asset-manifest.json prod
 cp favicon.ico prod
 cp index.html prod
 cp manifest.json prod
-cp precache-manifest.79f550c3be1fadd9b5ae283ffe18ef5b.js prod
-cp manifest.json prod
+cp service-worker.js prod
 
-tar czf app.tar.gz static/ asset-manifest.json favicon.ico index.html manifest.json precache-manifest.79f550c3be1fadd9b5ae283ffe18ef5b.js manifest.json
+tar czf app.tar.gz static/ asset-manifest.json favicon.ico index.html manifest.json service-worker.js
 
 sftp -i "devempr.pem" ubuntu@192.168.20.211 << 'ENDSSH'
 put app.tar.gz

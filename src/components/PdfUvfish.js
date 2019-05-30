@@ -3,13 +3,22 @@ import { connect } from 'react-redux';
 import { PDFViewer, Page, Text, View, Document, StyleSheet, Image } from '@react-pdf/renderer';
 import wol from '../img/wol.png';
 import cell from '../img/cell.jpg';
+import LineSpinner from './LineSpinner';
+import { getPdfData } from '../store/actions/PdfData';
+import moment from 'moment';
 
 
 
 
 export class PdfUvfish extends Component {
+    componentDidMount () {
+        this.props.getPdfData(`U812273804`);
+    }
 
     render() {
+        if (!this.props.pdfData) {
+            return <LineSpinner />
+        }
 
         const styles = StyleSheet.create({
             page: {
@@ -85,7 +94,7 @@ export class PdfUvfish extends Component {
                 margin: 4
             },
             simple: {
-                fontSize: 9,
+                fontSize: 8,
                 marginLeft: 15,
                 marginRight: 15,
             }
@@ -120,54 +129,54 @@ export class PdfUvfish extends Component {
                                     <View style={styles.row}>
                                         <Text style={styles.param}>Requested By:</Text>
                                         <View>
-                                            <Text style={styles.value}>WONG, PETER RPAC</Text>
-                                            <Text style={styles.value}>GEORGE HALL MD P.C.</Text>
-                                            <Text style={styles.value}>2251 86TH ST</Text>
-                                            <Text style={styles.value}>BROOKLYN, NY 11214</Text>
-                                            <Text style={styles.value}>718-886-0028</Text>
+                                            <Text style={styles.value}>{this.props.pdfData.physician}</Text>
+                                            <Text style={styles.value}>{this.props.pdfData.clientName}</Text>
+                                            {/* <Text style={styles.value}>{this.props.pdfData.clientStreet}</Text> */}
+                                            <Text style={styles.value}>{`${this.props.pdfData.clientStreet}, ${this.props.pdfData.clientState} ${this.props.pdfData.clientZip}`}</Text>
+                                            <Text style={styles.value}>{this.props.pdfData.clientPhone}</Text>
                                         </View>
                                     </View>
                                     <View style={styles.row}>
                                         <Text style={styles.param}>Collection Date/Time:</Text>
-                                        <Text style={styles.value}>05/13/2019 10:55AM</Text>
+                                        <Text style={styles.value}>{moment(this.props.pdfData.collectionDate).format("MM/DD/YYYY h:mm a")}</Text>
                                     </View>
                                     <View style={styles.row}>
                                         <Text style={styles.param}>Received Date/Time:</Text>
-                                        <Text style={styles.value}>05/15/2019 04:21PM</Text>
+                                        <Text style={styles.value}>{moment(this.props.pdfData.receivedDate).format("MM/DD/YYYY h:mm a")}</Text>
                                     </View>
                                 </View>
                                 <View style={styles.section}>
                                     <View style={styles.row}>
                                         <Text style={styles.param}>Accession#:</Text>
-                                        <Text style={styles.value}>PREVIEW</Text>
+                                        <Text style={styles.value}>{this.props.pdfData.accessionID}</Text>
                                     </View>
                                     <View style={styles.row}>
                                         <Text style={styles.param}>Case#:</Text>
-                                        <Text style={styles.value}>PREVIEW</Text>
+                                        <Text style={styles.value}>{this.props.pdfData.caseNumber}</Text>
                                     </View>
                                     <View style={styles.row}>
                                         <Text style={styles.param}>Patient Name:</Text>
-                                        <Text style={styles.value}>RONG, ZHONGCUI</Text>
+                                        <Text style={styles.value}>{`${this.props.pdfData.patientFirstName} ${this.props.pdfData.patientLastName}`}</Text>
                                     </View>
                                     <View style={styles.row}>
                                         <Text style={styles.param}>Date of Birth:</Text>
-                                        <Text style={styles.value}>07/26/1956 (62 years)</Text>
+                                        <Text style={styles.value}>{moment(this.props.pdfData.receivedDate).format("MM/DD/YYYY h:mm a")}</Text>
                                     </View>
                                     <View style={styles.row}>
                                         <Text style={styles.param}>Gender:</Text>
-                                        <Text style={styles.value}>F</Text>
+                                        <Text style={styles.value}>{this.props.pdfData.gender}</Text>
                                     </View>
                                     <View style={styles.row}>
                                         <Text style={styles.param}>Phone:</Text>
-                                        <Text style={styles.value}>347-881-7626</Text>
+                                        <Text style={styles.value}>{this.props.pdfData.patientPhone}</Text>
                                     </View>
                                     <View style={styles.row}>
                                         <Text style={styles.param}>Final Report Date:</Text>
-                                        <Text style={styles.value}>(FINAL)</Text>
+                                        <Text style={styles.value}>{moment(this.props.pdfData.finaleDate).format("MM/DD/YYYY h:mm a")}</Text>
                                     </View>
                                     <View style={styles.row}>
                                         <Text style={styles.param}>Report Print Date:</Text>
-                                        <Text style={styles.value}>05/26/2019</Text>
+                                        <Text style={styles.value}>????????????</Text>
                                     </View>
                                 </View>
                             </View>
@@ -185,17 +194,18 @@ export class PdfUvfish extends Component {
                                     src={cell}
                                 />
                                 <View style={styles.section}>
-                                    <Text style={styles.results}>Total number of cells counted:</Text>
-                                    <Text style={styles.results}>Number of cells showing gains for 2 or more
-chromosomes (3,7 or 17) in the same cell:</Text>
-                                    <Text style={styles.results}>Number of cells showing zero 9p21 signals:</Text>
+                                    <Text style={styles.results}>{`Total number of cells counted:    ${this.props.pdfData.totalCells}`}</Text>
+                                    <Text style={styles.results}>{`Number of cells showing gains for 2 or more
+chromosomes (3,7 or 17) in the same cell:  ${this.props.pdfData.cellsShowing}`}</Text>
+                                    <Text style={styles.results}>{`Number of cells showing zero 9p21 signals:  ${this.props.pdfData.cellsShowingZero}`}</Text>
                                     <Text style={styles.refs}>Reference Range</Text>
-                                    <Text style={styles.results}>{"ABNORMAL >= 4 cells showing gains for 2 or more chromosomes (3,7 or 17) in the same cell OR >= 12 cells showing zero 9p21 signals"}</Text>
-                                    <Text style={styles.results}>{"NORMAL < 4 cells showing gains for 2 or more chromosomes (3,7 or 17) in the same cell OR < 12 cells showing zero 9p21 signals"}</Text>
+                                    <Text style={styles.results}>{"????????? ABNORMAL >= 4 cells showing gains for 2 or more chromosomes (3,7 or 17) in the same cell OR >= 12 cells showing zero 9p21 signals"}</Text>
+                                    <Text style={styles.results}>{"????????? NORMAL < 4 cells showing gains for 2 or more chromosomes (3,7 or 17) in the same cell OR < 12 cells showing zero 9p21 signals"}</Text>
                                 </View>
                             </View>
 
                             <Text style={styles.urine}>Interpretation:</Text>
+                            <Text style={styles.simple}>{this.props.pdfData.interpretation}</Text>
 
                             <Text style={styles.urine}>Methodology:</Text>
                             <Text style={styles.simple}>In situ hybridization is a technique that allows the visualization of specific nucleic acid sequences within a cellular preparation. Specifically, DNA fluorescence in situ hybridization (FISH) involves the precise annealing of a single stranded fluorescently labeled DNA probe to complementary target sequences. The hybridization of the probe with the cellular DNA site is visible by diretion detection using fluorescence microscopy. The UroVysion probes are fluorescently labeled nucleic acid probes for use in situ hybridization assays on urine specimens fixed on slides. The UroVysion kit consists of a 4-color, 4-probe mixture of DNA probe sequences homologous to specific regions on chromosomes 3,7,9 and 17. The UroVysion probe mixture consists of Chromosome Enumeration Probe (CEP) 3 SpecturmRed, CEP 7 SpectrumGreen, CEP 17 SpectrumAqua and Locus Specific Identifier (LSI) 9p21 SpectrumGold. The probes are pre-mixed and pre- denatured in hybridization buffer for ease of use. Unlabeled blocking DNA is also included with the probes to suppress sequences contained within the target loci that are common to other chromosomes. When hybridized and visualized, these probes provide information on chromosome copy number for chromosome ploidy enumeration. This UroVysion Kit is designed for the detection and quantification of chromosomes 3,7, and 17, and 9p21 locus in human urine specimens by FISH.</Text>
@@ -208,7 +218,7 @@ chromosomes (3,7 or 17) in the same cell:</Text>
                                     <Text style={styles.results}>Screened by:</Text>
                                 </View>
                                 <View style={styles.section}>
-                                    <Text style={styles.results}>Muhammad Butt, CT (ASCP)</Text>
+                                    <Text style={styles.results}>{this.props.pdfData.screenedBy}</Text>
                                 </View>
                             </View>
 
@@ -217,7 +227,7 @@ chromosomes (3,7 or 17) in the same cell:</Text>
                                     <Text style={styles.results}>Reviewed and Electronically Signed by:</Text>
                                 </View>
                                 <View style={styles.section}>
-                                    <Text style={styles.results}>some text here</Text>
+                                    <Text style={styles.results}>{this.props.pdfData.signedBy}</Text>
                                 </View>
                             </View>
 
@@ -232,11 +242,11 @@ chromosomes (3,7 or 17) in the same cell:</Text>
 }
 
 const mapStateToProps = (state) => ({
-
+    pdfData: state.pdfData
 })
 
-const mapDispatchToProps = {
-
-}
+const mapDispatchToProps = dispatch => ({
+    getPdfData: (accession) => dispatch(getPdfData(accession))
+})
 
 export default connect(mapStateToProps, mapDispatchToProps)(PdfUvfish)
