@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import { PDFViewer, Page, Text, View, Document, StyleSheet, Image } from '@react-pdf/renderer';
-import wol from '../img/wol.png';
+import wol from '../img/logo.png';
 import cell from '../img/cell.jpg';
 import LineSpinner from './LineSpinner';
 import { getPdfData } from '../store/actions/PdfData';
@@ -11,8 +11,11 @@ import moment from 'moment';
 
 
 export class PdfUvfish extends Component {
-    componentDidMount () {
-        this.props.getPdfData(`U812273804`);
+    componentDidMount() {
+        const urlParams = new URLSearchParams(window.location.search);
+        const accession = urlParams.get('accession');
+        console.log(accession);
+        this.props.getPdfData(accession);
     }
 
     render() {
@@ -131,7 +134,6 @@ export class PdfUvfish extends Component {
                                         <View>
                                             <Text style={styles.value}>{this.props.pdfData.physician}</Text>
                                             <Text style={styles.value}>{this.props.pdfData.clientName}</Text>
-                                            {/* <Text style={styles.value}>{this.props.pdfData.clientStreet}</Text> */}
                                             <Text style={styles.value}>{`${this.props.pdfData.clientStreet}, ${this.props.pdfData.clientState} ${this.props.pdfData.clientZip}`}</Text>
                                             <Text style={styles.value}>{this.props.pdfData.clientPhone}</Text>
                                         </View>
@@ -160,7 +162,7 @@ export class PdfUvfish extends Component {
                                     </View>
                                     <View style={styles.row}>
                                         <Text style={styles.param}>Date of Birth:</Text>
-                                        <Text style={styles.value}>{moment(this.props.pdfData.receivedDate).format("MM/DD/YYYY h:mm a")}</Text>
+                                        <Text style={styles.value}>{moment(this.props.pdfData.receivedDate).format("MM/DD/YYYY")}</Text>
                                     </View>
                                     <View style={styles.row}>
                                         <Text style={styles.param}>Gender:</Text>
@@ -176,17 +178,17 @@ export class PdfUvfish extends Component {
                                     </View>
                                     <View style={styles.row}>
                                         <Text style={styles.param}>Report Print Date:</Text>
-                                        <Text style={styles.value}>????????????</Text>
+                                        <Text style={styles.value}>{moment(this.props.pdfData.printDate).format("MM/DD/YYYY h:mm a")}</Text>
                                     </View>
                                 </View>
                             </View>
 
                             <View style={styles.divider}>
-                                <Text style={styles.address}>229 49th Street</Text>
+                                <Text style={styles.address}>UroVysion Report</Text>
                             </View>
 
 
-                            <Text style={styles.urine}>Urine: NORMAL</Text>
+                            <Text style={styles.urine}>{`Urine: ${this.props.pdfData.abnormalStatus}`}</Text>
 
                             <View style={styles.row}>
                                 <Image
@@ -199,8 +201,8 @@ export class PdfUvfish extends Component {
 chromosomes (3,7 or 17) in the same cell:  ${this.props.pdfData.cellsShowing}`}</Text>
                                     <Text style={styles.results}>{`Number of cells showing zero 9p21 signals:  ${this.props.pdfData.cellsShowingZero}`}</Text>
                                     <Text style={styles.refs}>Reference Range</Text>
-                                    <Text style={styles.results}>{"????????? ABNORMAL >= 4 cells showing gains for 2 or more chromosomes (3,7 or 17) in the same cell OR >= 12 cells showing zero 9p21 signals"}</Text>
-                                    <Text style={styles.results}>{"????????? NORMAL < 4 cells showing gains for 2 or more chromosomes (3,7 or 17) in the same cell OR < 12 cells showing zero 9p21 signals"}</Text>
+                                    <Text style={styles.results}>{"ABNORMAL >= 4 cells showing gains for 2 or more chromosomes (3,7 or 17) in the same cell OR >= 12 cells showing zero 9p21 signals"}</Text>
+                                    <Text style={styles.results}>{"NORMAL < 4 cells showing gains for 2 or more chromosomes (3,7 or 17) in the same cell OR < 12 cells showing zero 9p21 signals"}</Text>
                                 </View>
                             </View>
 
@@ -218,7 +220,7 @@ chromosomes (3,7 or 17) in the same cell:  ${this.props.pdfData.cellsShowing}`}<
                                     <Text style={styles.results}>Screened by:</Text>
                                 </View>
                                 <View style={styles.section}>
-                                    <Text style={styles.results}>{this.props.pdfData.screenedBy}</Text>
+                                    <Text style={styles.docTitle}>{this.props.pdfData.screenedBy}</Text>
                                 </View>
                             </View>
 
@@ -227,7 +229,7 @@ chromosomes (3,7 or 17) in the same cell:  ${this.props.pdfData.cellsShowing}`}<
                                     <Text style={styles.results}>Reviewed and Electronically Signed by:</Text>
                                 </View>
                                 <View style={styles.section}>
-                                    <Text style={styles.results}>{this.props.pdfData.signedBy}</Text>
+                                    <Text style={styles.docTitle}>{this.props.pdfData.signedBy}</Text>
                                 </View>
                             </View>
 
